@@ -1,0 +1,9 @@
+- Integer literal support
+
+- Python 3.0 string formatting
+
+- Need more accurate way to handle indentation errors. For example
+  mixing spaces and tabs may be used for pretty formatting;
+
+- Need more checks for errors like: absent brackets, absent quotes,
+  back slash at the end of strings;

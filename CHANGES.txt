@@ -1,0 +1,84 @@
+Revision 2.5.6 (2007-02-04):
+
+    - Applied patch by Pedro Algarvio to enable spell checking only for
+      the right spots (strings and comments);
+
+Revision 2.5.5 (2006-09-26):
+
+    - added new warnings (ImportWarning, UnicodeWarning)
+      introduced in Python 2.5;
+
+Revision 2.5.4 (2006-05-11):
+
+    - added highlighting for erroneous operators: &&, ||, ++, --, ===
+      (inspired by http://www.vim.org/tips/tip.php?tip_id=969, thanks
+      Jeroen Ruigrok van der Werven for the link);
+    - added highlighting for new 'with' statement and 'BaseException',
+      'GeneratorExit' exceptions introduced in Python 2.5;
+    - added highlighting for 'OverflowWarning' exception which had been
+      forgotten;
+    - returned more robust recognition for function names;
+
+Revision 2.5.3:
+
+    - fixed %-formatting highlighting for raw unicode strings;
+
+Revision 2.5.2:
+
+    - slightly simplified option handling;
+    - fixed regexp for indentation errors;
+    - fixed highlighting for backslashed symbols inside strings;
+    - added highlighting for trailing-space errors (triggered by new
+      option: python_highlight_space_errors);
+    - added highlighting for variable name errors;
+    - added highlighting for hex number errors;
+
+Revision 2.5.1 (2005-03-13):
+
+    - added new builtins 'all' and 'any' (Python 2.5a0)
+
+Revision 2.4.2 (2004-08-05):
+
+    - added highlighting for new @decorator syntax introduced in python 2.4a2
+
+Revision 2.4.1 (2004-03-17):
+
+    - new versioning scheme (based on python version numbers);
+    - added highlighting for new types/builtins introduced in python 2.4
+      (set, frozenset, reversed, sorted);
+    - new option added: python_slow_sync (set this for slow but more
+      robust syntax synchronization);
+    - added highlighting for doctests;
+
+Revision 1.19:
+
+    - new option added: python_highlight_indent_errors;
+    - python_highlight_all now not override previously set options,
+      for example code:
+          let python_highlight_indent_errors = 0
+          let python_highlight_all = 1
+      set all highlight options except indentation errors highlighting option;
+
+Revision 1.17:
+
+    - changed header, "Based on..." string added;
+
+Revision 1.16:
+
+    - added basestring builtin;
+
+Revision 1.15 (first public revision).
+
+    The changes since the original (vim6.1) python.vim are:
+
+    - changed string highlighting;
+    - enhanced special symbols highlighting inside strings;
+    - enhanced constant numbers highlighting;
+    - added optional highlighting for %-formatting inside strings;
+    - added highlighting for error conditions (wrong symbols in source file,
+      mixing spaces and tabs, wrong number values,
+      wrong %-formatting inside strings);
+    - added highlighting for magic comments: source code encoding
+      and #! (executable) strings;
+    - added highlighting for new exceptions and builtins introduced
+      in python 2.3;
