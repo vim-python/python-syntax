@@ -1,3 +1,9 @@
+Revision 2.6.1 (unknown):
+
+    - Added new builtin "next" introduced in Python 2.6;
+    - Added forgotten "__debug__" builtin;
+    - Removed OverflowWarning removed in Python 2.5;
+
 Revision 2.5.6 (2007-02-04):
 
     - Applied patch by Pedro Algarvio to enable spell checking only for

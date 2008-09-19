@@ -1,3 +1,5 @@
+- Add configuration for "print" status (function or builtin)
+
 - Integer literal support
 
 - Python 3.0 string formatting
