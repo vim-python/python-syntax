@@ -188,14 +188,18 @@ endif
 
 " Numbers (ints, longs, floats, complex)
 syn match   pythonHexNumber	"\<0[xX]\x\+[lL]\=\>" display
-syn match   pythonHexNumber	"\<0[xX]\>" display
+syn match   pythonOctNumber "\<0[oO]\o\+[lL]\=\>" display
+syn match   pythonBinNumber "\<0[bB][01]\+[lL]\=\>" display
+
 syn match   pythonNumber	"\<\d\+[lLjJ]\=\>" display
+
 syn match   pythonFloat		"\.\d\+\([eE][+-]\=\d\+\)\=[jJ]\=\>" display
 syn match   pythonFloat		"\<\d\+[eE][+-]\=\d\+[jJ]\=\>" display
 syn match   pythonFloat		"\<\d\+\.\d*\([eE][+-]\=\d\+\)\=[jJ]\=" display
 
-syn match   pythonOctalError	"\<0\o*[89]\d*[lL]\=\>" display
-syn match   pythonHexError	"\<0[xX]\X\+[lL]\=\>" display
+syn match   pythonOctError	"\<0[oO]\=\o*[8-9]\d*[lL]\=\>" display
+syn match   pythonHexError	"\<0[xX]\x*\X\x*[lL]\=\>" display
+syn match   pythonBinError	"\<0[bB][01]*[2-9]\d*[lL]\=\>" display
 
 if exists("python_highlight_builtins") && python_highlight_builtins != 0
   " Builtin functions, types and objects
@@ -303,9 +307,12 @@ if version >= 508 || !exists("did_python_syn_inits")
 
   HiLink pythonNumber		Number
   HiLink pythonHexNumber	Number
+  HiLink pythonOctNumber	Number
+  HiLink pythonBinNumber	Number
   HiLink pythonFloat		Float
-  HiLink pythonOctalError	Error
+  HiLink pythonOctError	    Error
   HiLink pythonHexError		Error
+  HiLink pythonBinError		Error
 
   HiLink pythonBuiltinObj	Structure
   HiLink pythonBuiltinFunc	Function
