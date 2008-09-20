@@ -193,13 +193,14 @@ syn match   pythonHexError	"\<0[xX]\X\+[lL]\=\>" display
 
 if exists("python_highlight_builtins") && python_highlight_builtins != 0
   " Builtin functions, types and objects
-  syn keyword pythonBuiltinObj	True False Ellipsis None NotImplemented __debug__
+  syn keyword pythonBuiltinObj	True False Ellipsis None NotImplemented
+  syn keyword pythonBuiltinObj	__debug__ __doc__ __file__ __name__ __package__
 
   syn keyword pythonBuiltinFunc	__import__ abs all any apply
-  syn keyword pythonBuiltinFunc	basestring bool buffer callable
+  syn keyword pythonBuiltinFunc	basestring bin bool buffer bytearray bytes callable
   syn keyword pythonBuiltinFunc	chr classmethod cmp coerce compile complex
   syn keyword pythonBuiltinFunc	delattr dict dir divmod enumerate eval
-  syn keyword pythonBuiltinFunc	execfile file filter float frozenset getattr
+  syn keyword pythonBuiltinFunc	execfile file filter float format frozenset getattr
   syn keyword pythonBuiltinFunc	globals hasattr hash help hex id 
   syn keyword pythonBuiltinFunc	input int intern isinstance
   syn keyword pythonBuiltinFunc	issubclass iter len list locals long map max
@@ -217,7 +218,7 @@ if exists("python_highlight_exceptions") && python_highlight_exceptions != 0
   syn keyword pythonExClass	Exception StandardError ArithmeticError
   syn keyword pythonExClass	LookupError EnvironmentError
 
-  syn keyword pythonExClass	AssertionError AttributeError EOFError
+  syn keyword pythonExClass	AssertionError AttributeError BufferError EOFError
   syn keyword pythonExClass	FloatingPointError GeneratorExit IOError
   syn keyword pythonExClass	ImportError IndexError KeyError
   syn keyword pythonExClass	KeyboardInterrupt MemoryError NameError
@@ -230,7 +231,7 @@ if exists("python_highlight_exceptions") && python_highlight_exceptions != 0
   syn keyword pythonExClass	UnicodeTranslateError ValueError
   syn keyword pythonExClass	WindowsError ZeroDivisionError
 
-  syn keyword pythonExClass	Warning UserWarning DeprecationWarning
+  syn keyword pythonExClass	Warning UserWarning BytesWarning DeprecationWarning
   syn keyword pythonExClass	PendingDepricationWarning SyntaxWarning
   syn keyword pythonExClass	RuntimeWarning FutureWarning
   syn keyword pythonExClass	ImportWarning UnicodeWarning

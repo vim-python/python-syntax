@@ -1,8 +1,11 @@
 Revision 2.6.1 (unknown):
 
-    - Added new builtin "next" introduced in Python 2.6;
-    - Added forgotten "__debug__" builtin;
-    - Removed OverflowWarning removed in Python 2.5;
+    - Added new builtins and exceptions introduced in Python 2.6: "bin",
+      "bytearray", "bytes", "format", "next", "BufferError", "BytesWarning";
+    - Added builtin "__debug__";
+    - Added "magic" global variables: "__doc__", "__file__", "__name__",
+      "__package__";
+    - Removed "OverflowWarning" (removed in Python 2.5);
 
 Revision 2.5.6 (2007-02-04):
 
