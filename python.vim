@@ -46,13 +46,15 @@
 "    For highlight doc-tests:
 "       python_highlight_doctests
 "
-"    If you want all possible Python highlighting:
-"    (This option not override previously set options)
+"    If you want all Python highlightings above:
 "       python_highlight_all
+"    (This option not override previously set options)
 "
 "    For fast machines:
 "       python_slow_sync
 "
+"    For "print" builtin as function:
+"       python_print_as_function
 
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded
@@ -98,6 +100,10 @@ syn keyword pythonConditional	if elif else
 syn keyword pythonImport	import from as
 syn keyword pythonException	try except finally
 syn keyword pythonOperator	and in is not or
+
+if !exists("python_print_as_function") || python_print_as_function == 0
+  syn keyword pythonStatement print
+endif
 
 " Decorators (new in Python 2.4)
 syn match   pythonDecorator	"@" display nextgroup=pythonFunction skipwhite
@@ -205,11 +211,15 @@ if exists("python_highlight_builtins") && python_highlight_builtins != 0
   syn keyword pythonBuiltinFunc	input int intern isinstance
   syn keyword pythonBuiltinFunc	issubclass iter len list locals long map max
   syn keyword pythonBuiltinFunc	min next object oct open ord
-  syn keyword pythonBuiltinFunc	pow print property range
+  syn keyword pythonBuiltinFunc	pow property range
   syn keyword pythonBuiltinFunc	raw_input reduce reload repr
   syn keyword pythonBuiltinFunc	reversed round set setattr
   syn keyword pythonBuiltinFunc	slice sorted staticmethod str sum super tuple
   syn keyword pythonBuiltinFunc	type unichr unicode vars xrange zip
+
+  if exists("python_print_as_function") && python_print_as_function != 0
+      syn keyword pythonBuiltinFunc	print
+  endif
 endif
 
 if exists("python_highlight_exceptions") && python_highlight_exceptions != 0

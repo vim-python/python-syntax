@@ -6,6 +6,8 @@ Revision 2.6.1 (unknown):
     - Added "magic" global variables: "__doc__", "__file__", "__name__",
       "__package__";
     - Removed "OverflowWarning" (removed in Python 2.5);
+    - Added option "python_print_as_function" for highlight "print" as a
+      function;
 
 Revision 2.5.6 (2007-02-04):
 
