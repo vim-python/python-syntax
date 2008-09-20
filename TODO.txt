@@ -1,5 +1,7 @@
 - Python 3.0 string formatting
 
+- Highligh errors where symbols follow by numbers like this: 0o123LaB
+
 - Need more accurate way to handle indentation errors. For example
   mixing spaces and tabs may be used for pretty formatting;
 
