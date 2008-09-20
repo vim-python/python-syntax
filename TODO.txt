@@ -1,3 +1,5 @@
+- Highligh for string.Template?
+
 - Python 3.0 string formatting
 
 - Highligh errors where symbols follow by numbers like this: 0o123LaB
