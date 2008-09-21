@@ -37,7 +37,10 @@
 "    For highlight string formatting:
 "       python_highlight_string_formatting
 "
-"    For highlight string.Template templates:
+"    For highlight str.format syntax:
+"       python_highlight_string_format
+"
+"    For highlight string.Template syntax:
 "       python_highlight_string_templates
 "
 "    For highlight indentation errors:
@@ -77,6 +80,9 @@ if exists("python_highlight_all") && python_highlight_all != 0
   endif
   if !exists("python_highlight_string_formatting")
     let python_highlight_string_formatting = 1
+  endif
+  if !exists("python_highlight_string_format")
+    let python_highlight_string_format = 1
   endif
   if !exists("python_highlight_string_templates")
     let python_highlight_string_templates = 1
@@ -182,8 +188,13 @@ syn match  pythonUniRawEscapeError	"\([^\\]\(\\\\\)*\)\@<=\\u\x\{,3}\X" display 
 
 if exists("python_highlight_string_formatting") && python_highlight_string_formatting != 0
   " String formatting
-  syn match pythonStrFormat	"%\(([^)]\+)\)\=[-#0 +]*\d*\(\.\d\+\)\=[hlL]\=[diouxXeEfFgGcrs%]" contained containedin=pythonString,pythonUniString,pythonRawString,pythonUniRawString
-  syn match pythonStrFormat	"%[-#0 +]*\(\*\|\d\+\)\=\(\.\(\*\|\d\+\)\)\=[hlL]\=[diouxXeEfFgGcrs%]" contained containedin=pythonString,pythonUniString,pythonRawString,pythonUniRawString
+  syn match pythonStrFormatting	"%\(([^)]\+)\)\=[-#0 +]*\d*\(\.\d\+\)\=[hlL]\=[diouxXeEfFgGcrs%]" contained containedin=pythonString,pythonUniString,pythonRawString,pythonUniRawString
+  syn match pythonStrFormatting	"%[-#0 +]*\(\*\|\d\+\)\=\(\.\(\*\|\d\+\)\)\=[hlL]\=[diouxXeEfFgGcrs%]" contained containedin=pythonString,pythonUniString,pythonRawString,pythonUniRawString
+endif
+
+if exists("python_highlight_string_format") && python_highlight_string_format != 0
+  " str.format syntax
+  syn match pythonStrFormat	"{\([a-zA-Z_][a-zA-Z0-9_]*\|\d\+\)\(\.[a-zA-Z_][a-zA-Z0-9_]*\|\[\(\d\+\|[^!:\}]\+\)\]\)*\(![rs]\)\=\(:\({\([a-zA-Z_][a-zA-Z0-9_]*\|\d\+\)}\|\([^}]\=[<>=^]\)\=[ +-]\=#\=0\=\d*\(\.\d\+\)\=[bcdeEfFgGnoxX%]\=\)\=\)\=}" contained containedin=pythonString,pythonUniString,pythonRawString,pythonUniRawString
 endif
 
 if exists("python_highlight_string_templates") && python_highlight_string_templates != 0
@@ -311,8 +322,9 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonUniRawEscape		Special
   HiLink pythonUniRawEscapeError	Error
 
-  HiLink pythonStrFormat	Special
-  HiLink pythonStrTemplate	Special
+  HiLink pythonStrFormatting	Special
+  HiLink pythonStrFormat    	Special
+  HiLink pythonStrTemplate	    Special
 
   HiLink pythonDocTest		Special
   HiLink pythonDocTest2		Special
