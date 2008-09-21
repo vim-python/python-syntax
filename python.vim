@@ -220,7 +220,7 @@ syn match   pythonFloat		"\<\d\+[eE][+-]\=\d\+[jJ]\=\>" display
 syn match   pythonFloat		"\<\d\+\.\d*\([eE][+-]\=\d\+\)\=[jJ]\=" display
 
 syn match   pythonOctError	"\<0[oO]\=\o*[8-9]\d*[lL]\=\>" display
-syn match   pythonHexError	"\<0[xX]\x*\X\x*[lL]\=\>" display
+syn match   pythonHexError	"\<0[xX]\x*[g-zG-Z]\x*[lL]\=\>" display
 syn match   pythonBinError	"\<0[bB][01]*[2-9]\d*[lL]\=\>" display
 
 if exists("python_highlight_builtins") && python_highlight_builtins != 0
