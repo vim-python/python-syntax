@@ -67,6 +67,14 @@ RuntimeWarning FutureWarning OverflowWarning ImportWarning UnicodeWarning
 " \a\b\c\"\'\n\r \x34\077 \08 \xag"
 r" \" \' "
 
+# Formattings
+
+" %f "
+
+"{0.name!r:b} {0[n]} {name!s:  }"
+
+"${test} ${test ${test}aname"
+
 # Doctests.
 
 """
