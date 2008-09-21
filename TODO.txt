@@ -1,6 +1,10 @@
-- Highligh for string.Template?
+Now
+===
 
 - Python 3.0 string formatting
+
+Later
+=====
 
 - Highligh errors where symbols follow by numbers like this: 0o123LaB
 

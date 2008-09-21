@@ -13,7 +13,7 @@
 " Thanks:
 "
 "    Jeroen Ruigrok van der Werven
-"        for the idea of highlighting for erroneous operators
+"        for the idea to highlight erroneous operators
 "    Pedro Algarvio
 "        for the patch to enable spell checking only for the right spots
 "        (strings and comments)
@@ -36,6 +36,9 @@
 "
 "    For highlight string formatting:
 "       python_highlight_string_formatting
+"
+"    For highlight string.Template templates:
+"       python_highlight_string_templates
 "
 "    For highlight indentation errors:
 "       python_highlight_indent_errors
@@ -74,6 +77,9 @@ if exists("python_highlight_all") && python_highlight_all != 0
   endif
   if !exists("python_highlight_string_formatting")
     let python_highlight_string_formatting = 1
+  endif
+  if !exists("python_highlight_string_templates")
+    let python_highlight_string_templates = 1
   endif
   if !exists("python_highlight_indent_errors")
     let python_highlight_indent_errors = 1
@@ -178,6 +184,11 @@ if exists("python_highlight_string_formatting") && python_highlight_string_forma
   " String formatting
   syn match pythonStrFormat	"%\(([^)]\+)\)\=[-#0 +]*\d*\(\.\d\+\)\=[hlL]\=[diouxXeEfFgGcrs%]" contained containedin=pythonString,pythonUniString,pythonRawString,pythonUniRawString
   syn match pythonStrFormat	"%[-#0 +]*\(\*\|\d\+\)\=\(\.\(\*\|\d\+\)\)\=[hlL]\=[diouxXeEfFgGcrs%]" contained containedin=pythonString,pythonUniString,pythonRawString,pythonUniRawString
+endif
+
+if exists("python_highlight_string_templates") && python_highlight_string_templates != 0
+  " String templates
+  syn match pythonStrTemplate	"\$\(\$\|{[^}]*}\|[a-zA-Z_][a-zA-Z0-9_]*\)" contained containedin=pythonString,pythonUniString,pythonRawString,pythonUniRawString
 endif
 
 if exists("python_highlight_doctests") && python_highlight_doctests != 0
@@ -301,6 +312,7 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonUniRawEscapeError	Error
 
   HiLink pythonStrFormat	Special
+  HiLink pythonStrTemplate	Special
 
   HiLink pythonDocTest		Special
   HiLink pythonDocTest2		Special
