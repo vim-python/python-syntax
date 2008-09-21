@@ -129,7 +129,7 @@ syn keyword pythonTodo		TODO FIXME XXX contained
 " Errors
 syn match pythonError		"\<\d\+\D\+\>" display
 syn match pythonError		"[$?]" display
-syn match pythonError		"[-+&|]\{2,}" display
+syn match pythonError		"[&|]\{2,}" display
 syn match pythonError		"[=]\{3,}" display
 
 " TODO: Mixing spaces and tabs also may be used for pretty formatting multiline

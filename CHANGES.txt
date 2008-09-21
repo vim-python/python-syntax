@@ -13,6 +13,8 @@ Revision 2.6.1 (unknown):
       "python_highlight_string_templates" option;
     - Added support for str.format syntax controlled by
       "python_highlight_string_format" option;
+    - Removed highlighting for "--" and "++" because it's a valid Python
+      expressions which can be interpreted as "a + +b";
 
 Revision 2.5.6 (2007-02-04):
 
