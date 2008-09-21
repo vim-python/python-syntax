@@ -1,4 +1,4 @@
-Revision 2.6.1 (unknown):
+Revision 2.6.1 (2008-09-21):
 
     - Added new builtins and exceptions introduced in Python 2.6: "bin",
       "bytearray", "bytes", "format", "next", "BufferError", "BytesWarning";
