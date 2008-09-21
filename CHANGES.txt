@@ -3,8 +3,7 @@ Revision 2.6.1 (unknown):
     - Added new builtins and exceptions introduced in Python 2.6: "bin",
       "bytearray", "bytes", "format", "next", "BufferError", "BytesWarning";
     - Added builtin "__debug__";
-    - Added "magic" global variables: "__doc__", "__file__", "__name__",
-      "__package__";
+    - Added global variables: "__doc__", "__file__", "__name__", "__package__";
     - Removed "OverflowWarning" (removed in Python 2.5);
     - Added option "python_print_as_function" for highlight "print" as a
       function;
