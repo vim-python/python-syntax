@@ -1,5 +1,6 @@
 Revision 3.0.0 (2008-09-?):
 
+    - Updated support for str.format;
     - Added new builtins introduced in Python 2.6: "ascii", "exec",
       "memoryview", "print";
     - Removed builtins: "apply", "basestring", "buffer", "callable", "coerce",
@@ -8,7 +9,9 @@ Revision 3.0.0 (2008-09-?):
 
 Revision 2.6.2 (2008-09-?):
 
+    - Added "VMSError" exception;
     - Added support for b"..." syntax;
+    - Added support for str.format brace escaping;
 
 Revision 2.6.1 (2008-09-21):
 

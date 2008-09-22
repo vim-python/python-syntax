@@ -193,12 +193,15 @@ endif
 
 if exists("python_highlight_string_format") && python_highlight_string_format != 0
   " str.format syntax
+  syn match pythonStrFormat "{{\|}}" contained containedin=pythonString,pythonUniString,pythonRawString,pythonUniRawString
   syn match pythonStrFormat	"{\([a-zA-Z_][a-zA-Z0-9_]*\|\d\+\)\(\.[a-zA-Z_][a-zA-Z0-9_]*\|\[\(\d\+\|[^!:\}]\+\)\]\)*\(![rs]\)\=\(:\({\([a-zA-Z_][a-zA-Z0-9_]*\|\d\+\)}\|\([^}]\=[<>=^]\)\=[ +-]\=#\=0\=\d*\(\.\d\+\)\=[bcdeEfFgGnoxX%]\=\)\=\)\=}" contained containedin=pythonString,pythonUniString,pythonRawString,pythonUniRawString
 endif
 
 if exists("python_highlight_string_templates") && python_highlight_string_templates != 0
   " String templates
-  syn match pythonStrTemplate	"\$\(\$\|{[a-zA-Z_][a-zA-Z0-9_]*}\|[a-zA-Z_][a-zA-Z0-9_]*\)" contained containedin=pythonString,pythonUniString,pythonRawString,pythonUniRawString
+  syn match pythonStrTemplate	"\$\$" contained containedin=pythonString,pythonUniString,pythonRawString,pythonUniRawString
+  syn match pythonStrTemplate	"\${[a-zA-Z_][a-zA-Z0-9_]*}" contained containedin=pythonString,pythonUniString,pythonRawString,pythonUniRawString
+  syn match pythonStrTemplate	"\$[a-zA-Z_][a-zA-Z0-9_]*" contained containedin=pythonString,pythonUniString,pythonRawString,pythonUniRawString
 endif
 
 if exists("python_highlight_doctests") && python_highlight_doctests != 0
@@ -264,7 +267,7 @@ if exists("python_highlight_exceptions") && python_highlight_exceptions != 0
   syn keyword pythonExClass	SystemError SystemExit TypeError
   syn keyword pythonExClass	UnboundLocalError UnicodeError
   syn keyword pythonExClass	UnicodeEncodeError UnicodeDecodeError
-  syn keyword pythonExClass	UnicodeTranslateError ValueError
+  syn keyword pythonExClass	UnicodeTranslateError ValueError VMSError
   syn keyword pythonExClass	WindowsError ZeroDivisionError
 
   syn keyword pythonExClass	Warning UserWarning BytesWarning DeprecationWarning

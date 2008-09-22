@@ -75,9 +75,9 @@ b"test"
 
 " %f "
 
-"{0.name!r:b} {0[n]} {name!s:  }"
+"{0.name!r:b} {0[n]} {name!s:  } {{test}} {{}}"
 
-"${test} ${test ${test}aname"
+"${test} ${test ${test}aname $$$ $test+nope"
 
 # Doctests.
 
