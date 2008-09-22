@@ -1,3 +1,11 @@
+Revision 3.0.0 (2008-09-?):
+
+    - Added new builtins introduced in Python 2.6: "ascii", "exec",
+      "memoryview", "print";
+    - Removed builtins: "apply", "basestring", "buffer", "callable", "coerce",
+      "execfile", "file", "help", "intern", "long", "raw_input", "reduce",
+      "reload", "unichr", "unicode", "xrange";
+
 Revision 2.6.2 (2008-09-?):
 
     - Added support for b"..." syntax;

@@ -228,20 +228,19 @@ if exists("python_highlight_builtins") && python_highlight_builtins != 0
   syn keyword pythonBuiltinObj	True False Ellipsis None NotImplemented
   syn keyword pythonBuiltinObj	__debug__ __doc__ __file__ __name__ __package__
 
-  syn keyword pythonBuiltinFunc	__import__ abs all any apply
-  syn keyword pythonBuiltinFunc	basestring bin bool buffer bytearray bytes callable
-  syn keyword pythonBuiltinFunc	chr classmethod cmp coerce compile complex
+  syn keyword pythonBuiltinFunc	__import__ abs all any ascii
+  syn keyword pythonBuiltinFunc	bin bool bytearray bytes
+  syn keyword pythonBuiltinFunc	chr classmethod cmp compile complex
   syn keyword pythonBuiltinFunc	delattr dict dir divmod enumerate eval
-  syn keyword pythonBuiltinFunc	execfile file filter float format frozenset getattr
-  syn keyword pythonBuiltinFunc	globals hasattr hash help hex id 
-  syn keyword pythonBuiltinFunc	input int intern isinstance
-  syn keyword pythonBuiltinFunc	issubclass iter len list locals long map max
-  syn keyword pythonBuiltinFunc	min next object oct open ord
-  syn keyword pythonBuiltinFunc	pow property range
-  syn keyword pythonBuiltinFunc	raw_input reduce reload repr
-  syn keyword pythonBuiltinFunc	reversed round set setattr
+  syn keyword pythonBuiltinFunc	exec filter float format frozenset getattr
+  syn keyword pythonBuiltinFunc	globals hasattr hash hex id 
+  syn keyword pythonBuiltinFunc	input int isinstance
+  syn keyword pythonBuiltinFunc	issubclass iter len list locals map max
+  syn keyword pythonBuiltinFunc	memoryview min next object oct open ord
+  syn keyword pythonBuiltinFunc	pow print property range
+  syn keyword pythonBuiltinFunc	repr reversed round set setattr
   syn keyword pythonBuiltinFunc	slice sorted staticmethod str sum super tuple
-  syn keyword pythonBuiltinFunc	type unichr unicode vars xrange zip
+  syn keyword pythonBuiltinFunc	type vars zip
 
   if exists("python_print_as_function") && python_print_as_function != 0
       syn keyword pythonBuiltinFunc	print
