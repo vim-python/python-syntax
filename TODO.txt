@@ -1,9 +1,9 @@
 Now
 ===
 
-- (Python 3.0) support for b"..." syntax and remove u"..." syntax;
+- (Python 3.0) non-ASCII identifiers;
 
-- (Python 3.0) add new bultins and exceptions;
+- (Python 3.0) support for b"..." syntax and remove u"..." syntax;
 
 Later
 =====
