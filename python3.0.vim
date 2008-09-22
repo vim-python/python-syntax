@@ -57,9 +57,6 @@
 "
 "    For fast machines:
 "       python_slow_sync
-"
-"    For "print" builtin as function:
-"       python_print_as_function
 
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded
@@ -111,10 +108,6 @@ syn keyword pythonConditional	if elif else
 syn keyword pythonImport	import from as
 syn keyword pythonException	try except finally
 syn keyword pythonOperator	and in is not or
-
-if !exists("python_print_as_function") || python_print_as_function == 0
-  syn keyword pythonStatement print
-endif
 
 " Decorators (new in Python 2.4)
 syn match   pythonDecorator	"@" display nextgroup=pythonFunction skipwhite
@@ -241,10 +234,6 @@ if exists("python_highlight_builtins") && python_highlight_builtins != 0
   syn keyword pythonBuiltinFunc	repr reversed round set setattr
   syn keyword pythonBuiltinFunc	slice sorted staticmethod str sum super tuple
   syn keyword pythonBuiltinFunc	type vars zip
-
-  if exists("python_print_as_function") && python_print_as_function != 0
-      syn keyword pythonBuiltinFunc	print
-  endif
 endif
 
 if exists("python_highlight_exceptions") && python_highlight_exceptions != 0
