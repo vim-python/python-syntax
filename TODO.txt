@@ -1,9 +1,10 @@
 Now
 ===
 
-- (Python 3.0) non-ASCII identifiers;
+- (Python 3.0) non-ASCII identifiers. Also str.format should be updated;
 
-- (Python 3.0) support for b"..." syntax and remove u"..." syntax;
+- (Python 3.0) support for b"..." syntax and remove u"..." syntax. Also all
+  escapes need to be updated;
 
 Later
 =====
