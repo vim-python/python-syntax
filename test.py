@@ -48,7 +48,7 @@ RuntimeWarning FutureWarning OverflowWarning ImportWarning UnicodeWarning
 
 # Numbers
 
-0 0x1f 077 .3 12.34 100L 0j 0j 34.2E-3 0b10 0o77 0xfffffffL
+0 0x1f 077 .3 12.34 100L 0j 0j 34.2E-3 0b10 0o77 0xfffffffL 0L
 
 # Erroneous numbers
 

@@ -204,20 +204,20 @@ if exists("python_highlight_doctests") && python_highlight_doctests != 0
 endif
 
 " Numbers (ints, longs, floats, complex)
-syn match   pythonHexError	"\<0[xX]\x*[g-zG-Z]\x*[lL]\=\>" display
+syn match   pythonHexError	"\<0[xX]\x*[g-zG-Z]\x*\>" display
 
-syn match   pythonHexNumber	"\<0[xX]\x\+[lL]\=\>" display
-syn match   pythonOctNumber "\<0[oO]\o\+[lL]\=\>" display
-syn match   pythonBinNumber "\<0[bB][01]\+[lL]\=\>" display
+syn match   pythonHexNumber	"\<0[xX]\x\+\>" display
+syn match   pythonOctNumber "\<0[oO]\o\+\>" display
+syn match   pythonBinNumber "\<0[bB][01]\+\>" display
 
-syn match   pythonNumber	"\<\d\+[lLjJ]\=\>" display
+syn match   pythonNumber	"\<\d\+[jJ]\=\>" display
 
 syn match   pythonFloat		"\.\d\+\([eE][+-]\=\d\+\)\=[jJ]\=\>" display
 syn match   pythonFloat		"\<\d\+[eE][+-]\=\d\+[jJ]\=\>" display
 syn match   pythonFloat		"\<\d\+\.\d*\([eE][+-]\=\d\+\)\=[jJ]\=" display
 
-syn match   pythonOctError	"\<0[oO]\=\o*[8-9]\d*[lL]\=\>" display
-syn match   pythonBinError	"\<0[bB][01]*[2-9]\d*[lL]\=\>" display
+syn match   pythonOctError	"\<0[oO]\=\o*[8-9]\d*\>" display
+syn match   pythonBinError	"\<0[bB][01]*[2-9]\d*\>" display
 
 if exists("python_highlight_builtins") && python_highlight_builtins != 0
   " Builtin functions, types and objects
