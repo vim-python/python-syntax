@@ -242,7 +242,7 @@ endif
 if exists("python_highlight_exceptions") && python_highlight_exceptions != 0
   " Builtin exceptions and warnings
   syn keyword pythonExClass	BaseException
-  syn keyword pythonExClass	Exception StandardError ArithmeticError
+  syn keyword pythonExClass	Exception ArithmeticError
   syn keyword pythonExClass	LookupError EnvironmentError
 
   syn keyword pythonExClass	AssertionError AttributeError BufferError EOFError
