@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language:	Python
 " Maintainer:	Dmitry Vasiliev <dima@hlabs.spb.ru>
-" URL:		http://www.hlabs.spb.ru/vim/python.vim
+" URL:		http://www.hlabs.spb.ru/vim/python3.0.vim
 " Last Change:	2008-12-07
 " Filenames:	*.py
 " Version:	3.0.0
@@ -120,7 +120,7 @@ syn match   pythonCoding	"\%^.*\%(\n.*\)\?#.*coding[:=]\s*[0-9A-Za-z-_.]\+.*$"
 syn keyword pythonTodo		TODO FIXME XXX contained
 
 " Errors
-syn match pythonError		"\<\d\+\D\+\>" display
+" syn match pythonError		"\<\d\+\D\+\>" display
 syn match pythonError		"[$?]" display
 syn match pythonError		"[&|]\{2,}" display
 syn match pythonError		"[=]\{3,}" display
