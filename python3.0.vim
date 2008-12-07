@@ -2,9 +2,9 @@
 " Language:	Python
 " Maintainer:	Dmitry Vasiliev <dima@hlabs.spb.ru>
 " URL:		http://www.hlabs.spb.ru/vim/python.vim
-" Last Change:	2008-09-21
+" Last Change:	2008-12-07
 " Filenames:	*.py
-" Version:	2.6.1
+" Version:	3.0.0
 "
 " Based on python.vim (from Vim 6.1 distribution)
 " by Neil Schemenauer <nas@python.ca>
@@ -103,7 +103,7 @@ syn keyword pythonStatement	lambda yield
 syn keyword pythonStatement	with nonlocal
 syn keyword pythonStatement	False None True
 syn keyword pythonStatement	def class nextgroup=pythonFunction skipwhite
-syn match   pythonFunction	"[a-zA-Z_][a-zA-Z0-9_]*" display contained
+syn match   pythonFunction	"\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*" display contained
 syn keyword pythonRepeat	for while
 syn keyword pythonConditional	if elif else
 syn keyword pythonImport	import from
@@ -116,7 +116,7 @@ syn match   pythonDecorator	"@" display nextgroup=pythonFunction skipwhite
 " Comments
 syn match   pythonComment	"#.*$" display contains=pythonTodo,@Spell
 syn match   pythonRun		"\%^#!.*$"
-syn match   pythonCoding	"\%^.*\(\n.*\)\?#.*coding[:=]\s*[0-9A-Za-z-_.]\+.*$"
+syn match   pythonCoding	"\%^.*\%(\n.*\)\?#.*coding[:=]\s*[0-9A-Za-z-_.]\+.*$"
 syn keyword pythonTodo		TODO FIXME XXX contained
 
 " Errors
@@ -128,7 +128,7 @@ syn match pythonError		"[=]\{3,}" display
 " TODO: Mixing spaces and tabs also may be used for pretty formatting multiline
 " statements. For now I don't know how to work around this.
 if exists("python_highlight_indent_errors") && python_highlight_indent_errors != 0
-  syn match pythonIndentError	"^\s*\( \t\|\t \)\s*\S"me=e-1 display
+  syn match pythonIndentError	"^\s*\%( \t\|\t \)\s*\S"me=e-1 display
 endif
 
 " Trailing space errors
@@ -142,25 +142,18 @@ syn region pythonString		start=+"+ skip=+\\\\\|\\"\|\\$+ excludenl end=+"+ end=+
 syn region pythonString		start=+"""+ end=+"""+ keepend contains=pythonEscape,pythonEscapeError,pythonDocTest2,pythonSpaceError,@Spell
 syn region pythonString		start=+'''+ end=+'''+ keepend contains=pythonEscape,pythonEscapeError,pythonDocTest,pythonSpaceError,@Spell
 
-syn match  pythonEscape		+\\[abfnrtv'"\\]+ display contained
-syn match  pythonEscape		"\\\o\o\=\o\=" display contained
+syn match  pythonEscape		    +\\[abfnrtv'"\\]+ display contained
+syn match  pythonEscape		    "\\\o\o\=\o\=" display contained
 syn match  pythonEscapeError	"\\\o\{,2}[89]" display contained
-syn match  pythonEscape		"\\x\x\{2}" display contained
+syn match  pythonEscape		    "\\x\x\{2}" display contained
 syn match  pythonEscapeError	"\\x\x\=\X" display contained
-syn match  pythonEscape		"\\$"
-
-" Unicode strings
-syn region pythonUniString	start=+[uU]'+ skip=+\\\\\|\\'\|\\$+ excludenl end=+'+ end=+$+ keepend contains=pythonEscape,pythonUniEscape,pythonEscapeError,pythonUniEscapeError,@Spell
-syn region pythonUniString	start=+[uU]"+ skip=+\\\\\|\\"\|\\$+ excludenl end=+"+ end=+$+ keepend contains=pythonEscape,pythonUniEscape,pythonEscapeError,pythonUniEscapeError,@Spell
-syn region pythonUniString	start=+[uU]"""+ end=+"""+ keepend contains=pythonEscape,pythonUniEscape,pythonEscapeError,pythonUniEscapeError,pythonDocTest2,pythonSpaceError,@Spell
-syn region pythonUniString	start=+[uU]'''+ end=+'''+ keepend contains=pythonEscape,pythonUniEscape,pythonEscapeError,pythonUniEscapeError,pythonDocTest,pythonSpaceError,@Spell
-
-syn match  pythonUniEscape	"\\u\x\{4}" display contained
-syn match  pythonUniEscapeError	"\\u\x\{,3}\X" display contained
-syn match  pythonUniEscape	"\\U\x\{8}" display contained
-syn match  pythonUniEscapeError	"\\U\x\{,7}\X" display contained
-syn match  pythonUniEscape	"\\N{[A-Z ]\+}" display contained
-syn match  pythonUniEscapeError	"\\N{[^A-Z ]\+}" display contained
+syn match  pythonEscape		    "\\$"
+syn match  pythonEscape         "\\u\x\{4}" display contained
+syn match  pythonEscapeError	"\\u\x\{,3}\X" display contained
+syn match  pythonEscape	        "\\U\x\{8}" display contained
+syn match  pythonEscapeError	"\\U\x\{,7}\X" display contained
+syn match  pythonEscape	        "\\N{[A-Z ]\+}" display contained
+syn match  pythonEscapeError	"\\N{[^A-Z ]\+}" display contained
 
 " Raw strings
 syn region pythonRawString	start=+[rR]'+ skip=+\\\\\|\\'\|\\$+ excludenl end=+'+ end=+$+ keepend contains=pythonRawEscape,@Spell
@@ -170,32 +163,39 @@ syn region pythonRawString	start=+[rR]'''+ end=+'''+ keepend contains=pythonDocT
 
 syn match pythonRawEscape	+\\['"]+ display transparent contained
 
-" Unicode raw strings
-syn region pythonUniRawString	start=+[uU][rR]'+ skip=+\\\\\|\\'\|\\$+ excludenl end=+'+ end=+$+ keepend contains=pythonRawEscape,pythonUniRawEscape,pythonUniRawEscapeError,@Spell
-syn region pythonUniRawString	start=+[uU][rR]"+ skip=+\\\\\|\\"\|\\$+ excludenl end=+"+ end=+$+ keepend contains=pythonRawEscape,pythonUniRawEscape,pythonUniRawEscapeError,@Spell
-syn region pythonUniRawString	start=+[uU][rR]"""+ end=+"""+ keepend contains=pythonUniRawEscape,pythonUniRawEscapeError,pythonDocTest2,pythonSpaceError,@Spell
-syn region pythonUniRawString	start=+[uU][rR]'''+ end=+'''+ keepend contains=pythonUniRawEscape,pythonUniRawEscapeError,pythonDocTest,pythonSpaceError,@Spell
+" Bytes
+syn region pythonBytes		start=+[bB]'+ skip=+\\\\\|\\'\|\\$+ excludenl end=+'+ end=+$+ keepend contains=pythonBytesContent,pythonBytesError,pythonBytesEscape,pythonBytesEscapeError,@Spell
+syn region pythonBytes		start=+[bB]"+ skip=+\\\\\|\\"\|\\$+ excludenl end=+"+ end=+$+ keepend contains=pythonBytesContent,pythonBytesError,pythonBytesEscape,pythonBytesEscapeError,@Spell
+syn region pythonBytes		start=+[bB]"""+ end=+"""+ keepend contains=pythonBytesContent,pythonBytesError,pythonBytesEscape,pythonBytesEscapeError,pythonDocTest2,pythonSpaceError,@Spell
+syn region pythonBytes		start=+[bB]'''+ end=+'''+ keepend contains=pythonBytesContent,pythonBytesError,pythonBytesEscape,pythonBytesEscapeError,pythonDocTest,pythonSpaceError,@Spell
 
-syn match  pythonUniRawEscape		"\([^\\]\(\\\\\)*\)\@<=\\u\x\{4}" display contained
-syn match  pythonUniRawEscapeError	"\([^\\]\(\\\\\)*\)\@<=\\u\x\{,3}\X" display contained
+syn match pythonBytesContent    "[\u0001-\u007f]\+" display contained
+syn match pythonBytesError    "[^\u0001-\u007f]\+" display contained
+
+syn match pythonBytesEscape	    +\\[abfnrtv'"\\]+ display contained
+syn match pythonBytesEscape	    "\\\o\o\=\o\=" display contained
+syn match pythonBytesEscapeError	"\\\o\{,2}[89]" display contained
+syn match pythonBytesEscape	    "\\x\x\{2}" display contained
+syn match pythonBytesEscapeError	"\\x\x\=\X" display contained
+syn match pythonBytesEscape	    "\\$"
 
 if exists("python_highlight_string_formatting") && python_highlight_string_formatting != 0
   " String formatting
-  syn match pythonStrFormatting	"%\(([^)]\+)\)\=[-#0 +]*\d*\(\.\d\+\)\=[hlL]\=[diouxXeEfFgGcrs%]" contained containedin=pythonString,pythonUniString,pythonRawString,pythonUniRawString
-  syn match pythonStrFormatting	"%[-#0 +]*\(\*\|\d\+\)\=\(\.\(\*\|\d\+\)\)\=[hlL]\=[diouxXeEfFgGcrs%]" contained containedin=pythonString,pythonUniString,pythonRawString,pythonUniRawString
+  syn match pythonStrFormatting	"%\%(([^)]\+)\)\=[-#0 +]*\d*\%(\.\d\+\)\=[hlL]\=[diouxXeEfFgGcrs%]" contained containedin=pythonString,pythonRawString
+  syn match pythonStrFormatting	"%[-#0 +]*\%(\*\|\d\+\)\=\%(\.\%(\*\|\d\+\)\)\=[hlL]\=[diouxXeEfFgGcrs%]" contained containedin=pythonString,pythonRawString
 endif
 
 if exists("python_highlight_string_format") && python_highlight_string_format != 0
   " str.format syntax
-  syn match pythonStrFormat "{{\|}}" contained containedin=pythonString,pythonUniString,pythonRawString,pythonUniRawString
-  syn match pythonStrFormat	"{\([a-zA-Z_][a-zA-Z0-9_]*\|\d\+\)\(\.[a-zA-Z_][a-zA-Z0-9_]*\|\[\(\d\+\|[^!:\}]\+\)\]\)*\(![rsa]\)\=\(:\({\([a-zA-Z_][a-zA-Z0-9_]*\|\d\+\)}\|\([^}]\=[<>=^]\)\=[ +-]\=#\=0\=\d*\(\.\d\+\)\=[bcdeEfFgGnoxX%]\=\)\=\)\=}" contained containedin=pythonString,pythonUniString,pythonRawString,pythonUniRawString
+  syn match pythonStrFormat "{{\|}}" contained containedin=pythonString,pythonRawString
+  syn match pythonStrFormat	"{\%(\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\|\d\+\)\%(\.\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_*\)\|\[\%(\d\+\|[^!:\}]\+\)\]\)*\%(![rsa]\)\=\%(:\%({\%(\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\|\d\+\)}\|\%([^}]\=[<>=^]\)\=[ +-]\=#\=0\=\d*\%(\.\d\+\)\=[bcdeEfFgGnoxX%]\=\)\=\)\=}" contained containedin=pythonString,pythonRawString
 endif
 
 if exists("python_highlight_string_templates") && python_highlight_string_templates != 0
   " String templates
-  syn match pythonStrTemplate	"\$\$" contained containedin=pythonString,pythonUniString,pythonRawString,pythonUniRawString
-  syn match pythonStrTemplate	"\${[a-zA-Z_][a-zA-Z0-9_]*}" contained containedin=pythonString,pythonUniString,pythonRawString,pythonUniRawString
-  syn match pythonStrTemplate	"\$[a-zA-Z_][a-zA-Z0-9_]*" contained containedin=pythonString,pythonUniString,pythonRawString,pythonUniRawString
+  syn match pythonStrTemplate	"\$\$" contained containedin=pythonString,pythonRawString
+  syn match pythonStrTemplate	"\${[a-zA-Z_][a-zA-Z0-9_]*}" contained containedin=pythonString,pythonRawString
+  syn match pythonStrTemplate	"\$[a-zA-Z_][a-zA-Z0-9_]*" contained containedin=pythonString,pythonRawString
 endif
 
 if exists("python_highlight_doctests") && python_highlight_doctests != 0
@@ -211,11 +211,14 @@ syn match   pythonHexNumber	"\<0[xX]\x\+\>" display
 syn match   pythonOctNumber "\<0[oO]\o\+\>" display
 syn match   pythonBinNumber "\<0[bB][01]\+\>" display
 
-syn match   pythonNumber	"\<\d\+[jJ]\=\>" display
+syn match   pythonNumber	"\<0\>" display
+syn match   pythonNumber	"\<[1-9]\d\+\>" display
+syn match   pythonNumber	"\<\d\+[jJ]\>" display
+syn match   pythonNumberError	"\<0\d\+\>" display
 
-syn match   pythonFloat		"\.\d\+\([eE][+-]\=\d\+\)\=[jJ]\=\>" display
+syn match   pythonFloat		"\.\d\+\%([eE][+-]\=\d\+\)\=[jJ]\=\>" display
 syn match   pythonFloat		"\<\d\+[eE][+-]\=\d\+[jJ]\=\>" display
-syn match   pythonFloat		"\<\d\+\.\d*\([eE][+-]\=\d\+\)\=[jJ]\=" display
+syn match   pythonFloat		"\<\d\+\.\d*\%([eE][+-]\=\d\+\)\=[jJ]\=" display
 
 syn match   pythonOctError	"\<0[oO]\=\o*[8-9]\d*\>" display
 syn match   pythonBinError	"\<0[bB][01]*[2-9]\d*\>" display
@@ -303,16 +306,15 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonSpaceError	Error
 
   HiLink pythonString		String
-  HiLink pythonUniString	String
   HiLink pythonRawString	String
-  HiLink pythonUniRawString	String
-
   HiLink pythonEscape			Special
   HiLink pythonEscapeError		Error
-  HiLink pythonUniEscape		Special
-  HiLink pythonUniEscapeError		Error
-  HiLink pythonUniRawEscape		Special
-  HiLink pythonUniRawEscapeError	Error
+
+  HiLink pythonBytes		    String
+  HiLink pythonBytesContent	    String
+  HiLink pythonBytesError	    Error
+  HiLink pythonBytesEscape		Special
+  HiLink pythonBytesEscapeError	Error
 
   HiLink pythonStrFormatting	Special
   HiLink pythonStrFormat    	Special
@@ -326,6 +328,7 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonOctNumber	Number
   HiLink pythonBinNumber	Number
   HiLink pythonFloat		Float
+  HiLink pythonNumberError  Error
   HiLink pythonOctError	    Error
   HiLink pythonHexError		Error
   HiLink pythonBinError		Error

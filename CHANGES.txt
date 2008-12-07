@@ -1,6 +1,8 @@
-Revision 3.0.0 (2008-09-?):
+Revision 3.0.0 (2008-12-07):
 
-    - Removed trailing 'L' support for all numbers;
+    - Added support for non-ASCII identifiers;
+    - Added support for new text strings and binary data (bytes);
+    - Updated support for numeric literals;
     - Updated support for str.format;
     - Added new builtins introduced in Python 2.6: "ascii", "exec",
       "memoryview", "print";

@@ -11,7 +11,9 @@
 with break continue del exec return pass print raise global assert lambda yield
 for while if elif else import from as try except finally and in is not or
 def functionname
-class classname
+class Classname
+def функция
+class Класс
 
 # Builtin objects.
 
@@ -48,11 +50,11 @@ RuntimeWarning FutureWarning OverflowWarning ImportWarning UnicodeWarning
 
 # Numbers
 
-0 0x1f 077 .3 12.34 100L 0j 0j 34.2E-3 0b10 0o77 0xfffffffL 0L
+0 0x1f .3 12.34 0j 0j 34.2E-3 0b10 0o77
 
 # Erroneous numbers
 
-08 0xk 0x  0b102 0o78
+077 100L 0xfffffffL 0L 08 0xk 0x  0b102 0o78
 
 # Strings
 
@@ -67,9 +69,11 @@ RuntimeWarning FutureWarning OverflowWarning ImportWarning UnicodeWarning
 " \a\b\c\"\'\n\r \x34\077 \08 \xag"
 r" \" \' "
 
-u"test"
+"testтест"
 
 b"test"
+
+b"тестtest"
 
 # Formattings
 
