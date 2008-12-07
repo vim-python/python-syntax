@@ -211,7 +211,7 @@ syn match   pythonHexNumber	"\<0[xX]\x\+\>" display
 syn match   pythonOctNumber "\<0[oO]\o\+\>" display
 syn match   pythonBinNumber "\<0[bB][01]\+\>" display
 
-syn match   pythonNumber	"\<0\>" display
+syn match   pythonNumber	"\<\d\>" display
 syn match   pythonNumber	"\<[1-9]\d\+\>" display
 syn match   pythonNumber	"\<\d\+[jJ]\>" display
 syn match   pythonNumberError	"\<0\d\+\>" display
