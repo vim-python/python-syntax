@@ -4,6 +4,8 @@ Revision 3.0.0 (2008-09-?):
     - Updated support for str.format;
     - Added new builtins introduced in Python 2.6: "ascii", "exec",
       "memoryview", "print";
+    - Added new keyword "nonlocal";
+    - Removed exception "StandardError";
     - Removed builtins: "apply", "basestring", "buffer", "callable", "coerce",
       "execfile", "file", "help", "intern", "long", "raw_input", "reduce",
       "reload", "unichr", "unicode", "xrange";

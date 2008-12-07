@@ -96,16 +96,17 @@ endif
 
 " Keywords
 syn keyword pythonStatement	break continue del
-syn keyword pythonStatement	exec return
+syn keyword pythonStatement	exec return as
 syn keyword pythonStatement	pass raise
 syn keyword pythonStatement	global assert
 syn keyword pythonStatement	lambda yield
 syn keyword pythonStatement	with nonlocal
+syn keyword pythonStatement	False None True
 syn keyword pythonStatement	def class nextgroup=pythonFunction skipwhite
 syn match   pythonFunction	"[a-zA-Z_][a-zA-Z0-9_]*" display contained
 syn keyword pythonRepeat	for while
 syn keyword pythonConditional	if elif else
-syn keyword pythonImport	import from as
+syn keyword pythonImport	import from
 syn keyword pythonException	try except finally
 syn keyword pythonOperator	and in is not or
 
@@ -221,7 +222,7 @@ syn match   pythonBinError	"\<0[bB][01]*[2-9]\d*\>" display
 
 if exists("python_highlight_builtins") && python_highlight_builtins != 0
   " Builtin functions, types and objects
-  syn keyword pythonBuiltinObj	True False Ellipsis None NotImplemented
+  syn keyword pythonBuiltinObj	Ellipsis NotImplemented
   syn keyword pythonBuiltinObj	__debug__ __doc__ __file__ __name__ __package__
 
   syn keyword pythonBuiltinFunc	__import__ abs all any ascii
