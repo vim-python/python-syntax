@@ -17,3 +17,7 @@ Later
 
 - Need more checks for errors like: absent brackets, absent quotes,
   back slash at the end of strings;
+
+- pythonError tips from
+  http://blog.sontek.net/2008/05/11/python-with-a-modular-ide-vim/ (reported by
+  Giuliani Deon Sanches)
