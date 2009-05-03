@@ -4,7 +4,7 @@
 " URL:		http://www.hlabs.spb.ru/vim/python3.0.vim
 " Last Change:	2008-12-07
 " Filenames:	*.py
-" Version:	3.0.0
+" Version:	3.0.1
 "
 " Based on python.vim (from Vim 6.1 distribution)
 " by Neil Schemenauer <nas@python.ca>
@@ -106,7 +106,7 @@ syn keyword pythonStatement	def class nextgroup=pythonFunction skipwhite
 syn match   pythonFunction	"\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*" display contained
 syn keyword pythonRepeat	for while
 syn keyword pythonConditional	if elif else
-syn keyword pythonImport	import from
+syn keyword pythonPreCondit	import from
 syn keyword pythonException	try except finally
 syn keyword pythonOperator	and in is not or
 
@@ -287,7 +287,7 @@ if version >= 508 || !exists("did_python_syn_inits")
   endif
 
   HiLink pythonStatement	Statement
-  HiLink pythonImport		Statement
+  HiLink pythonPreCondit	Statement
   HiLink pythonFunction		Function
   HiLink pythonConditional	Conditional
   HiLink pythonRepeat		Repeat
