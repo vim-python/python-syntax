@@ -2,9 +2,9 @@
 " Language:	Python
 " Maintainer:	Dmitry Vasiliev <dima@hlabs.spb.ru>
 " URL:		http://www.hlabs.spb.ru/vim/python3.0.vim
-" Last Change:	2008-12-07
+" Last Change:	2009-07-24
 " Filenames:	*.py
-" Version:	3.0.1
+" Version:	3.0.2
 "
 " Based on python.vim (from Vim 6.1 distribution)
 " by Neil Schemenauer <nas@python.ca>
@@ -18,6 +18,8 @@
 "        (strings and comments)
 "    John Eikenberry
 "        for the patch fixing small typo
+"    Caleb Adamantine
+"        for the patch fixing highlighting for decorators
 
 "
 " Options:
@@ -111,7 +113,9 @@ syn keyword pythonException	try except finally
 syn keyword pythonOperator	and in is not or
 
 " Decorators (new in Python 2.4)
-syn match   pythonDecorator	"@" display nextgroup=pythonFunction skipwhite
+syn match   pythonDecorator	"@" display nextgroup=pythonDottedName skipwhite
+syn match   pythonDottedName "[a-zA-Z_][a-zA-Z0-9_]*\(\.[a-zA-Z_][a-zA-Z0-9_]*\)*" display contained
+syn match   pythonDot        "\." display containedin=pythonDottedName
 
 " Comments
 syn match   pythonComment	"#.*$" display contains=pythonTodo,@Spell
@@ -295,6 +299,8 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonOperator		Operator
 
   HiLink pythonDecorator	Define
+  HiLink pythonDottedName	Function
+  HiLink pythonDot          Normal
 
   HiLink pythonComment		Comment
   HiLink pythonCoding		Special

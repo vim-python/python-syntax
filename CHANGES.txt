@@ -1,3 +1,7 @@
+Revision 3.0.2 (2009-07-24):
+
+    - Applied patch by Caleb Adamantine which fixes highlighting for decorators
+
 Revision 3.0.1 (2009-05-03):
 
     - Fixed compatibility with pyrex.vim
@@ -15,6 +19,10 @@ Revision 3.0.0 (2008-12-07):
     - Removed builtins: "apply", "basestring", "buffer", "callable", "coerce",
       "execfile", "file", "help", "intern", "long", "raw_input", "reduce",
       "reload", "unichr", "unicode", "xrange";
+
+Revision 2.6.5 (2009-07-24):
+
+    - Applied patch by Caleb Adamantine which fixes highlighting for decorators
 
 Revision 2.6.4 (2009-05-03):
 

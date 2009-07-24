@@ -47,6 +47,7 @@ RuntimeWarning FutureWarning OverflowWarning ImportWarning UnicodeWarning
 # Decorators.
 
 @ decoratorname
+@ object.__init__(arg1, arg2)
 
 # Numbers
 
