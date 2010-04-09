@@ -20,6 +20,11 @@ Revision 3.0.0 (2008-12-07):
       "execfile", "file", "help", "intern", "long", "raw_input", "reduce",
       "reload", "unichr", "unicode", "xrange";
 
+Revision 2.6.6 (2010-04-09):
+
+    - Applied patch by Andrea Riciputi with new configuration options
+      "python_highlight_builtin_objs" and "python_highligh_builtin_funcs"
+
 Revision 2.6.5 (2009-07-24):
 
     - Applied patch by Caleb Adamantine which fixes highlighting for decorators
