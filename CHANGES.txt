@@ -1,7 +1,7 @@
 Revision 3.0.3 (2010-04-09):
 
     - Applied patch by Andrea Riciputi with new configuration options
-      "python_highlight_builtin_objs" and "python_highligh_builtin_funcs"
+      "python_highlight_builtin_objs" and "python_highlight_builtin_funcs"
 
 Revision 3.0.2 (2009-07-24):
 
@@ -28,7 +28,7 @@ Revision 3.0.0 (2008-12-07):
 Revision 2.6.6 (2010-04-09):
 
     - Applied patch by Andrea Riciputi with new configuration options
-      "python_highlight_builtin_objs" and "python_highligh_builtin_funcs"
+      "python_highlight_builtin_objs" and "python_highlight_builtin_funcs"
 
 Revision 2.6.5 (2009-07-24):
 
