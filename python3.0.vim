@@ -2,9 +2,9 @@
 " Language:	Python
 " Maintainer:	Dmitry Vasiliev <dima@hlabs.spb.ru>
 " URL:		http://www.hlabs.spb.ru/vim/python3.0.vim
-" Last Change:	2009-07-24
+" Last Change:	2010-04-09
 " Filenames:	*.py
-" Version:	3.0.2
+" Version:	3.0.3
 "
 " Based on python.vim (from Vim 6.1 distribution)
 " by Neil Schemenauer <nas@python.ca>
@@ -20,6 +20,8 @@
 "        for the patch fixing small typo
 "    Caleb Adamantine
 "        for the patch fixing highlighting for decorators
+"    Andrea Riciputi
+"        for the patch with new configuration options
 
 "
 " Options:
@@ -31,6 +33,12 @@
 "
 "    For highlight builtin functions:
 "       python_highlight_builtins
+"
+"    For highlight builtin objects:
+"       python_highlight_builtin_objs
+"
+"    For highlight builtin funtions:
+"       python_highlight_builtin_funcs
 "
 "    For highlight standard exceptions:
 "       python_highlight_exceptions
@@ -71,7 +79,12 @@ endif
 if exists("python_highlight_all") && python_highlight_all != 0
   " Not override previously set options
   if !exists("python_highlight_builtins")
-    let python_highlight_builtins = 1
+    if !exists("python_highlight_builtin_objs")
+      let python_highlight_builtin_objs = 1
+    endif
+    if !exists("python_highlight_builtin_funcs")
+      let python_highlight_builtin_funcs = 1
+    endif
   endif
   if !exists("python_highlight_exceptions")
     let python_highlight_exceptions = 1
@@ -227,17 +240,20 @@ syn match   pythonFloat		"\<\d\+\.\d*\%([eE][+-]\=\d\+\)\=[jJ]\=" display
 syn match   pythonOctError	"\<0[oO]\=\o*[8-9]\d*\>" display
 syn match   pythonBinError	"\<0[bB][01]*[2-9]\d*\>" display
 
-if exists("python_highlight_builtins") && python_highlight_builtins != 0
-  " Builtin functions, types and objects
+if exists("python_highlight_builtin_objs") && python_highlight_builtin_objs != 0
+  " Builtin objects and types
   syn keyword pythonBuiltinObj	Ellipsis NotImplemented
   syn keyword pythonBuiltinObj	__debug__ __doc__ __file__ __name__ __package__
+endif
 
+if exists("python_highlight_builtin_funcs") && python_highlight_builtin_funcs != 0
+  " Builtin functions
   syn keyword pythonBuiltinFunc	__import__ abs all any ascii
   syn keyword pythonBuiltinFunc	bin bool bytearray bytes
   syn keyword pythonBuiltinFunc	chr classmethod cmp compile complex
   syn keyword pythonBuiltinFunc	delattr dict dir divmod enumerate eval
   syn keyword pythonBuiltinFunc	exec filter float format frozenset getattr
-  syn keyword pythonBuiltinFunc	globals hasattr hash hex id 
+  syn keyword pythonBuiltinFunc	globals hasattr hash hex id
   syn keyword pythonBuiltinFunc	input int isinstance
   syn keyword pythonBuiltinFunc	issubclass iter len list locals map max
   syn keyword pythonBuiltinFunc	memoryview min next object oct open ord
