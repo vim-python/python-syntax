@@ -1,6 +1,6 @@
 Revision 3.0.4 (2010-11-09):
 
-    - Fixed highlighting for raw bytes literals
+    - Fixed highlighting for raw bytes literals. Patch by Anton Butanaev.
 
 Revision 3.0.3 (2010-04-09):
 
