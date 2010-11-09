@@ -2,9 +2,9 @@
 " Language:	Python
 " Maintainer:	Dmitry Vasiliev <dima@hlabs.spb.ru>
 " URL:		http://www.hlabs.spb.ru/vim/python3.0.vim
-" Last Change:	2010-04-09
+" Last Change:	2010-11-09
 " Filenames:	*.py
-" Version:	3.0.3
+" Version:	3.0.4
 "
 " Based on python.vim (from Vim 6.1 distribution)
 " by Neil Schemenauer <nas@python.ca>
@@ -22,6 +22,8 @@
 "        for the patch fixing highlighting for decorators
 "    Andrea Riciputi
 "        for the patch with new configuration options
+"    Anton Butanaev
+"        for the patch fixing raw bytes literals highlighting
 
 "
 " Options:
@@ -173,10 +175,10 @@ syn match  pythonEscape	        "\\N{[A-Z ]\+}" display contained
 syn match  pythonEscapeError	"\\N{[^A-Z ]\+}" display contained
 
 " Raw strings
-syn region pythonRawString	start=+[rR]'+ skip=+\\\\\|\\'\|\\$+ excludenl end=+'+ end=+$+ keepend contains=pythonRawEscape,@Spell
-syn region pythonRawString	start=+[rR]"+ skip=+\\\\\|\\"\|\\$+ excludenl end=+"+ end=+$+ keepend contains=pythonRawEscape,@Spell
-syn region pythonRawString	start=+[rR]"""+ end=+"""+ keepend contains=pythonDocTest2,pythonSpaceError,@Spell
-syn region pythonRawString	start=+[rR]'''+ end=+'''+ keepend contains=pythonDocTest,pythonSpaceError,@Spell
+syn region pythonRawString	start=+[bB]\=[rR]'+ skip=+\\\\\|\\'\|\\$+ excludenl end=+'+ end=+$+ keepend contains=pythonRawEscape,@Spell
+syn region pythonRawString	start=+[bB]\=[rR]"+ skip=+\\\\\|\\"\|\\$+ excludenl end=+"+ end=+$+ keepend contains=pythonRawEscape,@Spell
+syn region pythonRawString	start=+[bB]\=[rR]"""+ end=+"""+ keepend contains=pythonDocTest2,pythonSpaceError,@Spell
+syn region pythonRawString	start=+[bB]\=[rR]'''+ end=+'''+ keepend contains=pythonDocTest,pythonSpaceError,@Spell
 
 syn match pythonRawEscape	+\\['"]+ display transparent contained
 

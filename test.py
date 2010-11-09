@@ -76,6 +76,10 @@ b"test"
 
 b"тестtest"
 
+br"test"
+
+br"\a\b"
+
 # Formattings
 
 " %f "
