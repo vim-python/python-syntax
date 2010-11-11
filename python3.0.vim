@@ -2,9 +2,9 @@
 " Language:	Python
 " Maintainer:	Dmitry Vasiliev <dima@hlabs.spb.ru>
 " URL:		http://www.hlabs.spb.ru/vim/python3.0.vim
-" Last Change:	2010-11-09
+" Last Change:	2010-11-11
 " Filenames:	*.py
-" Version:	3.0.4
+" Version:	3.0.5
 "
 " Based on python.vim (from Vim 6.1 distribution)
 " by Neil Schemenauer <nas@python.ca>
@@ -23,7 +23,7 @@
 "    Andrea Riciputi
 "        for the patch with new configuration options
 "    Anton Butanaev
-"        for the patch fixing raw bytes literals highlighting
+"        for the patch fixing bytes literals highlighting
 
 "
 " Options:
@@ -139,7 +139,7 @@ syn match   pythonCoding	"\%^.*\%(\n.*\)\?#.*coding[:=]\s*[0-9A-Za-z-_.]\+.*$"
 syn keyword pythonTodo		TODO FIXME XXX contained
 
 " Errors
-" syn match pythonError		"\<\d\+\D\+\>" display
+syn match pythonError		"\<\d\+\D\+\>" display
 syn match pythonError		"[$?]" display
 syn match pythonError		"[&|]\{2,}" display
 syn match pythonError		"[=]\{3,}" display
@@ -183,13 +183,13 @@ syn region pythonRawString	start=+[bB]\=[rR]'''+ end=+'''+ keepend contains=pyth
 syn match pythonRawEscape	+\\['"]+ display transparent contained
 
 " Bytes
-syn region pythonBytes		start=+[bB]'+ skip=+\\\\\|\\'\|\\$+ excludenl end=+'+ end=+$+ keepend contains=pythonBytesContent,pythonBytesError,pythonBytesEscape,pythonBytesEscapeError,@Spell
-syn region pythonBytes		start=+[bB]"+ skip=+\\\\\|\\"\|\\$+ excludenl end=+"+ end=+$+ keepend contains=pythonBytesContent,pythonBytesError,pythonBytesEscape,pythonBytesEscapeError,@Spell
-syn region pythonBytes		start=+[bB]"""+ end=+"""+ keepend contains=pythonBytesContent,pythonBytesError,pythonBytesEscape,pythonBytesEscapeError,pythonDocTest2,pythonSpaceError,@Spell
-syn region pythonBytes		start=+[bB]'''+ end=+'''+ keepend contains=pythonBytesContent,pythonBytesError,pythonBytesEscape,pythonBytesEscapeError,pythonDocTest,pythonSpaceError,@Spell
+syn region pythonBytes		start=+[bB]'+ skip=+\\\\\|\\'\|\\$+ excludenl end=+'+ end=+$+ keepend contains=pythonBytesError,pythonBytesContent,@Spell
+syn region pythonBytes		start=+[bB]"+ skip=+\\\\\|\\"\|\\$+ excludenl end=+"+ end=+$+ keepend contains=pythonBytesError,pythonBytesContent,@Spell
+syn region pythonBytes		start=+[bB]"""+ end=+"""+ keepend contains=pythonBytesError,pythonBytesContent,pythonDocTest2,pythonSpaceError,@Spell
+syn region pythonBytes		start=+[bB]'''+ end=+'''+ keepend contains=pythonBytesError,pythonBytesContent,pythonDocTest,pythonSpaceError,@Spell
 
-syn match pythonBytesContent    "[\u0001-\u007f]\+" display contained
-syn match pythonBytesError    "[^\u0001-\u007f]\+" display contained
+syn match pythonBytesError    ".\+" display contained
+syn match pythonBytesContent    "[\u0000-\u00ff]\+" display contained contains=pythonBytesEscape,pythonBytesEscapeError
 
 syn match pythonBytesEscape	    +\\[abfnrtv'"\\]+ display contained
 syn match pythonBytesEscape	    "\\\o\o\=\o\=" display contained
@@ -230,10 +230,11 @@ syn match   pythonHexNumber	"\<0[xX]\x\+\>" display
 syn match   pythonOctNumber "\<0[oO]\o\+\>" display
 syn match   pythonBinNumber "\<0[bB][01]\+\>" display
 
+syn match   pythonNumberError	"\<\d\+\D\>" display
+syn match   pythonNumberError	"\<0\d\+\>" display
 syn match   pythonNumber	"\<\d\>" display
 syn match   pythonNumber	"\<[1-9]\d\+\>" display
 syn match   pythonNumber	"\<\d\+[jJ]\>" display
-syn match   pythonNumberError	"\<0\d\+\>" display
 
 syn match   pythonFloat		"\.\d\+\%([eE][+-]\=\d\+\)\=[jJ]\=\>" display
 syn match   pythonFloat		"\<\d\+[eE][+-]\=\d\+[jJ]\=\>" display

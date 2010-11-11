@@ -51,7 +51,7 @@ RuntimeWarning FutureWarning OverflowWarning ImportWarning UnicodeWarning
 
 # Numbers
 
-0 1 2 9 10 0x1f .3 12.34 0j 0j 34.2E-3 0b10 0o77
+0 1 2 9 10 0x1f .3 12.34 0j 0j 34.2E-3 0b10 0o77 1023434 0x0
 
 # Erroneous numbers
 
@@ -74,11 +74,13 @@ r" \" \' "
 
 b"test"
 
+b"test\r\n\xffff"
+
 b"тестtest"
 
 br"test"
 
-br"\a\b"
+br"\a\b\n\r"
 
 # Formattings
 
