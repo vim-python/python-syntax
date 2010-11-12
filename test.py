@@ -55,7 +55,7 @@ RuntimeWarning FutureWarning OverflowWarning ImportWarning UnicodeWarning
 
 # Erroneous numbers
 
-077 100L 0xfffffffL 0L 08 0xk 0x  0b102 0o78
+077 100L 0xfffffffL 0L 08 0xk 0x  0b102 0o78 0o123LaB
 
 # Strings
 

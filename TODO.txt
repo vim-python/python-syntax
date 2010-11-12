@@ -1,8 +1,6 @@
 Now
 ===
 
-- String escapes doesn't work inside bytes;
-
 - When we check spelling we don't need to check the whole strings only the
   content. For example we don't need to check 'u' for spelling in strings
   like this: u"Some text";
