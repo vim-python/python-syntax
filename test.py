@@ -86,7 +86,7 @@ br"\a\b\n\r"
 
 " %f "
 
-"{0.name!r:b} {0[n]} {name!s:  } {{test}} {{}}"
+"{0.name!r:b} {0[n]} {name!s:  } {{test}} {{}} {} {.__len__:s}"
 
 "${test} ${test ${test}aname $$$ $test+nope"
 

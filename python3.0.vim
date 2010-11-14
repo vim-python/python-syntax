@@ -2,9 +2,9 @@
 " Language:	Python
 " Maintainer:	Dmitry Vasiliev <dima@hlabs.spb.ru>
 " URL:		http://www.hlabs.spb.ru/vim/python3.0.vim
-" Last Change:	2010-11-11
+" Last Change:	2010-11-14
 " Filenames:	*.py
-" Version:	3.0.5
+" Version:	3.0.6
 "
 " Based on python.vim (from Vim 6.1 distribution)
 " by Neil Schemenauer <nas@python.ca>
@@ -24,6 +24,7 @@
 "        for the patch with new configuration options
 "    Anton Butanaev
 "        for the patch fixing bytes literals highlighting
+"        for the patch fixing str.format syntax highlighting
 
 "
 " Options:
@@ -207,7 +208,7 @@ endif
 if exists("python_highlight_string_format") && python_highlight_string_format != 0
   " str.format syntax
   syn match pythonStrFormat "{{\|}}" contained containedin=pythonString,pythonRawString
-  syn match pythonStrFormat	"{\%(\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\|\d\+\)\%(\.\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_*\)\|\[\%(\d\+\|[^!:\}]\+\)\]\)*\%(![rsa]\)\=\%(:\%({\%(\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\|\d\+\)}\|\%([^}]\=[<>=^]\)\=[ +-]\=#\=0\=\d*\%(\.\d\+\)\=[bcdeEfFgGnoxX%]\=\)\=\)\=}" contained containedin=pythonString,pythonRawString
+  syn match pythonStrFormat	"{\%(\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\|\d\+\)\=\%(\.\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\|\[\%(\d\+\|[^!:\}]\+\)\]\)*\%(![rsa]\)\=\%(:\%({\%(\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\|\d\+\)}\|\%([^}]\=[<>=^]\)\=[ +-]\=#\=0\=\d*,\=\%(\.\d\+\)\=[bcdeEfFgGnosxX%]\=\)\=\)\=}" contained containedin=pythonString,pythonRawString
 endif
 
 if exists("python_highlight_string_templates") && python_highlight_string_templates != 0
