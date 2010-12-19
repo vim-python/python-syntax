@@ -1,6 +1,8 @@
 Now
 ===
 
+- Add support for slice syntax:
+  http://img155.imageshack.us/img155/7767/screenshotgs.png
 - When we check spelling we don't need to check the whole strings only the
   content. For example we don't need to check 'u' for spelling in strings
   like this: u"Some text";
