@@ -1,8 +1,8 @@
 " Vim syntax file
 " Language:	Python
-" Maintainer:	Neil Schemenauer <nas@python.ca>
+" Maintainer:	Neil Schemenauer <nas at python dot ca>
 " Updated:	$Date: 2003/01/12 15:35:02 $
-" Updated by:	Dmitry Vasiliev <dima@hlabs.spb.ru>
+" Updated by:	Dmitry Vasiliev <dima at hlabs dot org>
 " Filenames:	*.py
 " $Revision: 1.14 $
 "

@@ -1,13 +1,13 @@
 " Vim syntax file
-" Language:	Python
-" Maintainer:	Dmitry Vasiliev <dima@hlabs.spb.ru>
-" URL:		http://www.hlabs.spb.ru/vim/python3.0.vim
-" Last Change:	2010-11-14
+" Language:     Python
+" Maintainer:	Dmitry Vasiliev <dima at hlabs dot org>
+" URL:		    https://github.com/hdima/vim-scripts/blob/master/syntax/python/python3.0.vim
+" Last Change:	2012-02-11
 " Filenames:	*.py
-" Version:	3.0.6
+" Version:	    3.0.7
 "
 " Based on python.vim (from Vim 6.1 distribution)
-" by Neil Schemenauer <nas@python.ca>
+" by Neil Schemenauer <nas at python dot ca>
 "
 " Thanks:
 "

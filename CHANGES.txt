@@ -1,3 +1,11 @@
+Revision 3.0.7 (2012-02-11):
+
+    - Updated email and URL
+
+Revision 2.6.7 (2012-02-11):
+
+    - Updated email and URL
+
 Revision 3.0.6 (2010-11-14):
 
     - Fixed highlighting for str.format syntax. Patch by Anton Butanaev.
