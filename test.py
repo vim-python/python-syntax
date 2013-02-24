@@ -42,7 +42,7 @@ TypeError UnboundLocalError UnicodeError UnicodeEncodeError UnicodeDecodeError
 UnicodeTranslateError ValueError WindowsError ZeroDivisionError
 
 Warning UserWarning DeprecationWarning PendingDepricationWarning SyntaxWarning
-RuntimeWarning FutureWarning OverflowWarning ImportWarning UnicodeWarning
+RuntimeWarning FutureWarning ImportWarning UnicodeWarning
 
 # Decorators.
 
@@ -85,10 +85,13 @@ br"\a\b\n\r"
 # Formattings
 
 " %f "
+b" %f "
 
 "{0.name!r:b} {0[n]} {name!s:  } {{test}} {{}} {} {.__len__:s}"
+b"{0.name!r:b} {0[n]} {name!s:  } {{test}} {{}} {} {.__len__:s}"
 
 "${test} ${test ${test}aname $$$ $test+nope"
+b"${test} ${test ${test}aname $$$ $test+nope"
 
 # Doctests.
 
