@@ -1,3 +1,8 @@
+Revision 3.3.1 (2013-05-12):
+
+   - The script was moved to its own repository at
+     https://github.com/hdima/python-syntax
+
 Revision 3.3.0 (2013-03-10):
 
     - Merge Python 2 and Python 3 script versions into the single python.vim
