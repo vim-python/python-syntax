@@ -1,22 +1,21 @@
 " Vim syntax file
 " Language:     Python
 " Maintainer:   Dmitry Vasiliev <dima at hlabs dot org>
-" URL:          https://github.com/hdima/vim-scripts/blob/master/syntax/python/python.vim
-" Last Change:  2013-03-10
+" URL:          https://github.com/hdima/python-syntax
+" Last Change:  2013-05-12
 " Filenames:    *.py
 " Version:      3.3.0
 "
 " Based on python.vim (from Vim 6.1 distribution)
 " by Neil Schemenauer <nas at python dot ca>
 "
-" Bugs and feature requests can be reported through email
-" <dima at hlabs dot org>, GitHub at:
-"
-"   https://github.com/hdima/vim-scripts/issues
-"
-" , or Twitter:
-"
-"   https://twitter.com/hdima
+" Please use the following channels for reporting bugs, offering suggestions or
+" feedback:
+
+" - python.vim issue tracker: https://github.com/hdima/python-syntax/issues
+" - Email: Dmitry Vasiliev (dima at hlabs.org)
+" - Send a message or follow me for updates on Twitter: `@hdima
+"   <https://twitter.com/hdima>`__
 "
 " Contributors
 " ============
