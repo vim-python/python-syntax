@@ -4,7 +4,7 @@
 " URL:          https://github.com/hdima/python-syntax
 " Last Change:  2013-05-12
 " Filenames:    *.py
-" Version:      3.3.0
+" Version:      3.3.1
 "
 " Based on python.vim (from Vim 6.1 distribution)
 " by Neil Schemenauer <nas at python dot ca>
