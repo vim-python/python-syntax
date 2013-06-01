@@ -88,8 +88,8 @@ endif
 "
 " Commands
 "
-command! -buffer Python2Syntax let b:python_version_2 = 1 | if exists("g:syntax_on") | syn off | endif | syn enable
-command! -buffer Python3Syntax let b:python_version_2 = 0 | if exists("g:syntax_on") | syn off | endif | syn enable
+command! -buffer Python2Syntax let b:python_version_2 = 1 | let &syntax=&syntax
+command! -buffer Python3Syntax let b:python_version_2 = 0 | let &syntax=&syntax
 
 " Enable option if it's not defined
 function! s:EnableByDefault(name)
