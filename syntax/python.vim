@@ -2,9 +2,9 @@
 " Language:     Python
 " Maintainer:   Dmitry Vasiliev <dima at hlabs dot org>
 " URL:          https://github.com/hdima/python-syntax
-" Last Change:  2013-05-12
+" Last Change:  2013-06-01
 " Filenames:    *.py
-" Version:      3.3.1
+" Version:      3.3.2
 "
 " Based on python.vim (from Vim 6.1 distribution)
 " by Neil Schemenauer <nas at python dot ca>
@@ -27,6 +27,7 @@
 "   Andrea Riciputi
 "   Anton Butanaev
 "   Marc Weber
+"   Will Gray
 "
 " Options
 " =======
@@ -99,12 +100,15 @@ endfunction
 
 " Check if option is enabled
 function! s:Enabled(name)
-  return exists(a:name) && {a:name} != 0
+  return exists(a:name) && {a:name}
 endfunction
 
 " Is it Python 2 syntax?
 function! s:Python2Syntax()
-  return s:Enabled("b:python_version_2") || s:Enabled("g:python_version_2")
+  if exists("b:python_version_2")
+      return b:python_version_2
+  endif
+  return s:Enabled("g:python_version_2")
 endfunction
 
 "

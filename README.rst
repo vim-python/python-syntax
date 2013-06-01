@@ -133,3 +133,4 @@ Contributors
 - Andrea Riciputi
 - Anton Butanaev
 - Marc Weber
+- Will Gray
