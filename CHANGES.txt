@@ -1,3 +1,7 @@
+Revision 3.3.3 (2013-06-02):
+
+   - More lightweight syntax reloading. Patch by Will Gray.
+
 Revision 3.3.2 (2013-06-01):
 
    - Fixed behaviour of b:python_version_2 variable. Reported by Will Gray.

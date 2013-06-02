@@ -126,11 +126,13 @@ Options used by the script
 Contributors
 ------------
 
-- Jeroen Ruigrok van der Werven
-- Pedro Algarvio
-- John Eikenberry
-- Caleb Adamantine
+List of the contributors in alphabetical order:
+
 - Andrea Riciputi
 - Anton Butanaev
+- Caleb Adamantine
+- Jeroen Ruigrok van der Werven
+- John Eikenberry
 - Marc Weber
+- Pedro Algarvio
 - Will Gray

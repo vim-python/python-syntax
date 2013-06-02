@@ -2,9 +2,9 @@
 " Language:     Python
 " Maintainer:   Dmitry Vasiliev <dima at hlabs dot org>
 " URL:          https://github.com/hdima/python-syntax
-" Last Change:  2013-06-01
+" Last Change:  2013-06-02
 " Filenames:    *.py
-" Version:      3.3.2
+" Version:      3.3.3
 "
 " Based on python.vim (from Vim 6.1 distribution)
 " by Neil Schemenauer <nas at python dot ca>
@@ -20,13 +20,15 @@
 " Contributors
 " ============
 "
-"   Jeroen Ruigrok van der Werven
-"   Pedro Algarvio
-"   John Eikenberry
-"   Caleb Adamantine
+" List of the contributors in alphabetical order:
+"
 "   Andrea Riciputi
 "   Anton Butanaev
+"   Caleb Adamantine
+"   Jeroen Ruigrok van der Werven
+"   John Eikenberry
 "   Marc Weber
+"   Pedro Algarvio
 "   Will Gray
 "
 " Options
