@@ -159,7 +159,8 @@ if s:Python2Syntax()
   syn keyword pythonPreCondit   as
   syn match   pythonFunction    "[a-zA-Z_][a-zA-Z0-9_]*" display contained
 else
-  syn keyword pythonStatement   as nonlocal False None True
+  syn keyword pythonStatement   as nonlocal
+  syn keyword pythonBoolean     True False None
   syn match   pythonFunction    "\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*" display contained
 endif
 
@@ -522,6 +523,8 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonOctError         Error
   HiLink pythonHexError         Error
   HiLink pythonBinError         Error
+
+  HiLink pythonBoolean          Boolean
 
   HiLink pythonBuiltinObj       Structure
   HiLink pythonBuiltinFunc      Function
