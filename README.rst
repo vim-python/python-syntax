@@ -136,3 +136,4 @@ List of the contributors in alphabetical order:
 - Marc Weber
 - Pedro Algarvio
 - Will Gray
+- Yuri Habrusiev

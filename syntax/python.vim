@@ -2,9 +2,9 @@
 " Language:     Python
 " Maintainer:   Dmitry Vasiliev <dima at hlabs dot org>
 " URL:          https://github.com/hdima/python-syntax
-" Last Change:  2013-06-02
+" Last Change:  2013-08-11
 " Filenames:    *.py
-" Version:      3.3.3
+" Version:      3.3.4
 "
 " Based on python.vim (from Vim 6.1 distribution)
 " by Neil Schemenauer <nas at python dot ca>
@@ -30,6 +30,7 @@
 "   Marc Weber
 "   Pedro Algarvio
 "   Will Gray
+"   Yuri Habrusiev
 "
 " Options
 " =======
@@ -159,8 +160,8 @@ if s:Python2Syntax()
   syn keyword pythonPreCondit   as
   syn match   pythonFunction    "[a-zA-Z_][a-zA-Z0-9_]*" display contained
 else
-  syn keyword pythonStatement   as nonlocal
-  syn keyword pythonBoolean     True False None
+  syn keyword pythonStatement   as nonlocal None
+  syn keyword pythonBoolean     True False
   syn match   pythonFunction    "\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*" display contained
 endif
 
@@ -371,7 +372,8 @@ syn match   pythonFloat		"\<\d\+\.\d*\%([eE][+-]\=\d\+\)\=[jJ]\=" display
 
 if s:Enabled("g:python_highlight_builtin_objs")
   if s:Python2Syntax()
-    syn keyword pythonBuiltinObj	True False None
+    syn keyword pythonBuiltinObj	None
+    syn keyword pythonBoolean		True False
   endif
   syn keyword pythonBuiltinObj	Ellipsis NotImplemented
   syn keyword pythonBuiltinObj	__debug__ __doc__ __file__ __name__ __package__
