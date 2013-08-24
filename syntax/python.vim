@@ -149,7 +149,7 @@ syn keyword pythonStatement     with
 syn keyword pythonStatement     def class nextgroup=pythonFunction skipwhite
 syn keyword pythonRepeat        for while
 syn keyword pythonConditional   if elif else
-syn keyword pythonPreCondit     import from
+syn keyword pythonImport        import from
 syn keyword pythonException     try except finally
 syn keyword pythonOperator      and in is not or
 
@@ -157,7 +157,7 @@ if s:Python2Syntax()
   if !s:Enabled("g:python_print_as_function")
     syn keyword pythonStatement  print
   endif
-  syn keyword pythonPreCondit   as
+  syn keyword pythonImport      as
   syn match   pythonFunction    "[a-zA-Z_][a-zA-Z0-9_]*" display contained
 else
   syn keyword pythonStatement   as nonlocal None
@@ -469,7 +469,7 @@ if version >= 508 || !exists("did_python_syn_inits")
   endif
 
   HiLink pythonStatement        Statement
-  HiLink pythonPreCondit        Statement
+  HiLink pythonImport           Include
   HiLink pythonFunction         Function
   HiLink pythonConditional      Conditional
   HiLink pythonRepeat           Repeat
