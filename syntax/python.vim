@@ -2,9 +2,9 @@
 " Language:     Python
 " Maintainer:   Dmitry Vasiliev <dima at hlabs dot org>
 " URL:          https://github.com/hdima/python-syntax
-" Last Change:  2013-08-11
+" Last Change:  2013-08-31
 " Filenames:    *.py
-" Version:      3.3.4
+" Version:      3.3.5
 "
 " Based on python.vim (from Vim 6.1 distribution)
 " by Neil Schemenauer <nas at python dot ca>
@@ -29,6 +29,7 @@
 "   John Eikenberry
 "   Marc Weber
 "   Pedro Algarvio
+"   pydave at GitHub
 "   Will Gray
 "   Yuri Habrusiev
 "

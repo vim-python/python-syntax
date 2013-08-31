@@ -1,3 +1,8 @@
+Revision 3.3.5 (2013-08-31):
+
+    - Highlight 'import', 'from' and 'as' as include statements.
+      Patch by pydave at GitHub.
+
 Revision 3.3.4 (2013-08-11):
 
     - Highlight True and False as booleans. Patch by Yuri Habrusiev.
