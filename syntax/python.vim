@@ -73,6 +73,9 @@
 "    python_highlight_doctests              Highlight doc-tests
 "    python_print_as_function               Highlight 'print' statement as
 "                                           function for Python 2
+"    python_highlight_file_headers_as_comments
+"                                           Highlight shebang and coding
+"                                           headers as comments
 "
 "    python_highlight_all                   Enable all the options above
 "                                           NOTE: This option don't override
@@ -179,8 +182,10 @@ syn match   pythonDot        "\." display containedin=pythonDottedName
 "
 
 syn match   pythonComment	"#.*$" display contains=pythonTodo,@Spell
-syn match   pythonRun		"\%^#!.*$"
-syn match   pythonCoding	"\%^.*\%(\n.*\)\?#.*coding[:=]\s*[0-9A-Za-z-_.]\+.*$"
+if !s:Enabled("g:python_highlight_file_headers_as_comments")
+  syn match   pythonRun		"\%^#!.*$"
+  syn match   pythonCoding	"\%^.*\%(\n.*\)\?#.*coding[:=]\s*[0-9A-Za-z-_.]\+.*$"
+endif
 syn keyword pythonTodo		TODO FIXME XXX contained
 
 "
@@ -482,8 +487,10 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonDot              Normal
 
   HiLink pythonComment          Comment
-  HiLink pythonCoding           Special
-  HiLink pythonRun              Special
+  if !s:Enabled("g:python_highlight_file_headers_as_comments")
+    HiLink pythonCoding           Special
+    HiLink pythonRun              Special
+  endif
   HiLink pythonTodo             Todo
 
   HiLink pythonError            Error

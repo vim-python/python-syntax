@@ -117,6 +117,8 @@ Options used by the script
   Highlight doc-tests
 ``python_print_as_function``
   Highlight ``print`` statement as function for Python 2
+``python_highlight_file_headers_as_comments``
+  Highlight shebang and coding headers as comments
 ``python_highlight_all``
   Enable all the options above. *NOTE: This option don't override any
   previously set options*
