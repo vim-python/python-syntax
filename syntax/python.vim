@@ -2,9 +2,9 @@
 " Language:     Python
 " Maintainer:   Dmitry Vasiliev <dima at hlabs dot org>
 " URL:          https://github.com/hdima/python-syntax
-" Last Change:  2013-08-31
+" Last Change:  2013-11-18
 " Filenames:    *.py
-" Version:      3.3.5
+" Version:      3.3.6
 "
 " Based on python.vim (from Vim 6.1 distribution)
 " by Neil Schemenauer <nas at python dot ca>
@@ -25,6 +25,7 @@
 "   Andrea Riciputi
 "   Anton Butanaev
 "   Caleb Adamantine
+"   Elizabeth Myers
 "   Jeroen Ruigrok van der Werven
 "   John Eikenberry
 "   Marc Weber
@@ -148,14 +149,17 @@ syn keyword pythonStatement     break continue del
 syn keyword pythonStatement     exec return
 syn keyword pythonStatement     pass raise
 syn keyword pythonStatement     global assert
-syn keyword pythonStatement     lambda yield
+syn keyword pythonStatement     lambda
 syn keyword pythonStatement     with
 syn keyword pythonStatement     def class nextgroup=pythonFunction skipwhite
 syn keyword pythonRepeat        for while
 syn keyword pythonConditional   if elif else
-syn keyword pythonImport        import from
+syn keyword pythonImport        import
 syn keyword pythonException     try except finally
 syn keyword pythonOperator      and in is not or
+
+syn match pythonStatement   "\<yield\>" display
+syn match pythonImport      "\<from\>" display
 
 if s:Python2Syntax()
   if !s:Enabled("g:python_print_as_function")
@@ -165,6 +169,7 @@ if s:Python2Syntax()
   syn match   pythonFunction    "[a-zA-Z_][a-zA-Z0-9_]*" display contained
 else
   syn keyword pythonStatement   as nonlocal None
+  syn match   pythonStatement   "\<yield\s\+from\>" display
   syn keyword pythonBoolean     True False
   syn match   pythonFunction    "\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*" display contained
 endif

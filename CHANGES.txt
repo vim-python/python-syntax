@@ -1,3 +1,8 @@
+Revision 3.3.6 (2013-11-18):
+
+    - Highlight 'yield from' statement introduced in Python 3.3. Reported by
+      Elizabeth Myers.
+
 Revision 3.3.5 (2013-08-31):
 
     - Highlight 'import', 'from' and 'as' as include statements.

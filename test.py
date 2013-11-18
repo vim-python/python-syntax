@@ -10,6 +10,9 @@
 
 with break continue del exec return pass print raise global assert lambda yield
 for while if elif else import from as try except finally and in is not or
+
+yield from
+
 def functionname
 class Classname
 def функция

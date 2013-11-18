@@ -133,6 +133,7 @@ List of the contributors in alphabetical order:
 - Andrea Riciputi
 - Anton Butanaev
 - Caleb Adamantine
+- Elizabeth Myers
 - Jeroen Ruigrok van der Werven
 - John Eikenberry
 - Marc Weber
