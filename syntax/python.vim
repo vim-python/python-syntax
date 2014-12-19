@@ -179,7 +179,7 @@ endif
 "
 
 syn match   pythonDecorator	"@" display nextgroup=pythonDottedName skipwhite
-syn match   pythonDottedName "[a-zA-Z_][a-zA-Z0-9_]*\%(\.[a-zA-Z_][a-zA-Z0-9_]*\)*" display contained
+syn match   pythonDottedName "\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\%(\.\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\)*" display contained
 syn match   pythonDot        "\." display containedin=pythonDottedName
 
 "
