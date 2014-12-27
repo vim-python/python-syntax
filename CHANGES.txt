@@ -1,3 +1,8 @@
+Revision 3.3.7 (2014-12-27):
+
+    - Add support for Python 3 non-ASCII decorator names.
+      Patch by Victor Salgado
+
 Revision 3.3.6 (2013-11-18):
 
     - Highlight 'yield from' statement introduced in Python 3.3. Reported by

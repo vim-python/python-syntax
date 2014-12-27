@@ -2,9 +2,9 @@
 " Language:     Python
 " Maintainer:   Dmitry Vasiliev <dima at hlabs dot org>
 " URL:          https://github.com/hdima/python-syntax
-" Last Change:  2013-11-18
+" Last Change:  2014-12-27
 " Filenames:    *.py
-" Version:      3.3.6
+" Version:      3.3.7
 "
 " Based on python.vim (from Vim 6.1 distribution)
 " by Neil Schemenauer <nas at python dot ca>
@@ -31,6 +31,7 @@
 "   Marc Weber
 "   Pedro Algarvio
 "   pydave at GitHub
+"   Victor Salgado
 "   Will Gray
 "   Yuri Habrusiev
 "
@@ -179,7 +180,11 @@ endif
 "
 
 syn match   pythonDecorator	"@" display nextgroup=pythonDottedName skipwhite
-syn match   pythonDottedName "\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\%(\.\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\)*" display contained
+if s:Python2Syntax()
+  syn match   pythonDottedName "[a-zA-Z_][a-zA-Z0-9_]*\%(\.[a-zA-Z_][a-zA-Z0-9_]*\)*" display contained
+else
+  syn match   pythonDottedName "\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\%(\.\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\)*" display contained
+endif
 syn match   pythonDot        "\." display containedin=pythonDottedName
 
 "

@@ -139,5 +139,6 @@ List of the contributors in alphabetical order:
 - Marc Weber
 - Pedro Algarvio
 - pydave at GitHub
+- Victor Salgado
 - Will Gray
 - Yuri Habrusiev
