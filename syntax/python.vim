@@ -25,12 +25,12 @@
 "   Andrea Riciputi
 "   Anton Butanaev
 "   Caleb Adamantine
+"   David Briscoe
 "   Elizabeth Myers
 "   Jeroen Ruigrok van der Werven
 "   John Eikenberry
 "   Marc Weber
 "   Pedro Algarvio
-"   pydave at GitHub
 "   Victor Salgado
 "   Will Gray
 "   Yuri Habrusiev
