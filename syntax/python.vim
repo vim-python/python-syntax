@@ -1,10 +1,11 @@
 " Vim syntax file
-" Language:     Python
-" Maintainer:   Dmitry Vasiliev <dima at hlabs dot org>
-" URL:          https://github.com/hdima/python-syntax
-" Last Change:  2014-12-27
-" Filenames:    *.py
-" Version:      3.3.7
+" Language:             Python
+" Current Maintainer:   Dmitry Vasiliev <dima at hlabs dot org>
+" Previous Maintainer:  Neil Schemenauer <nas at python dot ca>
+" URL:                  https://github.com/hdima/python-syntax
+" Last Change:          2015-03-30
+" Filenames:            *.py
+" Version:              3.3.7
 "
 " Based on python.vim (from Vim 6.1 distribution)
 " by Neil Schemenauer <nas at python dot ca>

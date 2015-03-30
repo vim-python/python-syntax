@@ -81,7 +81,7 @@ Option and commands to select Python version
 
 ``python_version_2``
   Enable highlighting for Python 2 (Python 3 highlighting is enabled by
-  default). Can also be set as a local to buffer ``b:python_version_2``
+  default). Also can be set as a local to buffer ``b:python_version_2``
   variable.
 
 The following local to buffer commands can be used to switch between two
