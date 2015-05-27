@@ -174,6 +174,11 @@ else
   syn match   pythonStatement   "\<yield\s\+from\>" display
   syn keyword pythonBoolean     True False
   syn match   pythonFunction    "\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*" display contained
+  syn keyword pythonStatement   await
+  syn match   pythonStatement   "\<async\s\+def\>" display
+  syn match   pythonStatement   "\<async\s\+with\>" display
+  syn match   pythonStatement   "\<async\s\+for\>" display
+  syn match   pythonStatement   "\<async\s\+with\>" display
 endif
 
 "
