@@ -2,7 +2,8 @@ Now
 ===
 
 - It seems python.vim doesn't highlight special characters inside strings by
-  default but only when it reloaded?
+  default but only when reloaded? Or maybe only when set to Python 2
+  by default?
 
 - Add support for slice syntax:
   http://img155.imageshack.us/img155/7767/screenshotgs.png
