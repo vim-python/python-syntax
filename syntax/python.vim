@@ -3,9 +3,9 @@
 " Current Maintainer:   Dmitry Vasiliev <dima at hlabs dot org>
 " Previous Maintainer:  Neil Schemenauer <nas at python dot ca>
 " URL:                  https://github.com/hdima/python-syntax
-" Last Change:          2015-03-30
+" Last Change:          2015-06-10
 " Filenames:            *.py
-" Version:              3.3.7
+" Version:              3.5.0
 "
 " Based on python.vim (from Vim 6.1 distribution)
 " by Neil Schemenauer <nas at python dot ca>
@@ -28,6 +28,7 @@
 "   Caleb Adamantine
 "   David Briscoe
 "   Elizabeth Myers
+"   Ihor Gorobets
 "   Jeroen Ruigrok van der Werven
 "   John Eikenberry
 "   Marc Weber

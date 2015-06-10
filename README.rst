@@ -135,6 +135,7 @@ List of the contributors in alphabetical order:
 - Caleb Adamantine
 - `David Briscoe <https://github.com/idbrii>`_
 - `Elizabeth Myers <https://github.com/Elizafox>`_
+- `Ihor Gorobets <https://github.com/iho>`_
 - `Jeroen Ruigrok van der Werven <https://github.com/ashemedai>`_
 - `John Eikenberry <https://github.com/eikenb>`_
 - `Marc Weber <https://github.com/MarcWeber>`_

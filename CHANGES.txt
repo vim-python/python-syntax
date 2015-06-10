@@ -1,3 +1,8 @@
+Revision 3.5.0 (2015-06-10):
+
+    - Add support for 'async ...' and 'await' keywords introduced in
+      Python 3.5. Patch by Ihor Gorobets
+
 Revision 3.3.7 (2014-12-27):
 
     - Add support for Python 3 non-ASCII decorator names.
