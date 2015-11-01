@@ -138,6 +138,7 @@ List of the contributors in alphabetical order:
 - `Ihor Gorobets <https://github.com/iho>`_
 - `Jeroen Ruigrok van der Werven <https://github.com/ashemedai>`_
 - `John Eikenberry <https://github.com/eikenb>`_
+- `Joongi Kim <https://github.com/achimnol>`_
 - `Marc Weber <https://github.com/MarcWeber>`_
 - `Pedro Algarvio <https://github.com/s0undt3ch>`_
 - `Victor Salgado <https://github.com/mcsalgado>`_
