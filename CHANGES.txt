@@ -1,3 +1,7 @@
+Revision 3.6.0 (2015-11-XX):
+
+    - Fix 'async def' highlighting. Patch by Joongi Kim
+
 Revision 3.5.0 (2015-06-10):
 
     - Add support for 'async ...' and 'await' keywords introduced in

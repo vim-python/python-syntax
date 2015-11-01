@@ -31,6 +31,7 @@
 "   Ihor Gorobets
 "   Jeroen Ruigrok van der Werven
 "   John Eikenberry
+"   Joongi Kim
 "   Marc Weber
 "   Pedro Algarvio
 "   Victor Salgado
@@ -179,7 +180,6 @@ else
   syn match   pythonStatement   "\<async\s\+def\>" nextgroup=pythonFunction skipwhite
   syn match   pythonStatement   "\<async\s\+with\>" display
   syn match   pythonStatement   "\<async\s\+for\>" display
-  syn match   pythonStatement   "\<async\s\+with\>" display
 endif
 
 "
