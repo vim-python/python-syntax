@@ -132,6 +132,7 @@ List of the contributors in alphabetical order:
 
 - `Andrea Riciputi <https://github.com/mrrech>`_
 - Anton Butanaev
+- `Antony Lee <https://github.com/anntzer>`_
 - Caleb Adamantine
 - `David Briscoe <https://github.com/idbrii>`_
 - `Elizabeth Myers <https://github.com/Elizafox>`_

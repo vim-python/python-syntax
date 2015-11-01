@@ -1,6 +1,8 @@
 Revision 3.6.0 (2015-11-XX):
 
     - Fix 'async def' highlighting. Patch by Joongi Kim
+    - Add dummy 'pythonInclude' group to avoid crashing standard pyrex.vim.
+      Patch by Antony Lee
 
 Revision 3.5.0 (2015-06-10):
 
