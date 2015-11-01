@@ -158,6 +158,9 @@ syn keyword pythonStatement     with
 syn keyword pythonStatement     def class nextgroup=pythonFunction skipwhite
 syn keyword pythonRepeat        for while
 syn keyword pythonConditional   if elif else
+" The standard pyrex.vim unconditionally removes the pythonInclude group, so
+" we provide a dummy group here to avoid crashing pyrex.vim.
+syn keyword pythonInclude       import
 syn keyword pythonImport        import
 syn keyword pythonException     try except finally
 syn keyword pythonOperator      and in is not or
