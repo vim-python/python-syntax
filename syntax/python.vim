@@ -150,6 +150,7 @@ endif
 " Keywords
 "
 
+syn keyword pythonInstanceVariable self
 syn keyword pythonStatement     break continue del
 syn keyword pythonStatement     exec return
 syn keyword pythonStatement     pass raise
@@ -174,11 +175,10 @@ if s:Python2Syntax()
     syn keyword pythonStatement  print
   endif
   syn keyword pythonImport      as
-  syn match   pythonFunction    "[a-zA-Z_][a-zA-Z0-9_]*" display contained
+  syn match   pythonFunction    "[a-zA-Z_][a-zA-Z0-9_]*" nextgroup=FunctionParameters display contained
 else
-  syn keyword pythonStatement   as nonlocal None
+  syn keyword pythonStatement   as nonlocal
   syn match   pythonStatement   "\<yield\s\+from\>" display
-  syn keyword pythonBoolean     True False
   syn match   pythonFunction    "\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*" display contained
   syn keyword pythonStatement   await
   syn match   pythonStatement   "\<async\s\+def\>" nextgroup=pythonFunction skipwhite
@@ -186,6 +186,20 @@ else
   syn match   pythonStatement   "\<async\s\+for\>" display
 endif
 
+syn region FunctionParameters start='(' end=')' contains=
+            \ OptionalParameters,
+            \ pythonInstanceVariable,
+            \ pythonHexNumber,
+            \ pythonOctNumber,
+            \ pythonString,
+            \ pythonUniString,
+            \ pythonUniRawString,
+            \ pythonNumber,
+            \ pythonRawString,
+            \ pythonBuiltinObj,
+            \ pythonBuiltinFunc
+            \ nextgroup=OptionalParameters
+syn match OptionalParameters /\i*\ze=/ display contained
 "
 " Decorators (new in Python 2.4)
 "
@@ -398,11 +412,11 @@ syn match   pythonFloat		"\<\d\+\.\d*\%([eE][+-]\=\d\+\)\=[jJ]\=" display
 "
 
 if s:Enabled("g:python_highlight_builtin_objs")
-  if s:Python2Syntax()
-    syn keyword pythonBuiltinObj	None
-    syn keyword pythonBoolean		True False
-  endif
+  syn keyword pythonBuiltinObj	None
+  syn keyword pythonBoolean		True False
   syn keyword pythonBuiltinObj	Ellipsis NotImplemented
+  syn keyword pythonBuiltinObj	int float tuple str list dict set frozenset
+  syn keyword pythonBuiltinObj	defaultdict
   syn keyword pythonBuiltinObj	__debug__ __doc__ __file__ __name__ __package__
 endif
 
@@ -424,15 +438,15 @@ if s:Enabled("g:python_highlight_builtin_funcs")
   syn keyword pythonBuiltinFunc	__import__ abs all any
   syn keyword pythonBuiltinFunc	bin bool bytearray bytes
   syn keyword pythonBuiltinFunc	chr classmethod cmp compile complex
-  syn keyword pythonBuiltinFunc	delattr dict dir divmod enumerate eval
-  syn keyword pythonBuiltinFunc	filter float format frozenset getattr
+  syn keyword pythonBuiltinFunc	delattr dir divmod enumerate eval
+  syn keyword pythonBuiltinFunc	filter format getattr
   syn keyword pythonBuiltinFunc	globals hasattr hash hex id
-  syn keyword pythonBuiltinFunc	input int isinstance
-  syn keyword pythonBuiltinFunc	issubclass iter len list locals map max
+  syn keyword pythonBuiltinFunc	input isinstance
+  syn keyword pythonBuiltinFunc	issubclass iter len locals map max
   syn keyword pythonBuiltinFunc	min next object oct open ord
   syn keyword pythonBuiltinFunc	pow property range
-  syn keyword pythonBuiltinFunc	repr reversed round set setattr
-  syn keyword pythonBuiltinFunc	slice sorted staticmethod str sum super tuple
+  syn keyword pythonBuiltinFunc	repr reversed round setattr
+  syn keyword pythonBuiltinFunc	slice sorted staticmethod sum super
   syn keyword pythonBuiltinFunc	type vars zip
 endif
 
@@ -561,6 +575,8 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonBuiltinFunc      Function
 
   HiLink pythonExClass          Structure
+  HiLink pythonInstanceVariable htmlTagN
+  HiLink OptionalParameters htmlTagN
 
   delcommand HiLink
 endif
