@@ -187,6 +187,7 @@ else
 endif
 
 syn region FunctionParameters start='(' end=')' contains=
+            \ FunctionParameters,
             \ OptionalParameters,
             \ pythonInstanceVariable,
             \ pythonHexNumber,
