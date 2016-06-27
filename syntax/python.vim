@@ -199,7 +199,7 @@ syn region FunctionParameters start='(' end=')' contains=
             \ pythonRawString,
             \ pythonBuiltinObj,
             \ pythonBuiltinFunc,
-            \ pythonBoolean,
+            \ pythonBoolean
             \ nextgroup=OptionalParameters
 syn match OptionalParameters /\i*\ze=/ display contained
 "
