@@ -151,6 +151,7 @@ endif
 "
 
 syn keyword pythonInstanceVariable self
+syn keyword pythonClassVaraible cls
 syn keyword pythonStatement     break continue del
 syn keyword pythonStatement     exec return
 syn keyword pythonStatement     pass raise
@@ -427,28 +428,28 @@ endif
 
 if s:Enabled("g:python_highlight_builtin_funcs")
   if s:Python2Syntax()
-    syn match pythonBuiltinFunc	'\v(\.)@<!<(apply|basestring|buffer|callable|coerce)>'
-    syn match pythonBuiltinFunc	'\v(\.)@<!<(execfile|file|help|intern|long|raw_input)>'
-    syn match pythonBuiltinFunc	'\v(\.)@<!<(reduce|reload|unichr|unicode|xrange)>'
+    syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(apply|basestring|buffer|callable|coerce)>\ze\(?'
+    syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(execfile|file|help|intern|long|raw_input)>\ze\(?'
+    syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(reduce|reload|unichr|unicode|xrange)>\ze\(?'
     if s:Enabled("g:python_print_as_function")
-      syn match pythonBuiltinFunc	'\v(\.)@<!<(print)>'
+      syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(print)>\ze\(?'
     endif
   else
-    syn match pythonBuiltinFunc	'\v(\.)@<!<(ascii|exec|memoryview|print)>'
+    syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(ascii|exec|memoryview|print)>\ze\(?'
   endif
-  syn match pythonBuiltinFunc	'\v(\.)@<!<(__import__|abs|all|any)>'
-  syn match pythonBuiltinFunc	'\v(\.)@<!<(bin|bool|bytearray|bytes)>'
-  syn match pythonBuiltinFunc	'\v(\.)@<!<(chr|classmethod|cmp|compile|complex)>'
-  syn match pythonBuiltinFunc	'\v(\.)@<!<(delattr|dir|divmod|enumerate|eval)>'
-  syn match pythonBuiltinFunc	'\v(\.)@<!<(filter|format|getattr)>'
-  syn match pythonBuiltinFunc	'\v(\.)@<!<(globals|hasattr|hash|hex|id)>'
-  syn match pythonBuiltinFunc	'\v(\.)@<!<(input|isinstance)>'
-  syn match pythonBuiltinFunc	'\v(\.)@<!<(issubclass|iter|len|locals|map|max)>'
-  syn match pythonBuiltinFunc	'\v(\.)@<!<(min|next|object|oct|open|ord)>'
-  syn match pythonBuiltinFunc	'\v(\.)@<!<(pow|property|range)>'
-  syn match pythonBuiltinFunc	'\v(\.)@<!<(repr|reversed|round|setattr)>'
-  syn match pythonBuiltinFunc	'\v(\.)@<!<(slice|sorted|staticmethod|sum|super)>'
-  syn match pythonBuiltinFunc	'\v(\.)@<!<(type|vars|zip)>'
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(__import__|abs|all|any)>\ze\(?'
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(bin|bool|bytearray|bytes)>\ze\(?'
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(chr|classmethod|cmp|compile|complex)>\ze\(?'
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(delattr|dir|divmod|enumerate|eval)>\ze\(?'
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(filter|format|getattr)>\ze\(?'
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(globals|hasattr|hash|hex|id)>\ze\(?'
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(input|isinstance)>\ze\(?'
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(issubclass|iter|len|locals|map|max)>\ze\(?'
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(min|next|object|oct|open|ord)>\ze\(?'
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(pow|property|range)>\ze\(?'
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(repr|reversed|round|setattr)>\ze\(?'
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(slice|sorted|staticmethod|sum|super)>\ze\(?'
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(type|vars|zip)>/ze\(?'
 endif
 
 "
