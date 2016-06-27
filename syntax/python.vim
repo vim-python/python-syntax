@@ -416,8 +416,7 @@ if s:Enabled("g:python_highlight_builtin_objs")
   syn keyword pythonBuiltinObj	None
   syn keyword pythonBoolean		True False
   syn keyword pythonBuiltinObj	Ellipsis NotImplemented
-  syn keyword pythonBuiltinObj	int float tuple str list dict set frozenset
-  syn keyword pythonBuiltinObj	defaultdict
+  syn match pythonBuiltinObj	'\v[^.]*<(int|float|tuple|str|list|dict|set|frozenset)>'
   syn keyword pythonBuiltinObj	__debug__ __doc__ __file__ __name__ __package__
 endif
 
@@ -427,28 +426,28 @@ endif
 
 if s:Enabled("g:python_highlight_builtin_funcs")
   if s:Python2Syntax()
-    syn keyword pythonBuiltinFunc	apply basestring buffer callable coerce
-    syn keyword pythonBuiltinFunc	execfile file help intern long raw_input
-    syn keyword pythonBuiltinFunc	reduce reload unichr unicode xrange
+    syn match pythonBuiltinFunc	'v[^.]*<(apply|basestring|buffer|callable|coerce)>'
+    syn match pythonBuiltinFunc	'v[^.]*<(execfile|file|help|intern|long|raw_input)>'
+    syn match pythonBuiltinFunc	'v[^.]*<(reduce|reload|unichr|unicode|xrange)>'
     if s:Enabled("g:python_print_as_function")
-      syn keyword pythonBuiltinFunc	print
+      syn match pythonBuiltinFunc	'v[^.]*<(print)>'
     endif
   else
-    syn keyword pythonBuiltinFunc	ascii exec memoryview print
+    syn match pythonBuiltinFunc	'v[^.]*<(ascii|exec|memoryview|print)>'
   endif
-  syn keyword pythonBuiltinFunc	__import__ abs all any
-  syn keyword pythonBuiltinFunc	bin bool bytearray bytes
-  syn keyword pythonBuiltinFunc	chr classmethod cmp compile complex
-  syn keyword pythonBuiltinFunc	delattr dir divmod enumerate eval
-  syn keyword pythonBuiltinFunc	filter format getattr
-  syn keyword pythonBuiltinFunc	globals hasattr hash hex id
-  syn keyword pythonBuiltinFunc	input isinstance
-  syn keyword pythonBuiltinFunc	issubclass iter len locals map max
-  syn keyword pythonBuiltinFunc	min next object oct open ord
-  syn keyword pythonBuiltinFunc	pow property range
-  syn keyword pythonBuiltinFunc	repr reversed round setattr
-  syn keyword pythonBuiltinFunc	slice sorted staticmethod sum super
-  syn keyword pythonBuiltinFunc	type vars zip
+  syn match pythonBuiltinFunc	'v[^.]*<(__import__|abs|all|any)>'
+  syn match pythonBuiltinFunc	'v[^.]*<(bin|bool|bytearray|bytes)>'
+  syn match pythonBuiltinFunc	'v[^.]*<(chr|classmethod|cmp|compile|complex)>'
+  syn match pythonBuiltinFunc	'v[^.]*<(delattr|dir|divmod|enumerate|eval)>'
+  syn match pythonBuiltinFunc	'v[^.]*<(filter|format|getattr)>'
+  syn match pythonBuiltinFunc	'v[^.]*<(globals|hasattr|hash|hex|id)>'
+  syn match pythonBuiltinFunc	'v[^.]*<(input|isinstance)>'
+  syn match pythonBuiltinFunc	'v[^.]*<(issubclass|iter|len|locals|map|max)>'
+  syn match pythonBuiltinFunc	'v[^.]*<(min|next|object|oct|open|ord)>'
+  syn match pythonBuiltinFunc	'v[^.]*<(pow|property|range)>'
+  syn match pythonBuiltinFunc	'v[^.]*<(repr|reversed|round|setattr)>'
+  syn match pythonBuiltinFunc	'v[^.]*<(slice|sorted|staticmethod|sum|super)>'
+  syn match pythonBuiltinFunc	'v[^.]*<(type|vars|zip)>'
 endif
 
 "
