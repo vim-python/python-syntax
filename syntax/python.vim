@@ -192,6 +192,7 @@ syn region FunctionParameters start='(' end=')' contains=
             \ OptionalParameters,
             \ pythonInstanceVariable,
             \ pythonHexNumber,
+            \ pythonStatement,
             \ pythonOctNumber,
             \ pythonString,
             \ pythonUniString,
