@@ -193,6 +193,7 @@ syn region FunctionParameters start='(' end=')' contains=
             \ pythonInstanceVariable,
             \ pythonHexNumber,
             \ pythonStatement,
+            \ pythonRepeat,
             \ pythonOctNumber,
             \ pythonString,
             \ pythonUniString,
@@ -451,7 +452,7 @@ if s:Enabled("g:python_highlight_builtin_funcs")
   syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(pow|property|range)>\ze\('
   syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(repr|reversed|round|setattr)>\ze\('
   syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(slice|sorted|staticmethod|sum|super)>\ze\('
-  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(type|vars|zip)>/ze\('
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(type|vars|zip)>\ze\('
 endif
 
 "
