@@ -190,8 +190,11 @@ endif
 syn region FunctionParameters start='(' end=')' contains=
             \ FunctionParameters,
             \ OptionalParameters,
+            \ OptionalParameters,
             \ pythonInstanceVariable,
             \ pythonConditional,
+            \ pythonComment,
+            \ pythonOperator,
             \ pythonOperator,
             \ pythonHexNumber,
             \ pythonStatement,
