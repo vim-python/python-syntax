@@ -423,7 +423,7 @@ if s:Enabled("g:python_highlight_builtin_objs")
   syn keyword pythonBuiltinObj	None
   syn keyword pythonBoolean		True False
   syn keyword pythonBuiltinObj	Ellipsis NotImplemented
-  syn match pythonBuiltinObj	'\v(\.)@<!<(int|float|tuple|str|list|dict|set|frozenset)>'
+  syn match pythonBuiltinObj	'\v(\.)@<!<(object|int|float|tuple|str|list|dict|set|frozenset)>'
   syn keyword pythonBuiltinObj	__debug__ __doc__ __file__ __name__ __package__
   syn keyword pythonBuiltinObj	__loader__ __spec__ __path__ __cached__
 endif
@@ -451,7 +451,7 @@ if s:Enabled("g:python_highlight_builtin_funcs")
   syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(globals|hasattr|hash|hex|id)>\ze\('
   syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(input|isinstance)>\ze\('
   syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(issubclass|iter|len|locals|map|max)>\ze\('
-  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(min|next|object|oct|open|ord)>\ze\('
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(min|next|oct|open|ord)>\ze\('
   syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(pow|property|range)>\ze\('
   syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(repr|reversed|round|setattr)>\ze\('
   syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(slice|sorted|staticmethod|sum|super)>\ze\('
