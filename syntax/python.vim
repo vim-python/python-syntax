@@ -202,11 +202,13 @@ syn region FunctionParameters start='(' end=')' display contains=
             \ pythonStatement,
             \ pythonOctNumber,
             \ pythonString,
+            \ pythonRawString,
             \ pythonUniString,
             \ pythonExClass,
             \ pythonUniRawString,
             \ pythonNumber,
             \ pythonRawString,
+            \ pythonBytes,
             \ pythonBuiltinObj,
             \ pythonBuiltinFunc,
             \ pythonBoolean
@@ -427,7 +429,7 @@ if s:Enabled("g:python_highlight_builtin_objs")
   syn keyword pythonBuiltinObj	None
   syn keyword pythonBoolean		True False
   syn keyword pythonBuiltinObj	Ellipsis NotImplemented
-  syn match pythonBuiltinObj	'\v(\.)@<!<(object|int|float|tuple|str|list|dict|set|frozenset)>'
+  syn match pythonBuiltinObj	'\v(\.)@<!<(object|bool|int|float|tuple|str|list|dict|set|frozenset|bytearray|bytes)>'
   syn keyword pythonBuiltinObj	__debug__ __doc__ __file__ __name__ __package__
   syn keyword pythonBuiltinObj	__loader__ __spec__ __path__ __cached__
 endif
@@ -448,8 +450,7 @@ if s:Enabled("g:python_highlight_builtin_funcs")
     syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(ascii|exec|memoryview|print)>\ze\('
   endif
   syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(__import__|abs|all|any)>\ze\('
-  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(bin|bool|bytearray|bytes)>\ze\('
-  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(chr|classmethod|cmp|compile|complex)>\ze\('
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(bin|chr|classmethod|cmp|compile|complex)>\ze\('
   syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(delattr|dir|divmod|enumerate|eval)>\ze\('
   syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(filter|format|getattr)>\ze\('
   syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(globals|hasattr|hash|hex|id)>\ze\('
@@ -477,6 +478,7 @@ if s:Enabled("g:python_highlight_exceptions")
     syn keyword pythonExClass	FileNotFoundError InterruptedError
     syn keyword pythonExClass	IsADirectoryError NotADirectoryError
     syn keyword pythonExClass	PermissionError ProcessLookupError TimeoutError
+    syn keyword pythonExClass   StopAsyncIteration
 
     syn keyword pythonExClass	ResourceWarning
   endif
