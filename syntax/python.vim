@@ -192,6 +192,7 @@ syn region FunctionParameters start='(' end=')' display contains=
             \ OptionalParameters,
             \ pythonRepeat,
             \ pythonInstanceVariable,
+            \ pythonClassVaraible,
             \ pythonConditional,
             \ pythonComment,
             \ pythonOperator,
@@ -590,6 +591,7 @@ if version >= 508 || !exists("did_python_syn_inits")
 
   HiLink pythonExClass          Structure
   HiLink pythonInstanceVariable htmlTagN
+  HiLink pythonClassVaraible htmlTagN
   HiLink OptionalParameters htmlTagN
 
   delcommand HiLink
