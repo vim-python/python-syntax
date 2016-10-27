@@ -168,8 +168,8 @@ syn keyword pythonImport        import
 syn keyword pythonException     try except finally
 syn keyword pythonOperator      and in is not or
 
-syn match pythonStatement   "\<yield\>" display
-syn match pythonImport      "\<from\>" display
+syn match pythonStatement   "^\s*yield\>" display
+syn match pythonImport      "^\s*from\>" display
 
 if s:Python2Syntax()
   if !s:Enabled("g:python_print_as_function")
