@@ -165,11 +165,11 @@ syn keyword pythonConditional   if elif else
 " we provide a dummy group here to avoid crashing pyrex.vim.
 syn keyword pythonInclude       import
 syn keyword pythonImport        import
+syn keyword pythonImport        from
 syn keyword pythonException     try except finally
 syn keyword pythonOperator      and in is not or
 
 syn match pythonStatement   "^\s*yield\>" display
-syn match pythonImport      "^\s*from\>" display
 
 if s:Python2Syntax()
   if !s:Enabled("g:python_print_as_function")
@@ -195,6 +195,7 @@ syn region FunctionParameters start='(' end=')' display contains=
             \ pythonClassVaraible,
             \ pythonConditional,
             \ pythonComment,
+            \ pythonImport,
             \ pythonOperator,
             \ pythonNumber,
             \ pythonNumberError,
