@@ -442,27 +442,27 @@ endif
 
 if s:Enabled("g:python_highlight_builtin_funcs")
   if s:Python2Syntax()
-    syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(apply|basestring|buffer|callable|coerce)>\ze\('
-    syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(execfile|file|help|intern|long|raw_input)>\ze\('
-    syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(reduce|reload|unichr|unicode|xrange)>\ze\('
+    syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(apply|basestring|buffer|callable|coerce)>\ze\(' nextgroup=FunctionParameters
+    syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(execfile|file|help|intern|long|raw_input)>\ze\(' nextgroup=FunctionParameters
+    syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(reduce|reload|unichr|unicode|xrange)>\ze\(' nextgroup=FunctionParameters
     if s:Enabled("g:python_print_as_function")
-      syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(print)>\ze\('
+      syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(print)>\ze\(' nextgroup=FunctionParameters
     endif
   else
-    syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(ascii|exec|memoryview|print)>\ze\('
+    syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(ascii|exec|memoryview|print)>\ze\(' nextgroup=FunctionParameters
   endif
-  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(__import__|abs|all|any)>\ze\('
-  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(bin|chr|classmethod|cmp|compile|complex)>\ze\('
-  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(delattr|dir|divmod|enumerate|eval)>\ze\('
-  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(filter|format|getattr)>\ze\('
-  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(globals|hasattr|hash|hex|id)>\ze\('
-  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(input|isinstance)>\ze\('
-  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(issubclass|iter|len|locals|map|max)>\ze\('
-  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(min|next|oct|open|ord)>\ze\('
-  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(pow|property|range)>\ze\('
-  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(repr|reversed|round|setattr)>\ze\('
-  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(slice|sorted|staticmethod|sum|super)>\ze\('
-  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(type|vars|zip)>\ze\('
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(__import__|abs|all|any)>\ze\(' nextgroup=FunctionParameters
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(bin|chr|classmethod|cmp|compile|complex)>\ze\(' nextgroup=FunctionParameters
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(delattr|dir|divmod|enumerate|eval)>\ze\(' nextgroup=FunctionParameters
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(filter|format|getattr)>\ze\(' nextgroup=FunctionParameters
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(globals|hasattr|hash|hex|id)>\ze\(' nextgroup=FunctionParameters
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(input|isinstance)>\ze\(' nextgroup=FunctionParameters
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(issubclass|iter|len|locals|map|max)>\ze\(' nextgroup=FunctionParameters
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(min|next|oct|open|ord)>\ze\(' nextgroup=FunctionParameters
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(pow|property|range)>\ze\(' nextgroup=FunctionParameters
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(repr|reversed|round|setattr)>\ze\(' nextgroup=FunctionParameters
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(slice|sorted|staticmethod|sum|super)>\ze\(' nextgroup=FunctionParameters
+  syn match pythonBuiltinFunc	'\v(\.)@<!\zs<(type|vars|zip)>\ze\(' nextgroup=FunctionParameters
 endif
 
 "
