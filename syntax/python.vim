@@ -165,12 +165,12 @@ syn keyword pythonConditional   if elif else
 " we provide a dummy group here to avoid crashing pyrex.vim.
 syn keyword pythonInclude       import
 syn keyword pythonImport        import
-syn match pythonImport          "\(yield \)\@<!\<from\>"
+syn keyword pythonImport        from
 syn keyword pythonException     try except finally
 syn keyword pythonOperator      and in is not or
-syn match   pythonStatement   "^\s*yield\>" display
+syn match pythonStatement       "\s*\([.,]\)\@<!\<yield\>"
 
-syn match pythonIdentifier "[a-zA-Z_][a-zA-Z0-9_]*" nextgroup=FunctionParameters display
+syn match pythonIdentifier "[a-zA-Z_][a-zA-Z0-9_]*" nextgroup=FunctionParameters
 
 if s:Python2Syntax()
   if !s:Enabled("g:python_print_as_function")
@@ -180,12 +180,12 @@ if s:Python2Syntax()
   syn match   pythonFunction    "[a-zA-Z_][a-zA-Z0-9_]*" nextgroup=FunctionParameters display contained
 else
   syn keyword pythonStatement   as nonlocal
-  syn match   pythonStatement   "\v\s*<yield\s+from>" display
+  syn match pythonStatement "\v\s*<yield\s+from>"
   syn match   pythonStatement   "\v(\.)@<!<await>"
   syn match   pythonFunction    "[a-zA-Z_][a-zA-Z0-9_]*" nextgroup=FunctionParameters display contained
   syn match   pythonStatement   "\<async\s\+def\>" nextgroup=pythonFunction skipwhite
-  syn match   pythonStatement   "\<async\s\+with\>" display
-  syn match   pythonStatement   "\<async\s\+for\>" display
+  syn match   pythonStatement   "\<async\s\+with\>"
+  syn match   pythonStatement   "\<async\s\+for\>"
 endif
 
 syn region FunctionParameters start='(' end=')' display contains=
