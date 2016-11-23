@@ -168,8 +168,8 @@ syn keyword pythonImport        import
 syn keyword pythonImport        from
 syn keyword pythonException     try except finally
 syn keyword pythonOperator      and in is not or
+syn match   pythonStatement   "^\s*yield\>" display
 
-syn match pythonStatement   "^\s*yield\>" display
 
 if s:Python2Syntax()
   if !s:Enabled("g:python_print_as_function")
@@ -179,9 +179,9 @@ if s:Python2Syntax()
   syn match   pythonFunction    "[a-zA-Z_][a-zA-Z0-9_]*" nextgroup=FunctionParameters display contained
 else
   syn keyword pythonStatement   as nonlocal
-  syn match   pythonStatement   "\<yield\s\+from\>" display
+  syn match   pythonStatement   "\v\s*<yield\s+from>" display
   syn match   pythonFunction    "\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*" display contained
-  syn keyword pythonStatement   await
+  syn match   pythonStatement   "\v(\.)@<!<await>"
   syn match   pythonStatement   "\<async\s\+def\>" nextgroup=pythonFunction skipwhite
   syn match   pythonStatement   "\<async\s\+with\>" display
   syn match   pythonStatement   "\<async\s\+for\>" display
