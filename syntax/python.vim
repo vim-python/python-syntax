@@ -170,6 +170,7 @@ syn keyword pythonException     try except finally
 syn keyword pythonOperator      and in is not or
 syn match   pythonStatement   "^\s*yield\>" display
 
+syn match pythonIdentifier "[a-zA-Z_][a-zA-Z0-9_]*" nextgroup=FunctionParameters display
 
 if s:Python2Syntax()
   if !s:Enabled("g:python_print_as_function")
@@ -180,8 +181,8 @@ if s:Python2Syntax()
 else
   syn keyword pythonStatement   as nonlocal
   syn match   pythonStatement   "\v\s*<yield\s+from>" display
-  syn match   pythonFunction    "\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*" display contained
   syn match   pythonStatement   "\v(\.)@<!<await>"
+  syn match   pythonFunction    "[a-zA-Z_][a-zA-Z0-9_]*" nextgroup=FunctionParameters display contained
   syn match   pythonStatement   "\<async\s\+def\>" nextgroup=pythonFunction skipwhite
   syn match   pythonStatement   "\<async\s\+with\>" display
   syn match   pythonStatement   "\<async\s\+for\>" display
@@ -195,7 +196,6 @@ syn region FunctionParameters start='(' end=')' display contains=
             \ pythonClassVaraible,
             \ pythonConditional,
             \ pythonComment,
-            \ pythonImport,
             \ pythonOperator,
             \ pythonNumber,
             \ pythonNumberError,
@@ -214,7 +214,7 @@ syn region FunctionParameters start='(' end=')' display contains=
             \ pythonBuiltinObj,
             \ pythonBuiltinFunc,
             \ pythonBoolean
-            \ nextgroup=OptionalParameters
+            \ nextgroup=OptionalParameters display contained
 syn match OptionalParameters /\i*\ze=/ display contained
 "
 " Decorators (new in Python 2.4)
@@ -431,7 +431,7 @@ if s:Enabled("g:python_highlight_builtin_objs")
   syn keyword pythonBuiltinObj	None
   syn keyword pythonBoolean		True False
   syn keyword pythonBuiltinObj	Ellipsis NotImplemented
-  syn match pythonBuiltinObj	'\v(\.)@<!<(object|bool|int|float|tuple|str|list|dict|set|frozenset|bytearray|bytes)>'
+  syn match pythonBuiltinObj	'\v(\.)@<!<(object|bool|int|float|tuple|str|list|dict|set|frozenset|bytearray|bytes)>' nextgroup=FunctionParameters
   syn keyword pythonBuiltinObj	__debug__ __doc__ __file__ __name__ __package__
   syn keyword pythonBuiltinObj	__loader__ __spec__ __path__ __cached__
 endif
