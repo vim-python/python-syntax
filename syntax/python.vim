@@ -154,7 +154,8 @@ syn keyword pythonInstanceVariable self
 syn keyword pythonClassVaraible cls
 syn keyword pythonStatement     break continue del
 syn keyword pythonStatement     exec return
-syn keyword pythonStatement     pass raise
+syn keyword pythonStatement     pass
+syn keyword pythonStatement     raise nextgroup=pythonIdentifier skipwhite
 syn keyword pythonStatement     global assert
 syn keyword pythonStatement     lambda
 syn keyword pythonStatement     with
@@ -163,14 +164,16 @@ syn keyword pythonRepeat        for while
 syn keyword pythonConditional   if elif else
 " The standard pyrex.vim unconditionally removes the pythonInclude group, so
 " we provide a dummy group here to avoid crashing pyrex.vim.
-syn keyword pythonInclude       import
-syn keyword pythonImport        import
-syn keyword pythonImport        from
 syn keyword pythonException     try except finally
 syn keyword pythonOperator      and in is not or
 syn match pythonStatement       "\s*\([.,]\)\@<!\<yield\>"
+syn keyword pythonInclude       import
+syn keyword pythonImport        import
+syn match pythonIdentifier "\v[a-zA-Z_][a-zA-Z0-9_]*" nextgroup=FunctionParameters
+syn match pythonRaiseFromStatement      "from\>"
+syn match pythonImport          "\v^\s*\zsfrom\ze\s*[a-zA-Z_][a-zA-Z0-9_]*(\.[a-zA-Z_][a-zA-Z0-9_]*)*\s*import"
 
-syn match pythonIdentifier "[a-zA-Z_][a-zA-Z0-9_]*" nextgroup=FunctionParameters
+
 
 if s:Python2Syntax()
   if !s:Enabled("g:python_print_as_function")
@@ -180,7 +183,7 @@ if s:Python2Syntax()
   syn match   pythonFunction    "[a-zA-Z_][a-zA-Z0-9_]*" nextgroup=FunctionParameters display contained
 else
   syn keyword pythonStatement   as nonlocal
-  syn match pythonStatement "\v\s*<yield\s+from>"
+  syn match   pythonStatement "\v\s*<yield\s+from>"
   syn match   pythonStatement   "\v(\.)@<!<await>"
   syn match   pythonFunction    "[a-zA-Z_][a-zA-Z0-9_]*" nextgroup=FunctionParameters display contained
   syn match   pythonStatement   "\<async\s\+def\>" nextgroup=pythonFunction skipwhite
@@ -213,8 +216,7 @@ syn region FunctionParameters start='(' end=')' display contains=
             \ pythonBytes,
             \ pythonBuiltinObj,
             \ pythonBuiltinFunc,
-            \ pythonBoolean
-            \ nextgroup=OptionalParameters display contained
+            \ pythonBoolean nextgroup=pythonRaiseFromStatement display contained
 syn match OptionalParameters /\i*\ze=/ display contained
 "
 " Decorators (new in Python 2.4)
@@ -526,6 +528,7 @@ if version >= 508 || !exists("did_python_syn_inits")
   endif
 
   HiLink pythonStatement        Statement
+  HiLink pythonRaiseFromStatement   Statement
   HiLink pythonImport           Include
   HiLink pythonFunction         Function
   HiLink pythonConditional      Conditional
