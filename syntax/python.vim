@@ -154,7 +154,7 @@ syn keyword pythonInstanceVariable self
 syn keyword pythonClassVaraible cls
 syn keyword pythonStatement     break continue del
 syn keyword pythonStatement     exec return
-syn keyword pythonStatement     pass
+syn keyword pythonStatement     pass yield
 syn keyword pythonStatement     raise nextgroup=pythonIdentifier skipwhite
 syn keyword pythonStatement     global assert
 syn keyword pythonStatement     lambda
@@ -171,7 +171,7 @@ syn keyword pythonInclude       import
 syn keyword pythonImport        import
 syn match pythonIdentifier "\v[a-zA-Z_][a-zA-Z0-9_]*" nextgroup=FunctionParameters
 syn match pythonRaiseFromStatement      "from\>"
-syn match pythonImport          "\v^\s*\zsfrom\ze\s*[a-zA-Z_][a-zA-Z0-9_]*(\.[a-zA-Z_][a-zA-Z0-9_]*)*\s*import"
+syn match pythonImport          "^\s*\zsfrom\>"
 
 
 
@@ -183,7 +183,6 @@ if s:Python2Syntax()
   syn match   pythonFunction    "[a-zA-Z_][a-zA-Z0-9_]*" nextgroup=FunctionParameters display contained
 else
   syn keyword pythonStatement   as nonlocal
-  syn match   pythonStatement "\v\s*<yield\s+from>"
   syn match   pythonStatement   "\v(\.)@<!<await>"
   syn match   pythonFunction    "[a-zA-Z_][a-zA-Z0-9_]*" nextgroup=FunctionParameters display contained
   syn match   pythonStatement   "\<async\s\+def\>" nextgroup=pythonFunction skipwhite
