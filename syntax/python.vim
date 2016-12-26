@@ -155,7 +155,7 @@ syn keyword pythonClassVaraible cls
 syn keyword pythonStatement     break continue del
 syn keyword pythonStatement     exec return
 syn keyword pythonStatement     pass yield
-syn keyword pythonStatement     raise nextgroup=pythonIdentifier skipwhite
+syn keyword pythonStatement     raise nextgroup=pythonIdentifier,pythonExClass skipwhite
 syn keyword pythonStatement     global assert
 syn keyword pythonStatement     lambda
 syn keyword pythonStatement     with
@@ -472,40 +472,36 @@ endif
 
 if s:Enabled("g:python_highlight_exceptions")
   if s:Python2Syntax()
-    syn keyword pythonExClass	StandardError
+      syn match pythonExClass   '\v(\.)@<!\zs<(StandardError)>'
   else
-    syn keyword pythonExClass	BlockingIOError ChildProcessError
-    syn keyword pythonExClass	ConnectionError BrokenPipeError
-    syn keyword pythonExClass	ConnectionAbortedError ConnectionRefusedError
-    syn keyword pythonExClass	ConnectionResetError FileExistsError
-    syn keyword pythonExClass	FileNotFoundError InterruptedError
-    syn keyword pythonExClass	IsADirectoryError NotADirectoryError
-    syn keyword pythonExClass	PermissionError ProcessLookupError TimeoutError
-    syn keyword pythonExClass   StopAsyncIteration
-
-    syn keyword pythonExClass	ResourceWarning
+      syn match pythonExClass   '\v(\.)@<!\zs<(BlockingIOError|ChildProcessError)>'
+      syn match pythonExClass   '\v(\.)@<!\zs<(ConnectionError|BrokenPipeError)>'
+      syn match pythonExClass   '\v(\.)@<!\zs<(ConnectionAbortedError|ConnectionRefusedError)>'
+      syn match pythonExClass   '\v(\.)@<!\zs<(ConnectionResetError|FileExistsError)>'
+      syn match pythonExClass   '\v(\.)@<!\zs<(FileNotFoundError|InterruptedError)>'
+      syn match pythonExClass   '\v(\.)@<!\zs<(IsADirectoryError|NotADirectoryError)>'
+      syn match pythonExClass   '\v(\.)@<!\zs<(PermissionError|ProcessLookupError TimeoutError)>'
+      syn match pythonExClass   '\v(\.)@<!\zs<(StopAsyncIteration|ResourceWarning)>'
   endif
-  syn keyword pythonExClass	BaseException
-  syn keyword pythonExClass	Exception ArithmeticError
-  syn keyword pythonExClass	LookupError EnvironmentError
 
-  syn keyword pythonExClass	AssertionError AttributeError BufferError EOFError
-  syn keyword pythonExClass	FloatingPointError GeneratorExit IOError
-  syn keyword pythonExClass	ImportError IndexError KeyError
-  syn keyword pythonExClass	KeyboardInterrupt MemoryError NameError
-  syn keyword pythonExClass	NotImplementedError OSError OverflowError
-  syn keyword pythonExClass	ReferenceError RuntimeError StopIteration
-  syn keyword pythonExClass	SyntaxError IndentationError TabError
-  syn keyword pythonExClass	SystemError SystemExit TypeError
-  syn keyword pythonExClass	UnboundLocalError UnicodeError
-  syn keyword pythonExClass	UnicodeEncodeError UnicodeDecodeError
-  syn keyword pythonExClass	UnicodeTranslateError ValueError VMSError
-  syn keyword pythonExClass	WindowsError ZeroDivisionError
-
-  syn keyword pythonExClass	Warning UserWarning BytesWarning DeprecationWarning
-  syn keyword pythonExClass	PendingDepricationWarning SyntaxWarning
-  syn keyword pythonExClass	RuntimeWarning FutureWarning
-  syn keyword pythonExClass	ImportWarning UnicodeWarning
+  syn match pythonExClass   '\v(\.)@<!<(BaseException|Exception|ArithmeticError)>'
+  syn match pythonExClass   '\v(\.)@<!\zs<(LookupError|EnvironmentError|AssertionError)>'
+  syn match pythonExClass   '\v(\.)@<!\zs<(AttributeError|BufferError|EOFError)>'
+  syn match pythonExClass   '\v(\.)@<!\zs<(FloatingPointError|GeneratorExit|IOError)>'
+  syn match pythonExClass   '\v(\.)@<!\zs<(ImportError|IndexError|KeyError)>'
+  syn match pythonExClass   '\v(\.)@<!\zs<(KeyboardInterrupt|MemoryError|NameError)>'
+  syn match pythonExClass   '\v(\.)@<!\zs<(NotImplementedError|OSError|OverflowError)>'
+  syn match pythonExClass   '\v(\.)@<!\zs<(ReferenceError|RuntimeError|StopIteration)>'
+  syn match pythonExClass   '\v(\.)@<!\zs<(SyntaxError|IndentationError|TabError)>'
+  syn match pythonExClass   '\v(\.)@<!\zs<(SystemError|SystemExit|TypeError)>'
+  syn match pythonExClass   '\v(\.)@<!\zs<(UnboundLocalError|UnicodeError)>'
+  syn match pythonExClass   '\v(\.)@<!\zs<(UnicodeEncodeError|UnicodeDecodeError)>'
+  syn match pythonExClass   '\v(\.)@<!\zs<(UnicodeTranslateError|ValueError|VMSError)>'
+  syn match pythonExClass   '\v(\.)@<!\zs<(WindowsError|ZeroDivisionError)>'
+  syn match pythonExClass   '\v(\.)@<!\zs<(Warning|UserWarning|BytesWarning|DeprecationWarning)>'
+  syn match pythonExClass   '\v(\.)@<!\zs<(PendingDepricationWarning|SyntaxWarning)>'
+  syn match pythonExClass   '\v(\.)@<!\zs<(RuntimeWarning|FutureWarning)>'
+  syn match pythonExClass   '\v(\.)@<!\zs<(ImportWarning|UnicodeWarning)>'
 endif
 
 if s:Enabled("g:python_slow_sync")
