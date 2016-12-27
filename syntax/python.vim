@@ -472,36 +472,36 @@ endif
 
 if s:Enabled("g:python_highlight_exceptions")
   if s:Python2Syntax()
-      syn match pythonExClass   '\v(\.)@<!\zs<(StandardError)>'
+      syn match pythonExClass   '\v(\.)@<!\zs<(StandardError)>' nextgroup=FunctionParameters
   else
-      syn match pythonExClass   '\v(\.)@<!\zs<(BlockingIOError|ChildProcessError)>'
-      syn match pythonExClass   '\v(\.)@<!\zs<(ConnectionError|BrokenPipeError)>'
-      syn match pythonExClass   '\v(\.)@<!\zs<(ConnectionAbortedError|ConnectionRefusedError)>'
-      syn match pythonExClass   '\v(\.)@<!\zs<(ConnectionResetError|FileExistsError)>'
-      syn match pythonExClass   '\v(\.)@<!\zs<(FileNotFoundError|InterruptedError)>'
-      syn match pythonExClass   '\v(\.)@<!\zs<(IsADirectoryError|NotADirectoryError)>'
-      syn match pythonExClass   '\v(\.)@<!\zs<(PermissionError|ProcessLookupError TimeoutError)>'
-      syn match pythonExClass   '\v(\.)@<!\zs<(StopAsyncIteration|ResourceWarning)>'
+      syn match pythonExClass   '\v(\.)@<!\zs<(BlockingIOError|ChildProcessError)>' nextgroup=FunctionParameters
+      syn match pythonExClass   '\v(\.)@<!\zs<(ConnectionError|BrokenPipeError)>' nextgroup=FunctionParameters
+      syn match pythonExClass   '\v(\.)@<!\zs<(ConnectionAbortedError|ConnectionRefusedError)>' nextgroup=FunctionParameters
+      syn match pythonExClass   '\v(\.)@<!\zs<(ConnectionResetError|FileExistsError)>' nextgroup=FunctionParameters
+      syn match pythonExClass   '\v(\.)@<!\zs<(FileNotFoundError|InterruptedError)>' nextgroup=FunctionParameters
+      syn match pythonExClass   '\v(\.)@<!\zs<(IsADirectoryError|NotADirectoryError)>' nextgroup=FunctionParameters
+      syn match pythonExClass   '\v(\.)@<!\zs<(PermissionError|ProcessLookupError TimeoutError)>' nextgroup=FunctionParameters
+      syn match pythonExClass   '\v(\.)@<!\zs<(StopAsyncIteration|ResourceWarning)>' nextgroup=FunctionParameters
   endif
 
-  syn match pythonExClass   '\v(\.)@<!<(BaseException|Exception|ArithmeticError)>'
-  syn match pythonExClass   '\v(\.)@<!\zs<(LookupError|EnvironmentError|AssertionError)>'
-  syn match pythonExClass   '\v(\.)@<!\zs<(AttributeError|BufferError|EOFError)>'
-  syn match pythonExClass   '\v(\.)@<!\zs<(FloatingPointError|GeneratorExit|IOError)>'
-  syn match pythonExClass   '\v(\.)@<!\zs<(ImportError|IndexError|KeyError)>'
-  syn match pythonExClass   '\v(\.)@<!\zs<(KeyboardInterrupt|MemoryError|NameError)>'
-  syn match pythonExClass   '\v(\.)@<!\zs<(NotImplementedError|OSError|OverflowError)>'
-  syn match pythonExClass   '\v(\.)@<!\zs<(ReferenceError|RuntimeError|StopIteration)>'
-  syn match pythonExClass   '\v(\.)@<!\zs<(SyntaxError|IndentationError|TabError)>'
-  syn match pythonExClass   '\v(\.)@<!\zs<(SystemError|SystemExit|TypeError)>'
-  syn match pythonExClass   '\v(\.)@<!\zs<(UnboundLocalError|UnicodeError)>'
-  syn match pythonExClass   '\v(\.)@<!\zs<(UnicodeEncodeError|UnicodeDecodeError)>'
-  syn match pythonExClass   '\v(\.)@<!\zs<(UnicodeTranslateError|ValueError|VMSError)>'
-  syn match pythonExClass   '\v(\.)@<!\zs<(WindowsError|ZeroDivisionError)>'
-  syn match pythonExClass   '\v(\.)@<!\zs<(Warning|UserWarning|BytesWarning|DeprecationWarning)>'
-  syn match pythonExClass   '\v(\.)@<!\zs<(PendingDepricationWarning|SyntaxWarning)>'
-  syn match pythonExClass   '\v(\.)@<!\zs<(RuntimeWarning|FutureWarning)>'
-  syn match pythonExClass   '\v(\.)@<!\zs<(ImportWarning|UnicodeWarning)>'
+  syn match pythonExClass   '\v(\.)@<!<(BaseException|Exception|ArithmeticError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v(\.)@<!\zs<(LookupError|EnvironmentError|AssertionError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v(\.)@<!\zs<(AttributeError|BufferError|EOFError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v(\.)@<!\zs<(FloatingPointError|GeneratorExit|IOError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v(\.)@<!\zs<(ImportError|IndexError|KeyError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v(\.)@<!\zs<(KeyboardInterrupt|MemoryError|NameError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v(\.)@<!\zs<(NotImplementedError|OSError|OverflowError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v(\.)@<!\zs<(ReferenceError|RuntimeError|StopIteration)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v(\.)@<!\zs<(SyntaxError|IndentationError|TabError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v(\.)@<!\zs<(SystemError|SystemExit|TypeError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v(\.)@<!\zs<(UnboundLocalError|UnicodeError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v(\.)@<!\zs<(UnicodeEncodeError|UnicodeDecodeError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v(\.)@<!\zs<(UnicodeTranslateError|ValueError|VMSError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v(\.)@<!\zs<(WindowsError|ZeroDivisionError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v(\.)@<!\zs<(Warning|UserWarning|BytesWarning|DeprecationWarning)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v(\.)@<!\zs<(PendingDepricationWarning|SyntaxWarning)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v(\.)@<!\zs<(RuntimeWarning|FutureWarning)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v(\.)@<!\zs<(ImportWarning|UnicodeWarning)>' nextgroup=FunctionParameters
 endif
 
 if s:Enabled("g:python_slow_sync")
