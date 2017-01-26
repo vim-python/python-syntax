@@ -214,6 +214,7 @@ syn region FunctionParameters start='(' end=')' display contains=
             \ pythonRawString,
             \ pythonBytes,
             \ pythonBuiltinObj,
+            \ pythonNone,
             \ pythonBuiltinFunc,
             \ pythonBoolean nextgroup=pythonRaiseFromStatement display contained
 syn match OptionalParameters /\i*\ze=/ display contained
@@ -430,7 +431,7 @@ syn match   pythonFloat		"\<\d\+\.\d*\%([eE][+-]\=\d\+\)\=[jJ]\=" display
 "
 
 if s:Enabled("g:python_highlight_builtin_objs")
-  syn keyword pythonBuiltinObj	None
+  syn keyword pythonNone        None
   syn keyword pythonBoolean		True False
   syn keyword pythonBuiltinObj	Ellipsis NotImplemented
   syn match pythonBuiltinObj	'\v(\.)@<!<(object|bool|int|float|tuple|str|list|dict|set|frozenset|bytearray|bytes)>' nextgroup=FunctionParameters
@@ -585,6 +586,7 @@ if version >= 508 || !exists("did_python_syn_inits")
   HiLink pythonBinError         Error
 
   HiLink pythonBoolean          Boolean
+  HiLink pythonNone             Constant
 
   HiLink pythonBuiltinObj       Structure
   HiLink pythonBuiltinFunc      Function
