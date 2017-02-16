@@ -12,29 +12,6 @@
 " Please report bugs and feature requests to our issue tracker over at:
 " https://github.com/vim-python/python-syntax/issues
 "
-" Contributors
-" ============
-"
-" List of the contributors in alphabetical order:
-"
-"   Andrea Riciputi
-"   Anton Butanaev
-"   Antony Lee
-"   Caleb Adamantine
-"   David Briscoe
-"   Elizabeth Myers
-"   Ihor Gorobets
-"   Jeroen Ruigrok van der Werven
-"   John Eikenberry
-"   Joongi Kim
-"   lilydjwg
-"   Marc Weber
-"   Michael Doronin
-"   Pedro Algarvio
-"   Victor Salgado
-"   Will Gray
-"   Yuri Habrusiev
-"
 " Options
 " =======
 "
