@@ -98,7 +98,7 @@ else
   syn match   pythonStatement   '\<async\s\+for\>'
 endif
 
-syn region FunctionParameters start='(' end=')' display contains=
+syn region FunctionParameters start='(\zs' end='\ze)' display contains=
             \ FunctionParameters,
             \ OptionalParameters,
             \ pythonRepeat,
