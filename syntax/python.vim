@@ -1,8 +1,7 @@
 " Vim syntax file
 " Language:             Python
-" Current Maintainer:   Dmitry Vasiliev <dima at hlabs dot org>
-" Previous Maintainer:  Neil Schemenauer <nas at python dot ca>
-" URL:                  https://github.com/hdima/python-syntax
+" Current Maintainer:   vim-python organization on GitHub
+" URL:                  https://github.com/vim-python/python-syntax
 " Last Change:          2015-11-01
 " Filenames:            *.py
 " Version:              3.6.0
@@ -10,13 +9,8 @@
 " Based on python.vim (from Vim 6.1 distribution)
 " by Neil Schemenauer <nas at python dot ca>
 "
-" Please use the following channels for reporting bugs, offering suggestions or
-" feedback:
-
-" - python.vim issue tracker: https://github.com/hdima/python-syntax/issues
-" - Email: Dmitry Vasiliev (dima at hlabs.org)
-" - Send a message or follow me for updates on Twitter: `@hdima
-"   <https://twitter.com/hdima>`__
+" Please report bugs and feature requests to our issue tracker over at:
+" https://github.com/vim-python/python-syntax/issues
 "
 " Contributors
 " ============
@@ -33,7 +27,9 @@
 "   Jeroen Ruigrok van der Werven
 "   John Eikenberry
 "   Joongi Kim
+"   lilydjwg
 "   Marc Weber
+"   Michael Doronin
 "   Pedro Algarvio
 "   Victor Salgado
 "   Will Gray

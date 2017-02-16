@@ -11,13 +11,8 @@ Enhanced version of the original Python syntax highlighting script. Based on
 ca). Check also `python.vim page on vim.org
 <http://www.vim.org/scripts/script.php?script_id=790>`_.
 
-Please use the following channels for reporting bugs, offering suggestions or
-feedback:
-
-- python.vim issue tracker: https://github.com/hdima/python-syntax/issues
-- Email: Dmitry Vasiliev (dima at hlabs.org)
-- Send a message or follow me for updates on Twitter: `@hdima
-  <https://twitter.com/hdima>`__
+Please report bugs and feature requests to our issue tracker over at:
+https://github.com/vim-python/python-syntax/issues
 
 Features
 --------
@@ -52,13 +47,13 @@ How to install
 --------------
 
 The easiest installation method is to place `syntax/python.vim
-<https://github.com/hdima/python-syntax/blob/master/syntax/python.vim>`_ script
+<https://github.com/vim-python/python-syntax/blob/master/syntax/python.vim>`_ script
 into your ``~/.vim/syntax/`` directory.
 
 You can also use `Pathogen <https://github.com/tpope/vim-pathogen>`_ or `Vundle
 <https://github.com/gmarik/vundle>`_ plugin managers in which case you can
-install the whole `python.vim repository
-<https://github.com/hdima/python-syntax>`_ into the corresponding plugins
+install the whole `repository
+<https://github.com/vim-python/python-syntax>`_ into the corresponding plugins
 directory.
 
 Script options
