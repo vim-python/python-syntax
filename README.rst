@@ -43,6 +43,8 @@ Changes from the original ``python.vim`` are:
 
 Some of these features was later backported into the original ``python.vim``.
 
+Folding is done by the plugin `SimpylFold <https://github.com/tmhedberg/SimpylFold>`_
+
 How to install
 --------------
 
