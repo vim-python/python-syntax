@@ -44,38 +44,40 @@ Or you can just manually place `syntax/python.vim
 <https://github.com/vim-python/python-syntax/blob/master/syntax/python.vim>`_
 into ``~/.config/nvim/syntax/`` or ``~/.vim/syntax/``.
 
-Script options
+Configuration
 --------------
 
 Enable option with::
 
-    let OPTION_NAME = 1
+    let VARIABLE = 1
 
 Disable option with::
 
-    let OPTION_NAME = 0
+    let VARIABLE = 0
 
-For example to enable all syntax highlighting features you can place the
-following command in your ``~/.config/nvim/init.vim`` or ``~/.vimrc`` script::
+For example to enable all syntax highlighting features you can add the
+following command to your ``~/.config/nvim/init.vim`` or ``~/.vimrc``::
 
     let g:python_highlight_all = 1
 
-Options and commands to select Python version
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Select Python version
+~~~~~~~~~~~~~~~~~~~~~
+
+Variables:
 
 ``g:python_version_2`` or ``b:python_version_2``
     Enable highlighting for Python 2 (Python 3 highlighting is enabled by
     default).
 
-The following commands can be used to switch between modes:
+Commands to easily switch between modes:
 
 ``Python2Syntax``
     Switch to Python 2
 ``Python3Syntax``
     Switch to Python 3
 
-Other options
-~~~~~~~~~~~~~
+Option variables
+~~~~~~~~~~~~~~~~
 
 ``g:python_highlight_builtins``
     Highlight builtin functions and objects
