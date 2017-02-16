@@ -3,142 +3,105 @@ Python syntax highlighting script for Vim
 
 .. contents::
 
-About
------
-
-Enhanced version of the original Python syntax highlighting script. Based on
-``python.vim`` from Vim 6.1 distribution by Neil Schemenauer (nas at python dot
-ca). Check also `python.vim page on vim.org
-<http://www.vim.org/scripts/script.php?script_id=790>`_.
-
-Please report bugs and feature requests to our issue tracker over at:
-https://github.com/vim-python/python-syntax/issues
+This is an enhanced version of the original Python syntax highlighting script. Based on
+``python.vim`` from Vim 6.1 distribution by Neil Schemenauer.
 
 Features
 --------
 
-Changes from the original ``python.vim`` are:
-
 - Added support for Python 3 syntax highlighting
-- Added ``:Python2Syntax`` and ``:Python3Syntax`` commands which allow to
-  switch between Python 2 and Python 3 syntaxes respectively without
-  reloads/restarts
-- Updated strings highlighting
+- Added commands ``Python2Syntax`` and ``Python3Syntax`` commands which allow to switch
+  between Python 2 and Python 3 syntaxes respectively without reloads/restarts
+- Updated string highlighting
 - Enhanced special symbols highlighting inside strings
 - Enhanced highlighting of numeric constants
 - Added optional highlighting for %-formatting inside strings
-- Added highlighting for magic comments: source code encoding and #!
-  (executable) strings
+- Added highlighting for magic comments: source code encoding and #! (executable) strings
 - Added highlighting for new exceptions and builtins
 - Added highlighting for doctests
 - Added highlighting for new ``@decorator`` syntax introduced in Python 2.4a2
 - Added highlighting for the following errors:
+    - Invalid symbols in source file
+    - Mixing spaces and tabs
+    - Invalid numeric constants
+    - Invalid %-formatting inside strings
+    - Invalid variable names
+    - Trailing spaces (triggered by the ``python_highlight_space_errors`` option)
 
-  - invalid symbols in source file
-  - mixing spaces and tabs
-  - invalid numeric constants
-  - invalid %-formatting inside strings
-  - invalid variable names
-  - trailing spaces (triggered by the ``python_highlight_space_errors`` option)
-
-Some of these features was later backported into the original ``python.vim``.
-
-Folding is done by the plugin `SimpylFold <https://github.com/tmhedberg/SimpylFold>`_
+Folding is done by the plugin `SimpylFold <https://github.com/tmhedberg/SimpylFold>`_.
 
 How to install
 --------------
 
-The easiest installation method is to place `syntax/python.vim
-<https://github.com/vim-python/python-syntax/blob/master/syntax/python.vim>`_ script
-into your ``~/.vim/syntax/`` directory.
+Use one of the following plugin managers:
 
-You can also use `Pathogen <https://github.com/tpope/vim-pathogen>`_ or `Vundle
-<https://github.com/gmarik/vundle>`_ plugin managers in which case you can
-install the whole `repository
-<https://github.com/vim-python/python-syntax>`_ into the corresponding plugins
-directory.
+- `dein <https://github.com/Shougo/dein.vim>`_
+- `vim-plug <https://github.com/junegunn/vim-plug>`_
+- `vundle <https://github.com/VundleVim/Vundle.vim>`_
+- `pathogen <https://github.com/tpope/vim-pathogen>`_
+
+Or you can just manually place `syntax/python.vim
+<https://github.com/vim-python/python-syntax/blob/master/syntax/python.vim>`_
+into ``~/.config/nvim/syntax/`` or ``~/.vim/syntax/``.
 
 Script options
 --------------
 
-There are two commands to enable or disable an option:
+Enable option with::
 
-``:let OPTION_NAME = 1``
-  Enable option
-``:let OPTION_NAME = 0``
-  Disable option
+    let OPTION_NAME = 1
+
+Disable option with::
+
+    let OPTION_NAME = 0
 
 For example to enable all syntax highlighting features you can place the
-following command in your ``~/.vimrc`` script::
+following command in your ``~/.config/nvim/init.vim`` or ``~/.vimrc`` script::
 
-  let python_highlight_all = 1
+    let g:python_highlight_all = 1
 
-Option and commands to select Python version
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Options and commands to select Python version
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-``python_version_2``
-  Enable highlighting for Python 2 (Python 3 highlighting is enabled by
-  default). Also can be set as a local to buffer ``b:python_version_2``
-  variable.
+``g:python_version_2`` or ``b:python_version_2``
+    Enable highlighting for Python 2 (Python 3 highlighting is enabled by
+    default).
 
-The following local to buffer commands can be used to switch between two
-highlighting modes:
+The following commands can be used to switch between modes:
 
-``:Python2Syntax``
-  Switch to Python 2 highlighting mode
-``:Python3Syntax``
-  Switch to Python 3 highlighting mode
+``Python2Syntax``
+    Switch to Python 2
+``Python3Syntax``
+    Switch to Python 3
 
-Options used by the script
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+Other options
+~~~~~~~~~~~~~
 
-``python_highlight_builtins``
-  Highlight builtin functions and objects
-``python_highlight_builtin_objs``
-  Highlight builtin objects only
-``python_highlight_builtin_funcs``
-  Highlight builtin functions only
-``python_highlight_exceptions``
-  Highlight standard exceptions
-``python_highlight_string_formatting``
-  Highlight ``%`` string formatting
-``python_highlight_string_format``
-  Highlight syntax of ``str.format`` syntax
-``python_highlight_string_templates``
-  Highlight syntax of ``string.Template``
-``python_highlight_indent_errors``
-  Highlight indentation errors
-``python_highlight_space_errors``
-  Highlight trailing spaces
-``python_highlight_doctests``
-  Highlight doc-tests
-``python_print_as_function``
-  Highlight ``print`` statement as function for Python 2
-``python_highlight_file_headers_as_comments``
-  Highlight shebang and coding headers as comments
-``python_highlight_all``
-  Enable all the options above. *NOTE: This option don't override any
-  previously set options*
-``python_slow_sync``
-  Can be set to 0 for slow machines
-
-Contributors
-------------
-
-List of the contributors in alphabetical order:
-
-- `Andrea Riciputi <https://github.com/mrrech>`_
-- Anton Butanaev
-- `Antony Lee <https://github.com/anntzer>`_
-- Caleb Adamantine
-- `David Briscoe <https://github.com/idbrii>`_
-- `Elizabeth Myers <https://github.com/Elizafox>`_
-- `Ihor Gorobets <https://github.com/iho>`_
-- `Jeroen Ruigrok van der Werven <https://github.com/ashemedai>`_
-- `John Eikenberry <https://github.com/eikenb>`_
-- `Joongi Kim <https://github.com/achimnol>`_
-- `Marc Weber <https://github.com/MarcWeber>`_
-- `Pedro Algarvio <https://github.com/s0undt3ch>`_
-- `Victor Salgado <https://github.com/mcsalgado>`_
-- `Will Gray <https://github.com/graywh>`_
-- `Yuri Habrusiev <https://github.com/yuriihabrusiev>`_
+``g:python_highlight_builtins``
+    Highlight builtin functions and objects
+``g:python_highlight_builtin_objs``
+    Highlight builtin objects only
+``g:python_highlight_builtin_funcs``
+    Highlight builtin functions only
+``g:python_highlight_exceptions``
+    Highlight standard exceptions
+``g:python_highlight_string_formatting``
+    Highlight ``%`` string formatting
+``g:python_highlight_string_format``
+    Highlight syntax of ``str.format`` syntax
+``g:python_highlight_string_templates``
+    Highlight syntax of ``string.Template``
+``g:python_highlight_indent_errors``
+    Highlight indentation errors
+``g:python_highlight_space_errors``
+    Highlight trailing spaces
+``g:python_highlight_doctests``
+    Highlight doc-tests
+``g:python_print_as_function``
+    Highlight ``print`` statement as function for Python 2
+``g:python_highlight_file_headers_as_comments``
+    Highlight shebang and coding headers as comments
+``g:python_highlight_all``
+    Enable all the options above - *NOTE: Doesn't override any previously set options*
+``g:python_slow_sync``
+    Disable for slow machines
