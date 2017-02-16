@@ -1,4 +1,34 @@
-*python-syntax* *ft-python-syntax* *python.vim*
+*python-syntax.txt* Python syntax highlighting
+
+===============================================================================
+Introduction                          *python-syntax* *ft-python-syntax* *python.vim*
+
+This is an enhanced version of the original Python syntax highlighting script. Based on
+`python.vim` from Vim 6.1 distribution by Neil Schemenauer.
+
+Features
+--------
+
+- Added support for Python 3 syntax highlighting
+- Added commands `Python2Syntax` and `Python3Syntax` commands which allow to switch
+  between Python 2 and Python 3 syntaxes respectively without reloads/restarts
+- Updated string highlighting
+- Enhanced special symbols highlighting inside strings
+- Enhanced highlighting of numeric constants
+- Added optional highlighting for %-formatting inside strings
+- Added highlighting for magic comments: source code encoding and #! (executable) strings
+- Added highlighting for new exceptions and builtins
+- Added highlighting for doctests
+- Added highlighting for new `@decorator` syntax introduced in Python 2.4a2
+- Added highlighting for the following errors:
+    - Invalid symbols in source file
+    - Mixing spaces and tabs
+    - Invalid numeric constants
+    - Invalid %-formatting inside strings
+    - Invalid variable names
+    - Trailing spaces (triggered by the `python_highlight_space_errors` option)
+
+Folding is done by the plugin `SimpylFold` (`https://github.com/tmhedberg/SimpylFold`)
 
 ===============================================================================
 Configuration                                       *python-syntax-configuration*
