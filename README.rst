@@ -45,7 +45,7 @@ Or you can just manually place `syntax/python.vim
 into ``~/.config/nvim/syntax/`` or ``~/.vim/syntax/``.
 
 Configuration
---------------
+-------------
 
 Enable option with::
 
