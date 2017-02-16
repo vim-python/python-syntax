@@ -21,12 +21,12 @@ Features
 * Added highlighting for doctests
 * Added highlighting for new `@decorator` syntax introduced in Python 2.4a2
 * Added highlighting for the following errors:
-    * Invalid symbols in source file
-    * Mixing spaces and tabs
-    * Invalid numeric constants
-    * Invalid %-formatting inside strings
-    * Invalid variable names
-    * Trailing spaces (triggered by the `python_highlight_space_errors` option)
+  * Invalid symbols in source file
+  * Mixing spaces and tabs
+  * Invalid numeric constants
+  * Invalid %-formatting inside strings
+  * Invalid variable names
+  * Trailing spaces (triggered by the `python_highlight_space_errors` option)
 
 Folding is done by the plugin `SimpylFold` (`https://github.com/tmhedberg/SimpylFold`)
 
