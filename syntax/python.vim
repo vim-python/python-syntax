@@ -319,35 +319,35 @@ if s:Python2Syntax()
   syn match   pythonOctError '\<0[oO]\=\o*[8-9]\d*[lL]\=\>' display
   syn match   pythonBinError '\<0[bB][01]*[2-9]\d*[lL]\=\>' display
 
-  syn match   pythonFloat	'\.\d\+\%([eE][+-]\=\d\+\)\=[jJ]\=\>' display
-  syn match   pythonFloat	'\<\d\+[eE][+-]\=\d\+[jJ]\=\>' display
-  syn match   pythonFloat	'\<\d\+\.\d*\%([eE][+-]\=\d\+\)\=[jJ]\=' display
+  syn match   pythonFloat    '\.\d\+\%([eE][+-]\=\d\+\)\=[jJ]\=\>' display
+  syn match   pythonFloat    '\<\d\+[eE][+-]\=\d\+[jJ]\=\>' display
+  syn match   pythonFloat    '\<\d\+\.\d*\%([eE][+-]\=\d\+\)\=[jJ]\=' display
 else
   syn match   pythonOctError '\<0[oO]\=\o*\D\+\d*\>' display
   " pythonHexError comes after pythonOctError so that 0xffffl is pythonHexError
   syn match   pythonHexError '\<0[xX]\x*[g-zG-Z]\x*\>' display
   syn match   pythonBinError '\<0[bB][01]*\D\+\d*\>' display
 
-  syn match   pythonHexNumber	'\<0[xX][_0-9a-fA-F]*\x\>' display
+  syn match   pythonHexNumber '\<0[xX][_0-9a-fA-F]*\x\>' display
   syn match   pythonOctNumber '\<0[oO][_0-7]*\o\>' display
   syn match   pythonBinNumber '\<0[bB][_01]*[01]\>' display
 
-  syn match   pythonNumberError	'\<\d[_0-9]*\D\>' display
-  syn match   pythonNumberError	'\<0[_0-9]\+\>' display
-  syn match   pythonNumberError	'\<0_x\S*\>' display
-  syn match   pythonNumberError	'\<0[bBxXoO][_0-9a-fA-F]*_\>' display
-  syn match   pythonNumberError	'\<\d[_0-9]*_\>' display
+  syn match   pythonNumberError '\<\d[_0-9]*\D\>' display
+  syn match   pythonNumberError '\<0[_0-9]\+\>' display
+  syn match   pythonNumberError '\<0_x\S*\>' display
+  syn match   pythonNumberError '\<0[bBxXoO][_0-9a-fA-F]*_\>' display
+  syn match   pythonNumberError '\<\d[_0-9]*_\>' display
   syn match   pythonNumber      '\<\d\>' display
-  syn match   pythonNumber	'\<[1-9][_0-9]*\d\>' display
-  syn match   pythonNumber	'\<\d[jJ]\>' display
-  syn match   pythonNumber	'\<[1-9][_0-9]*\d[jJ]\>' display
+  syn match   pythonNumber      '\<[1-9][_0-9]*\d\>' display
+  syn match   pythonNumber      '\<\d[jJ]\>' display
+  syn match   pythonNumber      '\<[1-9][_0-9]*\d[jJ]\>' display
 
   syn match   pythonOctError '\<0[oO]\=\o*[8-9]\d*\>' display
   syn match   pythonBinError '\<0[bB][01]*[2-9]\d*\>' display
 
-  syn match   pythonFloat	'\.\d\%([_0-9]*\d\)\=\%([eE][+-]\=\d\%([_0-9]*\d\)\=\)\=[jJ]\=\>' display
-  syn match   pythonFloat	'\<\d\%([_0-9]*\d\)\=[eE][+-]\=\d\%([_0-9]*\d\)\=[jJ]\=\>' display
-  syn match   pythonFloat	'\<\d\%([_0-9]*\d\)\=\.\d\%([_0-9]*\d\)\=\%([eE][+-]\=\d\%([_0-9]*\d\)\=\)\=[jJ]\=' display
+  syn match   pythonFloat    '\.\d\%([_0-9]*\d\)\=\%([eE][+-]\=\d\%([_0-9]*\d\)\=\)\=[jJ]\=\>' display
+  syn match   pythonFloat    '\<\d\%([_0-9]*\d\)\=[eE][+-]\=\d\%([_0-9]*\d\)\=[jJ]\=\>' display
+  syn match   pythonFloat    '\<\d\%([_0-9]*\d\)\=\.\d\%([_0-9]*\d\)\=\%([eE][+-]\=\d\%([_0-9]*\d\)\=\)\=[jJ]\=' display
 endif
 
 "
