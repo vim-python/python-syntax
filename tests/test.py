@@ -11,6 +11,8 @@
 with break continue del exec return pass print raise global assert lambda yield
 for while if elif else import from as try except finally and in is not or
 
+from test import var as name
+
 yield from
 
 def functionname
@@ -61,11 +63,13 @@ RuntimeWarning FutureWarning ImportWarning UnicodeWarning
 
 # Numbers
 
-0 1 2 9 10 0x1f .3 12.34 0j 0j 34.2E-3 0b10 0o77 1023434 0x0
+0 1 2 9 10 0x1f .3 12.34 0j 124j 34.2E-3 0b10 0o77 1023434 0x0
+1_1 1_1.2_2 1_2j 0x_1f 0x1_f 34_56e-3 34_56e+3_1 0o7_7
 
 # Erroneous numbers
 
-077 100L 0xfffffffL 0L 08 0xk 0x  0b102 0o78 0o123LaB
+077 100L 0xfffffffL 0L 08 0xk 0x 0b102 0o78 0o123LaB
+0_ 0_1 0_x1f 0x1f_ 0_b77 0b77_ .2_ 1_j
 
 # Strings
 
@@ -102,6 +106,10 @@ b"{0.name!r:b} {0[n]} {name!s:  } {{test}} {{}} {} {.__len__:s}"
 
 "${test} ${test ${test}aname $$$ $test+nope"
 b"${test} ${test ${test}aname $$$ $test+nope"
+
+f"{var}...{arr[123]} normal {var['{'] // 0xff} \"xzcb\" 'xzcb' {var['}'] + 1} text"
+f"{expr1 if True or False else expr2} wow {','.join(c.lower() for c in 'asdf')}"
+f"hello {expr:.2f} yes {(lambda: 0b1)():#03x} lol {var!r}"
 
 # Doctests.
 
