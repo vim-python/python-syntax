@@ -9,9 +9,10 @@ This is an enhanced version of the original Vim 6.1 Python syntax highlighting
 Features
 --------
 
-* Added support for Python 3 syntax highlighting
+* Added support for Python 3 syntax highlighting, including 3.6 f-strings
+  and numbers with underscores
 * Added commands `Python2Syntax` and `Python3Syntax` allowing to easily switch
-  between Python 2 and Python 3.
+  between Python 2 and Python 3
 * Updated string highlighting
 * Enhanced special symbols highlighting inside strings
 * Enhanced highlighting of numeric constants
