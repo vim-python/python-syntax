@@ -7,26 +7,26 @@ This is an enhanced version of the original Vim 6.1 Python syntax highlighting
 Features
 --------
 
-* Added support for Python 3 syntax highlighting, including 3.6 f-strings
-  and numbers with underscores
-* Added commands `Python2Syntax` and `Python3Syntax` allowing to easily switch
-  between Python 2 and Python 3
-* Updated string highlighting
-* Enhanced special symbols highlighting inside strings
-* Enhanced highlighting of numeric constants
-* Added optional highlighting for %-formatting inside strings
-* Added highlighting for magic comments: source code encoding and
-  shebangs (`#!`)
-* Added highlighting for new exceptions and builtins
-* Added highlighting for doctests
-* Added highlighting for new `@decorator` syntax introduced in Python 2.4a2
-* Added highlighting for the following errors:
+* Enhanced highlighting for:
+  * Strings
+  * Special symbols inside strings
+  * Numeric constants
+* Added support for:
+  * Python 3
+  * Numbers with underscores
+  * String %-formatting and f-strings
+  * Magic comments: source code encoding and shebangs
+  * New exceptions and builtins
+  * Doctests
+  * `@decorator` syntax
+* Highlighting of the following errors:
   * Invalid symbols in source file
   * Mixing spaces and tabs
   * Invalid numeric constants
   * Invalid %-formatting inside strings
   * Invalid variable names
   * Trailing spaces (Enabled with `g:python_highlight_space_errors`)
+* Commands for easy switching between versions
 
 Folding is done by the plugin [SimpylFold](https://github.com/tmhedberg/SimpylFold).
 
