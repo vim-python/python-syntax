@@ -9,9 +9,11 @@
 # Keywords.
 
 with break continue del exec return pass print raise global assert lambda yield
-for while if elif else import from as try except finally and in is not or
+for while if elif else import as try except finally and in is not or
 
 from test import var as name
+
+raise Exception from ex
 
 yield from
 
