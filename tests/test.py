@@ -31,15 +31,18 @@ async for
 
 True False Ellipsis None NotImplemented
 
-# Builtin function and types.
+# Bultin types
 
-__import__ abs all any apply basestring bool buffer callable chr classmethod
-cmp coerce compile complex delattr dict dir divmod enumerate eval execfile file
-filter float frozenset getattr globals hasattr hash help hex id input int
-intern isinstance issubclass iter len list locals long map max min object oct
-open ord pow property range raw_input reduce reload repr reversed round set
-setattr slice sorted staticmethod str sum super tuple type unichr unicode vars
-xrange zip
+bool float frozenset dict int list object str tuple set
+
+# Builtin functions
+
+__import__() abs() all() any() apply() basestring() buffer() callable() chr() classmethod()
+cmp() coerce() compile() complex() delattr() dir() divmod() enumerate() eval() execfile() file()
+filter() getattr() globals() hasattr() hash() help() hex() id() input() intern() isinstance()
+issubclass() iter() len() locals() long() map() max() min() oct() open() ord() pow() property()
+range() raw_input() reduce() reload() repr() reversed() round() setattr() slice() sorted()
+staticmethod() sum() super() type() unichr() unicode() vars() xrange() zip()
 
 # Builtin exceptions and warnings.
 
