@@ -59,7 +59,7 @@ endif
 "
 
 syn keyword pythonInstanceVariable self
-syn keyword pythonClassVaraible cls
+syn keyword pythonClassVariable cls
 syn keyword pythonStatement     break continue del
 syn keyword pythonStatement     exec return
 syn keyword pythonStatement     pass yield
@@ -104,7 +104,7 @@ syn region FunctionParameters start='(\zs' end='\ze)' display contains=
             \ OptionalParameters,
             \ pythonRepeat,
             \ pythonInstanceVariable,
-            \ pythonClassVaraible,
+            \ pythonClassVariable,
             \ pythonConditional,
             \ pythonComment,
             \ pythonOperator,
@@ -519,7 +519,7 @@ if v:version >= 508 || !exists('did_python_syn_inits')
 
   HiLink pythonExClass          Structure
   HiLink pythonInstanceVariable htmlTagN
-  HiLink pythonClassVaraible htmlTagN
+  HiLink pythonClassVariable htmlTagN
   HiLink OptionalParameters htmlTagN
 
   delcommand HiLink
