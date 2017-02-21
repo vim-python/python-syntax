@@ -72,7 +72,7 @@ syn keyword pythonRepeat        for while
 syn keyword pythonConditional   if elif else
 syn keyword pythonException     try except finally
 syn keyword pythonOperator      and in is not or
-syn match pythonStatement       '\s*\([.,]\)\@<!\<yield\>'
+syn match pythonStatement       '\s*[.,]\@<!\<yield\>'
 " The standard pyrex.vim unconditionally removes the pythonInclude group, so
 " we provide a dummy group here to avoid crashing pyrex.vim.
 syn keyword pythonInclude       import
@@ -232,8 +232,8 @@ if s:Python2Syntax()
   syn region pythonUniRawString start=+[uU][rR]"""+ end=+"""+ keepend contains=pythonUniRawEscape,pythonUniRawEscapeError,pythonDocTest2,pythonSpaceError,@Spell
   syn region pythonUniRawString start=+[uU][rR]'''+ end=+'''+ keepend contains=pythonUniRawEscape,pythonUniRawEscapeError,pythonDocTest,pythonSpaceError,@Spell
 
-  syn match  pythonUniRawEscape       '\([^\\]\(\\\\\)*\)\@<=\\u\x\{4}' display contained
-  syn match  pythonUniRawEscapeError  '\([^\\]\(\\\\\)*\)\@<=\\u\x\{,3}\X' display contained
+  syn match  pythonUniRawEscape       '\%([^\\]\%(\\\\\)*\)\@<=\\u\x\{4}' display contained
+  syn match  pythonUniRawEscapeError  '\%([^\\]\%(\\\\\)*\)\@<=\\u\x\{,3}\X' display contained
 endif
 
 " Python 2/3 raw strings
@@ -358,7 +358,7 @@ if s:Enabled('g:python_highlight_builtin_objs')
   syn keyword pythonNone        None
   syn keyword pythonBoolean     True False
   syn keyword pythonBuiltinObj  Ellipsis NotImplemented
-  syn match pythonBuiltinObj    '\v\.@<!<(object|bool|int|float|tuple|str|list|dict|set|frozenset|bytearray|bytes)>' nextgroup=FunctionParameters
+  syn match pythonBuiltinObj    '\v\.@<!<%(object|bool|int|float|tuple|str|list|dict|set|frozenset|bytearray|bytes)>' nextgroup=FunctionParameters
   syn keyword pythonBuiltinObj  __debug__ __doc__ __file__ __name__ __package__
   syn keyword pythonBuiltinObj  __loader__ __spec__ __path__ __cached__
 endif
@@ -369,27 +369,27 @@ endif
 
 if s:Enabled('g:python_highlight_builtin_funcs')
   if s:Python2Syntax()
-    syn match pythonBuiltinFunc  '\v\.@<!\zs<(apply|basestring|buffer|callable|coerce)>\ze\(' nextgroup=FunctionParameters
-    syn match pythonBuiltinFunc  '\v\.@<!\zs<(execfile|file|help|intern|long|raw_input)>\ze\(' nextgroup=FunctionParameters
-    syn match pythonBuiltinFunc  '\v\.@<!\zs<(reduce|reload|unichr|unicode|xrange)>\ze\(' nextgroup=FunctionParameters
+    syn match pythonBuiltinFunc  '\v\.@<!\zs<%(apply|basestring|buffer|callable|coerce)>\ze\(' nextgroup=FunctionParameters
+    syn match pythonBuiltinFunc  '\v\.@<!\zs<%(execfile|file|help|intern|long|raw_input)>\ze\(' nextgroup=FunctionParameters
+    syn match pythonBuiltinFunc  '\v\.@<!\zs<%(reduce|reload|unichr|unicode|xrange)>\ze\(' nextgroup=FunctionParameters
     if s:Enabled('g:python_print_as_function')
-      syn match pythonBuiltinFunc '\v\.@<!\zs<(print)>\ze\(' nextgroup=FunctionParameters
+      syn match pythonBuiltinFunc '\v\.@<!\zs<print>\ze\(' nextgroup=FunctionParameters
     endif
   else
-    syn match pythonBuiltinFunc  '\v\.@<!\zs<(ascii|exec|memoryview|print)>\ze\(' nextgroup=FunctionParameters
+    syn match pythonBuiltinFunc  '\v\.@<!\zs<%(ascii|exec|memoryview|print)>\ze\(' nextgroup=FunctionParameters
   endif
-  syn match pythonBuiltinFunc    '\v\.@<!\zs<(__import__|abs|all|any)>\ze\(' nextgroup=FunctionParameters
-  syn match pythonBuiltinFunc    '\v\.@<!\zs<(bin|chr|classmethod|cmp|compile|complex)>\ze\(' nextgroup=FunctionParameters
-  syn match pythonBuiltinFunc    '\v\.@<!\zs<(delattr|dir|divmod|enumerate|eval)>\ze\(' nextgroup=FunctionParameters
-  syn match pythonBuiltinFunc    '\v\.@<!\zs<(filter|format|getattr)>\ze\(' nextgroup=FunctionParameters
-  syn match pythonBuiltinFunc    '\v\.@<!\zs<(globals|hasattr|hash|hex|id)>\ze\(' nextgroup=FunctionParameters
-  syn match pythonBuiltinFunc    '\v\.@<!\zs<(input|isinstance)>\ze\(' nextgroup=FunctionParameters
-  syn match pythonBuiltinFunc    '\v\.@<!\zs<(issubclass|iter|len|locals|map|max)>\ze\(' nextgroup=FunctionParameters
-  syn match pythonBuiltinFunc    '\v\.@<!\zs<(min|next|oct|open|ord)>\ze\(' nextgroup=FunctionParameters
-  syn match pythonBuiltinFunc    '\v\.@<!\zs<(pow|property|range)>\ze\(' nextgroup=FunctionParameters
-  syn match pythonBuiltinFunc    '\v\.@<!\zs<(repr|reversed|round|setattr)>\ze\(' nextgroup=FunctionParameters
-  syn match pythonBuiltinFunc    '\v\.@<!\zs<(slice|sorted|staticmethod|sum|super)>\ze\(' nextgroup=FunctionParameters
-  syn match pythonBuiltinFunc    '\v\.@<!\zs<(type|vars|zip)>\ze\(' nextgroup=FunctionParameters
+  syn match pythonBuiltinFunc    '\v\.@<!\zs<%(__import__|abs|all|any)>\ze\(' nextgroup=FunctionParameters
+  syn match pythonBuiltinFunc    '\v\.@<!\zs<%(bin|chr|classmethod|cmp|compile|complex)>\ze\(' nextgroup=FunctionParameters
+  syn match pythonBuiltinFunc    '\v\.@<!\zs<%(delattr|dir|divmod|enumerate|eval)>\ze\(' nextgroup=FunctionParameters
+  syn match pythonBuiltinFunc    '\v\.@<!\zs<%(filter|format|getattr)>\ze\(' nextgroup=FunctionParameters
+  syn match pythonBuiltinFunc    '\v\.@<!\zs<%(globals|hasattr|hash|hex|id)>\ze\(' nextgroup=FunctionParameters
+  syn match pythonBuiltinFunc    '\v\.@<!\zs<%(input|isinstance)>\ze\(' nextgroup=FunctionParameters
+  syn match pythonBuiltinFunc    '\v\.@<!\zs<%(issubclass|iter|len|locals|map|max)>\ze\(' nextgroup=FunctionParameters
+  syn match pythonBuiltinFunc    '\v\.@<!\zs<%(min|next|oct|open|ord)>\ze\(' nextgroup=FunctionParameters
+  syn match pythonBuiltinFunc    '\v\.@<!\zs<%(pow|property|range)>\ze\(' nextgroup=FunctionParameters
+  syn match pythonBuiltinFunc    '\v\.@<!\zs<%(repr|reversed|round|setattr)>\ze\(' nextgroup=FunctionParameters
+  syn match pythonBuiltinFunc    '\v\.@<!\zs<%(slice|sorted|staticmethod|sum|super)>\ze\(' nextgroup=FunctionParameters
+  syn match pythonBuiltinFunc    '\v\.@<!\zs<%(type|vars|zip)>\ze\(' nextgroup=FunctionParameters
 endif
 
 "
@@ -398,36 +398,36 @@ endif
 
 if s:Enabled('g:python_highlight_exceptions')
   if s:Python2Syntax()
-      syn match pythonExClass   '\v\.@<!\zs<(StandardError)>' nextgroup=FunctionParameters
+      syn match pythonExClass   '\v\.@<!\zs<%(StandardError)>' nextgroup=FunctionParameters
   else
-      syn match pythonExClass   '\v\.@<!\zs<(BlockingIOError|ChildProcessError)>' nextgroup=FunctionParameters
-      syn match pythonExClass   '\v\.@<!\zs<(ConnectionError|BrokenPipeError)>' nextgroup=FunctionParameters
-      syn match pythonExClass   '\v\.@<!\zs<(ConnectionAbortedError|ConnectionRefusedError)>' nextgroup=FunctionParameters
-      syn match pythonExClass   '\v\.@<!\zs<(ConnectionResetError|FileExistsError)>' nextgroup=FunctionParameters
-      syn match pythonExClass   '\v\.@<!\zs<(FileNotFoundError|InterruptedError)>' nextgroup=FunctionParameters
-      syn match pythonExClass   '\v\.@<!\zs<(IsADirectoryError|NotADirectoryError)>' nextgroup=FunctionParameters
-      syn match pythonExClass   '\v\.@<!\zs<(PermissionError|ProcessLookupError TimeoutError)>' nextgroup=FunctionParameters
-      syn match pythonExClass   '\v\.@<!\zs<(StopAsyncIteration|ResourceWarning)>' nextgroup=FunctionParameters
+      syn match pythonExClass   '\v\.@<!\zs<%(BlockingIOError|ChildProcessError)>' nextgroup=FunctionParameters
+      syn match pythonExClass   '\v\.@<!\zs<%(ConnectionError|BrokenPipeError)>' nextgroup=FunctionParameters
+      syn match pythonExClass   '\v\.@<!\zs<%(ConnectionAbortedError|ConnectionRefusedError)>' nextgroup=FunctionParameters
+      syn match pythonExClass   '\v\.@<!\zs<%(ConnectionResetError|FileExistsError)>' nextgroup=FunctionParameters
+      syn match pythonExClass   '\v\.@<!\zs<%(FileNotFoundError|InterruptedError)>' nextgroup=FunctionParameters
+      syn match pythonExClass   '\v\.@<!\zs<%(IsADirectoryError|NotADirectoryError)>' nextgroup=FunctionParameters
+      syn match pythonExClass   '\v\.@<!\zs<%(PermissionError|ProcessLookupError TimeoutError)>' nextgroup=FunctionParameters
+      syn match pythonExClass   '\v\.@<!\zs<%(StopAsyncIteration|ResourceWarning)>' nextgroup=FunctionParameters
   endif
 
-  syn match pythonExClass   '\v\.@<!<(BaseException|Exception|ArithmeticError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<(LookupError|EnvironmentError|AssertionError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<(AttributeError|BufferError|EOFError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<(FloatingPointError|GeneratorExit|IOError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<(ImportError|IndexError|KeyError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<(KeyboardInterrupt|MemoryError|NameError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<(NotImplementedError|OSError|OverflowError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<(ReferenceError|RuntimeError|StopIteration)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<(SyntaxError|IndentationError|TabError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<(SystemError|SystemExit|TypeError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<(UnboundLocalError|UnicodeError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<(UnicodeEncodeError|UnicodeDecodeError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<(UnicodeTranslateError|ValueError|VMSError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<(WindowsError|ZeroDivisionError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<(Warning|UserWarning|BytesWarning|DeprecationWarning)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<(PendingDepricationWarning|SyntaxWarning)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<(RuntimeWarning|FutureWarning)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<(ImportWarning|UnicodeWarning)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v\.@<!<%(BaseException|Exception|ArithmeticError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v\.@<!\zs<%(LookupError|EnvironmentError|AssertionError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v\.@<!\zs<%(AttributeError|BufferError|EOFError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v\.@<!\zs<%(FloatingPointError|GeneratorExit|IOError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v\.@<!\zs<%(ImportError|IndexError|KeyError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v\.@<!\zs<%(KeyboardInterrupt|MemoryError|NameError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v\.@<!\zs<%(NotImplementedError|OSError|OverflowError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v\.@<!\zs<%(ReferenceError|RuntimeError|StopIteration)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v\.@<!\zs<%(SyntaxError|IndentationError|TabError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v\.@<!\zs<%(SystemError|SystemExit|TypeError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v\.@<!\zs<%(UnboundLocalError|UnicodeError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v\.@<!\zs<%(UnicodeEncodeError|UnicodeDecodeError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v\.@<!\zs<%(UnicodeTranslateError|ValueError|VMSError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v\.@<!\zs<%(WindowsError|ZeroDivisionError)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v\.@<!\zs<%(Warning|UserWarning|BytesWarning|DeprecationWarning)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v\.@<!\zs<%(PendingDepricationWarning|SyntaxWarning)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v\.@<!\zs<%(RuntimeWarning|FutureWarning)>' nextgroup=FunctionParameters
+  syn match pythonExClass   '\v\.@<!\zs<%(ImportWarning|UnicodeWarning)>' nextgroup=FunctionParameters
 endif
 
 if s:Enabled('g:python_slow_sync')
