@@ -367,28 +367,19 @@ endif
 "
 
 if s:Enabled('g:python_highlight_builtin_funcs')
+  let s:funcs_re = '__import__|abs|all|any|bin|chr|classmethod|cmp|compile|complex|delattr|dir|divmod|enumerate|eval|filter|format|getattr|globals|hasattr|hash|hex|id|input|isinstance|issubclass|iter|len|locals|map|max|min|next|oct|open|ord|pow|property|range|repr|reversed|round|setattr|slice|sorted|staticmethod|sum|super|type|vars|zip'
+
   if s:Python2Syntax()
-    syn match pythonBuiltinFunc  '\v\.@<!\zs<%(apply|basestring|buffer|callable|coerce)>\ze\(' nextgroup=FunctionParameters
-    syn match pythonBuiltinFunc  '\v\.@<!\zs<%(execfile|file|help|intern|long|raw_input)>\ze\(' nextgroup=FunctionParameters
-    syn match pythonBuiltinFunc  '\v\.@<!\zs<%(reduce|reload|unichr|unicode|xrange)>\ze\(' nextgroup=FunctionParameters
+    let s:funcs_re .= '|apply|basestring|buffer|callable|coerce|execfile|file|help|intern|long|raw_input|reduce|reload|unichr|unicode|xrange'
     if s:Enabled('g:python_print_as_function')
-      syn match pythonBuiltinFunc '\v\.@<!\zs<print>\ze\(' nextgroup=FunctionParameters
+      let s:funcs_re .= '|print'
     endif
   else
-    syn match pythonBuiltinFunc  '\v\.@<!\zs<%(ascii|exec|memoryview|print)>\ze\(' nextgroup=FunctionParameters
+      let s:funcs_re .= '|ascii|exec|memoryview|print'
   endif
-  syn match pythonBuiltinFunc    '\v\.@<!\zs<%(__import__|abs|all|any)>\ze\(' nextgroup=FunctionParameters
-  syn match pythonBuiltinFunc    '\v\.@<!\zs<%(bin|chr|classmethod|cmp|compile|complex)>\ze\(' nextgroup=FunctionParameters
-  syn match pythonBuiltinFunc    '\v\.@<!\zs<%(delattr|dir|divmod|enumerate|eval)>\ze\(' nextgroup=FunctionParameters
-  syn match pythonBuiltinFunc    '\v\.@<!\zs<%(filter|format|getattr)>\ze\(' nextgroup=FunctionParameters
-  syn match pythonBuiltinFunc    '\v\.@<!\zs<%(globals|hasattr|hash|hex|id)>\ze\(' nextgroup=FunctionParameters
-  syn match pythonBuiltinFunc    '\v\.@<!\zs<%(input|isinstance)>\ze\(' nextgroup=FunctionParameters
-  syn match pythonBuiltinFunc    '\v\.@<!\zs<%(issubclass|iter|len|locals|map|max)>\ze\(' nextgroup=FunctionParameters
-  syn match pythonBuiltinFunc    '\v\.@<!\zs<%(min|next|oct|open|ord)>\ze\(' nextgroup=FunctionParameters
-  syn match pythonBuiltinFunc    '\v\.@<!\zs<%(pow|property|range)>\ze\(' nextgroup=FunctionParameters
-  syn match pythonBuiltinFunc    '\v\.@<!\zs<%(repr|reversed|round|setattr)>\ze\(' nextgroup=FunctionParameters
-  syn match pythonBuiltinFunc    '\v\.@<!\zs<%(slice|sorted|staticmethod|sum|super)>\ze\(' nextgroup=FunctionParameters
-  syn match pythonBuiltinFunc    '\v\.@<!\zs<%(type|vars|zip)>\ze\(' nextgroup=FunctionParameters
+
+  execute 'syn match pythonBuiltinFunc ''\v\.@<!\zs<%('  . s:funcs_re .  ')>\ze\('' nextgroup=FunctionParameters'
+  unlet s:funcs_re
 endif
 
 "
@@ -396,37 +387,16 @@ endif
 "
 
 if s:Enabled('g:python_highlight_exceptions')
+    let s:exs_re = 'BaseException|Exception|ArithmeticError|LookupError|EnvironmentError|AssertionError|AttributeError|BufferError|EOFError|FloatingPointError|GeneratorExit|IOError|ImportError|IndexError|KeyError|KeyboardInterrupt|MemoryError|NameError|NotImplementedError|OSError|OverflowError|ReferenceError|RuntimeError|StopIteration|SyntaxError|IndentationError|TabError|SystemError|SystemExit|TypeError|UnboundLocalError|UnicodeError|UnicodeEncodeError|UnicodeDecodeError|UnicodeTranslateError|ValueError|VMSError|WindowsError|ZeroDivisionError|Warning|UserWarning|BytesWarning|DeprecationWarning|PendingDepricationWarning|SyntaxWarning|RuntimeWarning|FutureWarning|ImportWarning|UnicodeWarning'
+
   if s:Python2Syntax()
-      syn match pythonExClass   '\v\.@<!\zs<%(StandardError)>' nextgroup=FunctionParameters
+      let s:exs_re .= '|StandardError'
   else
-      syn match pythonExClass   '\v\.@<!\zs<%(BlockingIOError|ChildProcessError)>' nextgroup=FunctionParameters
-      syn match pythonExClass   '\v\.@<!\zs<%(ConnectionError|BrokenPipeError)>' nextgroup=FunctionParameters
-      syn match pythonExClass   '\v\.@<!\zs<%(ConnectionAbortedError|ConnectionRefusedError)>' nextgroup=FunctionParameters
-      syn match pythonExClass   '\v\.@<!\zs<%(ConnectionResetError|FileExistsError)>' nextgroup=FunctionParameters
-      syn match pythonExClass   '\v\.@<!\zs<%(FileNotFoundError|InterruptedError)>' nextgroup=FunctionParameters
-      syn match pythonExClass   '\v\.@<!\zs<%(IsADirectoryError|NotADirectoryError)>' nextgroup=FunctionParameters
-      syn match pythonExClass   '\v\.@<!\zs<%(PermissionError|ProcessLookupError TimeoutError)>' nextgroup=FunctionParameters
-      syn match pythonExClass   '\v\.@<!\zs<%(StopAsyncIteration|ResourceWarning)>' nextgroup=FunctionParameters
+      let s:exs_re .= '|BlockingIOError|ChildProcessError|ConnectionError|BrokenPipeError|ConnectionAbortedError|ConnectionRefusedError|ConnectionResetError|FileExistsError|FileNotFoundError|InterruptedError|IsADirectoryError|NotADirectoryError|PermissionError|ProcessLookupError|TimeoutError|StopAsyncIteration|ResourceWarning'
   endif
 
-  syn match pythonExClass   '\v\.@<!<%(BaseException|Exception|ArithmeticError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<%(LookupError|EnvironmentError|AssertionError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<%(AttributeError|BufferError|EOFError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<%(FloatingPointError|GeneratorExit|IOError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<%(ImportError|IndexError|KeyError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<%(KeyboardInterrupt|MemoryError|NameError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<%(NotImplementedError|OSError|OverflowError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<%(ReferenceError|RuntimeError|StopIteration)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<%(SyntaxError|IndentationError|TabError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<%(SystemError|SystemExit|TypeError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<%(UnboundLocalError|UnicodeError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<%(UnicodeEncodeError|UnicodeDecodeError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<%(UnicodeTranslateError|ValueError|VMSError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<%(WindowsError|ZeroDivisionError)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<%(Warning|UserWarning|BytesWarning|DeprecationWarning)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<%(PendingDepricationWarning|SyntaxWarning)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<%(RuntimeWarning|FutureWarning)>' nextgroup=FunctionParameters
-  syn match pythonExClass   '\v\.@<!\zs<%(ImportWarning|UnicodeWarning)>' nextgroup=FunctionParameters
+  execute 'syn match pythonExClass ''\v\.@<!\zs<%(' . s:exs_re . ')>'' nextgroup=FunctionParameters'
+  unlet s:exs_re
 endif
 
 if s:Enabled('g:python_slow_sync')

@@ -40,7 +40,7 @@ bool float frozenset dict int list object str tuple set
 __import__() abs() all() any() apply() basestring() buffer() callable() chr() classmethod()
 cmp() coerce() compile() complex() delattr() dir() divmod() enumerate() eval() execfile() file()
 filter() getattr() globals() hasattr() hash() help() hex() id() input() intern() isinstance()
-issubclass() iter() len() locals() long() map() max() min() oct() open() ord() pow() property()
+issubclass() iter() len() locals() long() map() max() min() oct() open() ord() pow() print() property()
 range() raw_input() reduce() reload() repr() reversed() round() setattr() slice() sorted()
 staticmethod() sum() super() type() unichr() unicode() vars() xrange() zip()
 
