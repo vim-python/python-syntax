@@ -79,12 +79,17 @@ RuntimeWarning FutureWarning ImportWarning UnicodeWarning
 # Strings
 
 " test " ' test '
+"test\
+test"
+'test\
+test'
+
 """
   test
-"""
+\""""
 '''
   test
-'''
+\''''
 
 " \a\b\c\"\'\n\r \x34\077 \08 \xag"
 r" \" \' "
