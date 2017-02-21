@@ -72,7 +72,6 @@ syn keyword pythonRepeat        for while
 syn keyword pythonConditional   if elif else
 syn keyword pythonException     try except finally
 syn keyword pythonOperator      and in is not or
-syn match pythonStatement       '\s*[.,]\@<!\<yield\>'
 " The standard pyrex.vim unconditionally removes the pythonInclude group, so
 " we provide a dummy group here to avoid crashing pyrex.vim.
 syn keyword pythonInclude       import
