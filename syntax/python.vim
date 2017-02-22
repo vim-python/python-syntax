@@ -52,14 +52,13 @@ if s:Enabled('g:python_highlight_all')
   call s:EnableByDefault('g:python_highlight_space_errors')
   call s:EnableByDefault('g:python_highlight_doctests')
   call s:EnableByDefault('g:python_print_as_function')
+  call s:EnableByDefault('g:python_highlight_class_vars')
 endif
 
 "
 " Keywords
 "
 
-syn keyword pythonInstanceVariable self
-syn keyword pythonClassVariable cls
 syn keyword pythonStatement     break continue del
 syn keyword pythonStatement     exec return
 syn keyword pythonStatement     pass yield
@@ -68,6 +67,9 @@ syn keyword pythonStatement     global assert
 syn keyword pythonStatement     lambda
 syn keyword pythonStatement     with
 syn keyword pythonStatement     def class nextgroup=pythonFunction skipwhite
+if s:Enabled('g:python_highlight_class_vars')
+  syn keyword pythonClassVar    self cls
+endif
 syn keyword pythonRepeat        for while
 syn keyword pythonConditional   if elif else
 syn keyword pythonException     try except finally
@@ -102,8 +104,7 @@ syn region FunctionParameters start='(\zs' end='\ze)' display contains=
             \ FunctionParameters,
             \ OptionalParameters,
             \ pythonRepeat,
-            \ pythonInstanceVariable,
-            \ pythonClassVariable,
+            \ pythonClassVar,
             \ pythonConditional,
             \ pythonComment,
             \ pythonOperator,
@@ -125,7 +126,7 @@ syn region FunctionParameters start='(\zs' end='\ze)' display contains=
             \ pythonNone,
             \ pythonBuiltinFunc,
             \ pythonBoolean nextgroup=pythonRaiseFromStatement display contained
-syn match OptionalParameters /\i*\ze=/ display contained
+syn match OptionalParameters /\i\+\ze=/ display contained
 "
 " Decorators (new in Python 2.4)
 "
@@ -486,9 +487,8 @@ if v:version >= 508 || !exists('did_python_syn_inits')
   HiLink pythonBuiltinFunc      Function
 
   HiLink pythonExClass          Structure
-  HiLink pythonInstanceVariable htmlTagN
-  HiLink pythonClassVariable htmlTagN
-  HiLink OptionalParameters htmlTagN
+  HiLink pythonClassVar         Identifier
+  HiLink OptionalParameters     Identifier
 
   delcommand HiLink
 endif
