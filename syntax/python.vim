@@ -78,7 +78,7 @@ syn keyword pythonOperator      and in is not or
 " we provide a dummy group here to avoid crashing pyrex.vim.
 syn keyword pythonInclude       import
 syn keyword pythonImport        import
-syn match pythonIdentifier      '\v[a-zA-Z_][a-zA-Z0-9_]*' nextgroup=FunctionParameters
+syn match pythonIdentifier      '\v[a-zA-Z_][a-zA-Z0-9_]*' nextgroup=pythonFunctionArgs
 syn match pythonRaiseFromStatement      '\<from\>'
 syn match pythonImport          '^\s*\zsfrom\>'
 
@@ -89,53 +89,28 @@ if s:Python2Syntax()
     syn keyword pythonStatement  print
   endif
   syn keyword pythonImport      as
-  syn match   pythonFunction    '[a-zA-Z_][a-zA-Z0-9_]*' nextgroup=FunctionParameters display contained
+  syn match   pythonFunction    '[a-zA-Z_][a-zA-Z0-9_]*' nextgroup=pythonFunctionArgs display contained
 else
   syn keyword pythonStatement   as nonlocal
   syn match   pythonStatement   '\v\.@<!<await>'
-  syn match   pythonFunction    '[a-zA-Z_][a-zA-Z0-9_]*' nextgroup=FunctionParameters display contained
+  syn match   pythonFunction    '[a-zA-Z_][a-zA-Z0-9_]*' nextgroup=pythonFunctionArgs display contained
   syn match   pythonStatement   '\<async\s\+def\>' nextgroup=pythonFunction skipwhite
   syn match   pythonStatement   '\<async\s\+with\>'
   syn match   pythonStatement   '\<async\s\+for\>'
   syn cluster pythonExpression contains=pythonStatement,pythonRepeat,pythonConditional,pythonOperator,pythonNumber,pythonHexNumber,pythonOctNumber,pythonBinNumber,pythonFloat,pythonString,pythonBytes,pythonBoolean,pythonBuiltinObj,pythonBuiltinFunc
 endif
 
-syn region FunctionParameters start='(\zs' end='\ze)' display contains=
-            \ FunctionParameters,
-            \ OptionalParameters,
-            \ pythonRepeat,
-            \ pythonClassVar,
-            \ pythonConditional,
-            \ pythonComment,
-            \ pythonOperator,
-            \ pythonNumber,
-            \ pythonNumberError,
-            \ pythonFloat,
-            \ pythonHexNumber,
-            \ pythonStatement,
-            \ pythonOctNumber,
-            \ pythonString,
-            \ pythonRawString,
-            \ pythonUniString,
-            \ pythonExClass,
-            \ pythonUniRawString,
-            \ pythonNumber,
-            \ pythonRawString,
-            \ pythonBytes,
-            \ pythonBuiltinObj,
-            \ pythonNone,
-            \ pythonBuiltinFunc,
-            \ pythonBoolean nextgroup=pythonRaiseFromStatement display contained
-syn match OptionalParameters /\i\+\ze=/ display contained
+syn region pythonFunctionArgs start='('rs=s+1 end=')'re=e-1 contains=pythonFunctionArgs,pythonFunctionKwargs,pythonRepeat,pythonClassVar,pythonConditional,pythonComment,pythonOperator,pythonNumber,pythonNumberError,pythonFloat,pythonHexNumber,pythonStatement,pythonOctNumber,pythonString,pythonRawString,pythonUniString,pythonExClass,pythonUniRawString,pythonNumber,pythonRawString,pythonBytes,pythonBuiltinObj,pythonNone,pythonBuiltinFunc,pythonBoolean nextgroup=pythonRaiseFromStatement display contained
+syn match pythonFunctionKwargs /\i\+\ze=/ display contained
 "
 " Decorators (new in Python 2.4)
 "
 
 syn match   pythonDecorator    '^\s*\zs@' display nextgroup=pythonDottedName skipwhite
 if s:Python2Syntax()
-  syn match   pythonDottedName '[a-zA-Z_][a-zA-Z0-9_]*\%(\.[a-zA-Z_][a-zA-Z0-9_]*\)*' display contained nextgroup=FunctionParameters
+  syn match   pythonDottedName '[a-zA-Z_][a-zA-Z0-9_]*\%(\.[a-zA-Z_][a-zA-Z0-9_]*\)*' display contained nextgroup=pythonFunctionArgs
 else
-  syn match   pythonDottedName '\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\%(\.\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\)*' display contained nextgroup=FunctionParameters
+  syn match   pythonDottedName '\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\%(\.\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\)*' display contained nextgroup=pythonFunctionArgs
 endif
 syn match   pythonDot        '\.' display containedin=pythonDottedName
 
@@ -357,7 +332,7 @@ if s:Enabled('g:python_highlight_builtin_objs')
   syn keyword pythonNone        None
   syn keyword pythonBoolean     True False
   syn keyword pythonBuiltinObj  Ellipsis NotImplemented
-  syn match pythonBuiltinObj    '\v\.@<!<%(object|bool|int|float|tuple|str|list|dict|set|frozenset|bytearray|bytes)>' nextgroup=FunctionParameters
+  syn match pythonBuiltinObj    '\v\.@<!<%(object|bool|int|float|tuple|str|list|dict|set|frozenset|bytearray|bytes)>' nextgroup=pythonFunctionArgs
   syn keyword pythonBuiltinObj  __debug__ __doc__ __file__ __name__ __package__
   syn keyword pythonBuiltinObj  __loader__ __spec__ __path__ __cached__
 endif
@@ -378,7 +353,7 @@ if s:Enabled('g:python_highlight_builtin_funcs')
       let s:funcs_re .= '|ascii|exec|memoryview|print'
   endif
 
-  execute 'syn match pythonBuiltinFunc ''\v\.@<!\zs<%('  . s:funcs_re .  ')>\ze\('' nextgroup=FunctionParameters'
+  execute 'syn match pythonBuiltinFunc ''\v\.@<!\zs<%('  . s:funcs_re .  ')>\ze\('' nextgroup=pythonFunctionArgs'
   unlet s:funcs_re
 endif
 
@@ -395,7 +370,7 @@ if s:Enabled('g:python_highlight_exceptions')
       let s:exs_re .= '|BlockingIOError|ChildProcessError|ConnectionError|BrokenPipeError|ConnectionAbortedError|ConnectionRefusedError|ConnectionResetError|FileExistsError|FileNotFoundError|InterruptedError|IsADirectoryError|NotADirectoryError|PermissionError|ProcessLookupError|TimeoutError|StopAsyncIteration|ResourceWarning'
   endif
 
-  execute 'syn match pythonExClass ''\v\.@<!\zs<%(' . s:exs_re . ')>'' nextgroup=FunctionParameters'
+  execute 'syn match pythonExClass ''\v\.@<!\zs<%(' . s:exs_re . ')>'' nextgroup=pythonFunctionArgs'
   unlet s:exs_re
 endif
 
@@ -488,7 +463,7 @@ if v:version >= 508 || !exists('did_python_syn_inits')
 
   HiLink pythonExClass          Structure
   HiLink pythonClassVar         Identifier
-  HiLink OptionalParameters     Identifier
+  HiLink pythonFunctionKwargs   Identifier
 
   delcommand HiLink
 endif
