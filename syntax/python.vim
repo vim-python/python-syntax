@@ -53,6 +53,7 @@ if s:Enabled('g:python_highlight_all')
   call s:EnableByDefault('g:python_highlight_doctests')
   call s:EnableByDefault('g:python_print_as_function')
   call s:EnableByDefault('g:python_highlight_class_vars')
+  call s:EnableByDefault('g:python_highlight_extra_operators')
 endif
 
 "
@@ -81,6 +82,9 @@ syn keyword pythonImport        import
 syn match pythonIdentifier      '\v[a-zA-Z_][a-zA-Z0-9_]*' nextgroup=pythonFunctionArgs
 syn match pythonRaiseFromStatement      '\<from\>'
 syn match pythonImport          '^\s*\zsfrom\>'
+if s:Enabled('g:python_highlight_extra_operators')
+  syn match pythonExtraOperator '[-+\*/%<>^&|~!=]' display
+endif
 
 
 
@@ -97,10 +101,10 @@ else
   syn match   pythonStatement   '\<async\s\+def\>' nextgroup=pythonFunction skipwhite
   syn match   pythonStatement   '\<async\s\+with\>'
   syn match   pythonStatement   '\<async\s\+for\>'
-  syn cluster pythonExpression contains=pythonStatement,pythonRepeat,pythonConditional,pythonOperator,pythonNumber,pythonHexNumber,pythonOctNumber,pythonBinNumber,pythonFloat,pythonString,pythonBytes,pythonBoolean,pythonBuiltinObj,pythonBuiltinFunc
+  syn cluster pythonExpression contains=pythonStatement,pythonRepeat,pythonConditional,pythonOperator,pythonExtraOperator,pythonNumber,pythonHexNumber,pythonOctNumber,pythonBinNumber,pythonFloat,pythonString,pythonBytes,pythonBoolean,pythonBuiltinObj,pythonBuiltinFunc
 endif
 
-syn region pythonFunctionArgs start='('rs=s+1 end=')'re=e-1 contains=pythonFunctionArgs,pythonFunctionKwargs,pythonRepeat,pythonClassVar,pythonConditional,pythonComment,pythonOperator,pythonNumber,pythonNumberError,pythonFloat,pythonHexNumber,pythonStatement,pythonOctNumber,pythonString,pythonRawString,pythonUniString,pythonExClass,pythonUniRawString,pythonNumber,pythonRawString,pythonBytes,pythonBuiltinObj,pythonNone,pythonBuiltinFunc,pythonBoolean nextgroup=pythonRaiseFromStatement display contained
+syn region pythonFunctionArgs start='('rs=s+1 end=')'re=e-1 contains=pythonFunctionArgs,pythonFunctionKwargs,pythonRepeat,pythonClassVar,pythonConditional,pythonComment,pythonOperator,pythonExtraOperator,pythonNumber,pythonNumberError,pythonFloat,pythonHexNumber,pythonStatement,pythonOctNumber,pythonString,pythonRawString,pythonUniString,pythonExClass,pythonUniRawString,pythonNumber,pythonRawString,pythonBytes,pythonBuiltinObj,pythonNone,pythonBuiltinFunc,pythonBoolean nextgroup=pythonRaiseFromStatement display contained
 syn match pythonFunctionKwargs /\i\+\ze=/ display contained
 "
 " Decorators (new in Python 2.4)
@@ -400,6 +404,7 @@ if v:version >= 508 || !exists('did_python_syn_inits')
   HiLink pythonRepeat           Repeat
   HiLink pythonException        Exception
   HiLink pythonOperator         Operator
+  HiLink pythonExtraOperator    Operator
 
   HiLink pythonDecorator        Define
   HiLink pythonDottedName       Function
