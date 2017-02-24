@@ -53,6 +53,7 @@ if s:Enabled('g:python_highlight_all')
   call s:EnableByDefault('g:python_highlight_doctests')
   call s:EnableByDefault('g:python_print_as_function')
   call s:EnableByDefault('g:python_highlight_class_vars')
+  call s:EnableByDefault('g:python_highlight_operators')
 endif
 
 "
@@ -73,7 +74,6 @@ endif
 syn keyword pythonRepeat        for while
 syn keyword pythonConditional   if elif else
 syn keyword pythonException     try except finally
-syn keyword pythonOperator      and in is not or
 " The standard pyrex.vim unconditionally removes the pythonInclude group, so
 " we provide a dummy group here to avoid crashing pyrex.vim.
 syn keyword pythonInclude       import
@@ -81,7 +81,6 @@ syn keyword pythonImport        import
 syn match pythonIdentifier      '\v[a-zA-Z_][a-zA-Z0-9_]*'
 syn match pythonRaiseFromStatement      '\<from\>'
 syn match pythonImport          '^\s*\zsfrom\>'
-
 
 
 if s:Python2Syntax()
@@ -99,6 +98,16 @@ else
   syn match   pythonStatement   '\<async\s\+for\>'
   syn cluster pythonExpression contains=pythonStatement,pythonRepeat,pythonConditional,pythonOperator,pythonNumber,pythonHexNumber,pythonOctNumber,pythonBinNumber,pythonFloat,pythonString,pythonBytes,pythonBoolean,pythonBuiltinObj,pythonBuiltinFunc
 endif
+
+
+"
+" Operators
+"
+syn keyword pythonOperator      and in is not or
+if s:Enabled('g:python_highlight_operators')
+    syn match pythonOperator        '\V=\|-\|+\|*\|@\|/\|%\|&\||\|^\|~\|<\|>\|!='
+endif
+syn match pythonError           '[$?]\|\([-+@%&|^~]\)\1\{1,}\|\([=*/<>]\)\2\{2,}\|\([-=+*@/%&|^~<>]\)\3\@![-+*@/%&|^~<>]\|[<!>]\+=\{2,}\|[<!>]\{2,}=\+' display
 
 "
 " Decorators (new in Python 2.4)
@@ -127,10 +136,7 @@ syn keyword pythonTodo          TODO FIXME XXX contained
 " Errors
 "
 
-syn match pythonError           '\<\d\+\D\+\>' display
-syn match pythonError           '[$?]' display
-syn match pythonError           '[&|]\{2,}' display
-syn match pythonError           '[=]\{3,}' display
+syn match pythonError           '\<\d\+[^0-9[:space:]]\+\>' display
 
 " Mixing spaces and tabs also may be used for pretty formatting multiline
 " statements
@@ -275,34 +281,34 @@ endif
 "
 
 if s:Python2Syntax()
-  syn match   pythonHexError '\<0[xX]\x*[g-zG-Z]\+\x*[lL]\=\>' display
-  syn match   pythonOctError '\<0[oO]\=\o*\D\+\d*[lL]\=\>' display
-  syn match   pythonBinError '\<0[bB][01]*\D\+\d*[lL]\=\>' display
+  syn match   pythonHexError    '\<0[xX]\x*[g-zG-Z]\+\x*[lL]\=\>' display
+  syn match   pythonOctError    '\<0[oO]\=\o*\D\+\d*[lL]\=\>' display
+  syn match   pythonBinError    '\<0[bB][01]*\D\+\d*[lL]\=\>' display
 
-  syn match   pythonHexNumber '\<0[xX]\x\+[lL]\=\>' display
-  syn match   pythonOctNumber '\<0[oO]\o\+[lL]\=\>' display
-  syn match   pythonBinNumber '\<0[bB][01]\+[lL]\=\>' display
+  syn match   pythonHexNumber   '\<0[xX]\x\+[lL]\=\>' display
+  syn match   pythonOctNumber   '\<0[oO]\o\+[lL]\=\>' display
+  syn match   pythonBinNumber   '\<0[bB][01]\+[lL]\=\>' display
 
   syn match   pythonNumberError '\<\d\+\D[lL]\=\>' display
   syn match   pythonNumber      '\<\d[lL]\=\>' display
   syn match   pythonNumber      '\<[0-9]\d\+[lL]\=\>' display
   syn match   pythonNumber      '\<\d\+[lLjJ]\>' display
 
-  syn match   pythonOctError '\<0[oO]\=\o*[8-9]\d*[lL]\=\>' display
-  syn match   pythonBinError '\<0[bB][01]*[2-9]\d*[lL]\=\>' display
+  syn match   pythonOctError    '\<0[oO]\=\o*[8-9]\d*[lL]\=\>' display
+  syn match   pythonBinError    '\<0[bB][01]*[2-9]\d*[lL]\=\>' display
 
-  syn match   pythonFloat    '\.\d\+\%([eE][+-]\=\d\+\)\=[jJ]\=\>' display
-  syn match   pythonFloat    '\<\d\+[eE][+-]\=\d\+[jJ]\=\>' display
-  syn match   pythonFloat    '\<\d\+\.\d*\%([eE][+-]\=\d\+\)\=[jJ]\=' display
+  syn match   pythonFloat       '\.\d\+\%([eE][+-]\=\d\+\)\=[jJ]\=\>' display
+  syn match   pythonFloat       '\<\d\+[eE][+-]\=\d\+[jJ]\=\>' display
+  syn match   pythonFloat       '\<\d\+\.\d*\%([eE][+-]\=\d\+\)\=[jJ]\=' display
 else
-  syn match   pythonOctError '\<0[oO]\=\o*\D\+\d*\>' display
+  syn match   pythonOctError    '\<0[oO]\=\o*\D\+\d*\>' display
   " pythonHexError comes after pythonOctError so that 0xffffl is pythonHexError
-  syn match   pythonHexError '\<0[xX]\x*[g-zG-Z]\x*\>' display
-  syn match   pythonBinError '\<0[bB][01]*\D\+\d*\>' display
+  syn match   pythonHexError    '\<0[xX]\x*[g-zG-Z]\x*\>' display
+  syn match   pythonBinError    '\<0[bB][01]*\D\+\d*\>' display
 
-  syn match   pythonHexNumber '\<0[xX][_0-9a-fA-F]*\x\>' display
-  syn match   pythonOctNumber '\<0[oO][_0-7]*\o\>' display
-  syn match   pythonBinNumber '\<0[bB][_01]*[01]\>' display
+  syn match   pythonHexNumber   '\<0[xX][_0-9a-fA-F]*\x\>' display
+  syn match   pythonOctNumber   '\<0[oO][_0-7]*\o\>' display
+  syn match   pythonBinNumber   '\<0[bB][_01]*[01]\>' display
 
   syn match   pythonNumberError '\<\d[_0-9]*\D\>' display
   syn match   pythonNumberError '\<0[_0-9]\+\>' display
@@ -314,12 +320,12 @@ else
   syn match   pythonNumber      '\<\d[jJ]\>' display
   syn match   pythonNumber      '\<[1-9][_0-9]*\d[jJ]\>' display
 
-  syn match   pythonOctError '\<0[oO]\=\o*[8-9]\d*\>' display
-  syn match   pythonBinError '\<0[bB][01]*[2-9]\d*\>' display
+  syn match   pythonOctError    '\<0[oO]\=\o*[8-9]\d*\>' display
+  syn match   pythonBinError    '\<0[bB][01]*[2-9]\d*\>' display
 
-  syn match   pythonFloat    '\.\d\%([_0-9]*\d\)\=\%([eE][+-]\=\d\%([_0-9]*\d\)\=\)\=[jJ]\=\>' display
-  syn match   pythonFloat    '\<\d\%([_0-9]*\d\)\=[eE][+-]\=\d\%([_0-9]*\d\)\=[jJ]\=\>' display
-  syn match   pythonFloat    '\<\d\%([_0-9]*\d\)\=\.\d\%([_0-9]*\d\)\=\%([eE][+-]\=\d\%([_0-9]*\d\)\=\)\=[jJ]\=' display
+  syn match   pythonFloat       '\.\d\%([_0-9]*\d\)\=\%([eE][+-]\=\d\%([_0-9]*\d\)\=\)\=[jJ]\=\>' display
+  syn match   pythonFloat       '\<\d\%([_0-9]*\d\)\=[eE][+-]\=\d\%([_0-9]*\d\)\=[jJ]\=\>' display
+  syn match   pythonFloat       '\<\d\%([_0-9]*\d\)\=\.\d\%([_0-9]*\d\)\=\%([eE][+-]\=\d\%([_0-9]*\d\)\=\)\=[jJ]\=' display
 endif
 
 "

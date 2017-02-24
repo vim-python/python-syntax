@@ -9,7 +9,7 @@
 # Keywords.
 
 with break continue del exec return pass print raise global assert lambda yield
-for while if elif else import as try except finally and in is not or
+for while if elif else import as try except finally
 
 from test import var as name
 
@@ -65,6 +65,23 @@ RuntimeWarning FutureWarning ImportWarning UnicodeWarning
 @ object.__init__(arg1, arg2)
 @ декоратор
 @ декоратор.décorateur
+
+# Operators
+
+and or in is not
+=
+- + * ** @ / // %
+& | ^ ~ << >>
+< <= == != >= >
+
+# Erroneous operators
+
+$ ?
+===
+-- ++ *** @@ /// %%
+&& || ^^ ~~ <<< >>>
+<== <<= !== !!= >== >>=
+%- +- -+
 
 # Numbers
 
@@ -141,11 +158,10 @@ f"hello {expr:.2f} yes {(lambda: 0b1)():#03x} lol {var!r}"
     Test
 '''
 
-# Erroneous symbols or bad variable names.
+# Erroneous variable names
 
-$ ? 6xav
+6xav
 
-&& || ===
 
 # Indentation errors.
 
