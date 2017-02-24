@@ -19,12 +19,15 @@ Features
   * New exceptions and builtins
   * Doctests
   * `@decorator` syntax
+  * Class variables such as `self` and `cls`
+  * Operators
 * Highlighting of the following errors:
   * Invalid symbols in source file
-  * Mixing spaces and tabs
   * Invalid numeric constants
   * Invalid %-formatting inside strings
   * Invalid variable names
+  * Invalid operators
+  * Mixing spaces and tabs
   * Trailing spaces (Enabled with `g:python_highlight_space_errors`)
 * Commands for easy switching between versions
 
