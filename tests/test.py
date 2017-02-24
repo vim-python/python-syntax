@@ -69,10 +69,14 @@ RuntimeWarning FutureWarning ImportWarning UnicodeWarning
 # Operators
 
 and or in is not
-=
+
 - + * ** @ / // %
 & | ^ ~ << >>
 < <= == != >= >
+
+=
+-= += *= **= @= /= //= %=
+&= |= ^= ~= <<= >>=
 
 # Erroneous operators
 
@@ -80,7 +84,7 @@ $ ?
 ===
 -- ++ *** @@ /// %%
 && || ^^ ~~ <<< >>>
-<== <<= !== !!= >== >>=
+<== !== !!= >==
 %- +- -+
 
 # Numbers
