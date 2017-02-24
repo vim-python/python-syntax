@@ -353,7 +353,7 @@ if s:Enabled('g:python_highlight_builtin_funcs')
       let s:funcs_re .= '|ascii|exec|memoryview|print'
   endif
 
-  execute 'syn match pythonBuiltinFunc ''\v\.@<!\zs<%('  . s:funcs_re .  ')>\ze\('' nextgroup=pythonFunctionArgs'
+  execute 'syn match pythonBuiltinFunc ''\v\.@<!\zs<%('  . s:funcs_re .  ')>'' nextgroup=pythonFunctionArgs'
   unlet s:funcs_re
 endif
 
