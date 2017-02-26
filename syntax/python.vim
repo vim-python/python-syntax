@@ -63,7 +63,7 @@ endif
 syn keyword pythonStatement     break continue del
 syn keyword pythonStatement     exec return
 syn keyword pythonStatement     pass yield
-syn keyword pythonStatement     raise nextgroup=pythonIdentifier,pythonExClass skipwhite
+syn keyword pythonStatement     raise nextgroup=pythonExClass skipwhite
 syn keyword pythonStatement     global assert
 syn keyword pythonStatement     lambda
 syn keyword pythonStatement     with
@@ -78,7 +78,6 @@ syn keyword pythonException     try except finally
 " we provide a dummy group here to avoid crashing pyrex.vim.
 syn keyword pythonInclude       import
 syn keyword pythonImport        import
-syn match pythonIdentifier      '\v[a-zA-Z_][a-zA-Z0-9_]*'
 syn match pythonRaiseFromStatement      '\<from\>'
 syn match pythonImport          '^\s*\zsfrom\>'
 
