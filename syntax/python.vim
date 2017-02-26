@@ -60,13 +60,8 @@ endif
 " Keywords
 "
 
-syn keyword pythonStatement     break continue del
-syn keyword pythonStatement     exec return
-syn keyword pythonStatement     pass yield
+syn keyword pythonStatement     break continue del return pass yield global assert lambda with
 syn keyword pythonStatement     raise nextgroup=pythonExClass skipwhite
-syn keyword pythonStatement     global assert
-syn keyword pythonStatement     lambda
-syn keyword pythonStatement     with
 syn keyword pythonStatement     def class nextgroup=pythonFunction skipwhite
 if s:Enabled('g:python_highlight_class_vars')
   syn keyword pythonClassVar    self cls
@@ -86,6 +81,7 @@ if s:Python2Syntax()
   if !s:Enabled('g:python_print_as_function')
     syn keyword pythonStatement  print
   endif
+  syn keyword pythonStatement   exec
   syn keyword pythonImport      as
   syn match   pythonFunction    '[a-zA-Z_][a-zA-Z0-9_]*' display contained
 else
@@ -345,15 +341,15 @@ endif
 "
 
 if s:Enabled('g:python_highlight_builtin_funcs')
-  let s:funcs_re = '__import__|abs|all|any|bin|chr|classmethod|cmp|compile|complex|delattr|dir|divmod|enumerate|eval|filter|format|getattr|globals|hasattr|hash|hex|id|input|isinstance|issubclass|iter|len|locals|map|max|min|next|oct|open|ord|pow|property|range|repr|reversed|round|setattr|slice|sorted|staticmethod|sum|super|type|vars|zip'
+  let s:funcs_re = '__import__|abs|all|any|bin|callable|chr|classmethod|cmp|compile|complex|delattr|dir|divmod|enumerate|eval|filter|format|getattr|globals|hasattr|hash|help|hex|id|input|isinstance|issubclass|iter|len|locals|map|max|min|memoryview|next|oct|open|ord|pow|property|range|repr|reversed|round|setattr|slice|sorted|staticmethod|sum|super|type|vars|zip'
 
   if s:Python2Syntax()
-    let s:funcs_re .= '|apply|basestring|buffer|callable|coerce|execfile|file|help|intern|long|raw_input|reduce|reload|unichr|unicode|xrange'
+    let s:funcs_re .= '|apply|basestring|buffer|coerce|execfile|file|intern|long|raw_input|reduce|reload|unichr|unicode|xrange'
     if s:Enabled('g:python_print_as_function')
       let s:funcs_re .= '|print'
     endif
   else
-      let s:funcs_re .= '|ascii|exec|memoryview|print'
+      let s:funcs_re .= '|ascii|exec|print'
   endif
 
   execute 'syn match pythonBuiltinFunc ''\v\.@<!\zs<%('  . s:funcs_re .  ')>'''

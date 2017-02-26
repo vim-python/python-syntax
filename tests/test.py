@@ -8,7 +8,7 @@
 
 # Keywords.
 
-with break continue del exec return pass print raise global assert lambda yield
+with break continue del return pass raise global assert lambda yield
 for while if elif else import as try except finally
 
 from test import var as name
@@ -22,6 +22,13 @@ class Classname
 def функция
 class Класс
 
+# Keywords: Python 2
+
+exec
+print
+
+# Keywords: Python 3
+
 await
 async def Test
 async with
@@ -33,16 +40,48 @@ True False Ellipsis None NotImplemented
 
 # Bultin types
 
-bool float frozenset dict int list object str tuple set
+bool bytearray dict float frozenset int list object set str tuple
 
-# Builtin functions
+# Builtin functions: Python 2
 
-__import__ abs all any apply basestring buffer callable chr classmethod
-cmp coerce compile complex delattr dir divmod enumerate eval execfile file
-filter getattr globals hasattr hash help hex id input intern isinstance
-issubclass iter len locals long map max min oct open ord pow print property
-range raw_input reduce reload repr reversed round setattr slice sorted
-staticmethod sum super type unichr unicode vars xrange zip
+abs()          divmod()     input()       open()       staticmethod()
+all()          enumerate()  int()         ord()        str()
+any()          eval()       isinstance()  pow()        sum()
+basestring()   execfile()   issubclass()  print()      super()
+bin()          file()       iter()        property()   tuple()
+bool()         filter()     len()         range()      type()
+bytearray()    float()      list()        raw_input()  unichr()
+callable()     format()     locals()      reduce()     unicode()
+chr()          frozenset()  long()        reload()     vars()
+classmethod()  getattr()    map()         repr()       xrange()
+cmp()          globals()    max()         reversed()   zip()
+compile()      hasattr()    memoryview()  round()      __import__()
+complex()      hash()       min()         set()
+delattr()      help()       next()        setattr()
+dict()         hex()        object()      slice()
+dir()          id()         oct()         sorted()
+
+apply()
+buffer()
+coerce()
+intern()
+
+# Builtin functions: Python 3
+
+abs()          dict()       help()        min()       setattr()
+all()          dir()        hex()         next()      slice()
+any()          divmod()     id()          object()    sorted()
+ascii()        enumerate()  input()       oct()       staticmethod()
+bin()          eval()       int()         open()      str()
+bool()         exec()       isinstance()  ord()       sum()
+bytearray()    filter()     issubclass()  pow()       super()
+bytes()        float()      iter()        print()     tuple()
+callable()     format()     len()         property()  type()
+chr()          frozenset()  list()        range()     vars()
+classmethod()  getattr()    locals()      repr()      zip()
+compile()      globals()    map()         reversed()  __import__()
+complex()      hasattr()    max()         round()
+delattr()      hash()       memoryview()  set()
 
 # Builtin exceptions and warnings.
 
