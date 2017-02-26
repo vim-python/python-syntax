@@ -117,6 +117,8 @@ and or in is not
 -= += *= **= @= /= //= %=
 &= |= ^= ~= <<= >>=
 
+->
+
 # Erroneous operators
 
 $ ?
