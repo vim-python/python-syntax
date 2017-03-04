@@ -352,7 +352,7 @@ if s:Enabled('g:python_highlight_builtin_funcs')
       let s:funcs_re .= '|ascii|exec|print'
   endif
 
-  execute 'syn match pythonBuiltinFunc ''\v\.@<!\zs<%('  . s:funcs_re .  ')>'''
+  execute 'syn match pythonBuiltinFunc ''\v\.@<!\zs<%('  . s:funcs_re .  ')>\=@!'''
   unlet s:funcs_re
 endif
 
@@ -369,7 +369,7 @@ if s:Enabled('g:python_highlight_exceptions')
       let s:exs_re .= '|BlockingIOError|ChildProcessError|ConnectionError|BrokenPipeError|ConnectionAbortedError|ConnectionRefusedError|ConnectionResetError|FileExistsError|FileNotFoundError|InterruptedError|IsADirectoryError|NotADirectoryError|PermissionError|ProcessLookupError|TimeoutError|StopAsyncIteration|ResourceWarning'
   endif
 
-  execute 'syn match pythonExClass ''\v\.@<!\zs<%(' . s:exs_re . ')>'''
+  execute 'syn match pythonExClass ''\v\.@<!\zs<%(' . s:exs_re . ')>\=@!'''
   unlet s:exs_re
 endif
 
