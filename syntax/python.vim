@@ -37,6 +37,7 @@ endfunction
 "
 
 call s:EnableByDefault('g:python_slow_sync')
+call s:EnableByDefault('g:python_highlight_builtin_funcs_kwarg')
 
 if s:Enabled('g:python_highlight_all')
   call s:EnableByDefault('g:python_highlight_builtins')
@@ -352,7 +353,13 @@ if s:Enabled('g:python_highlight_builtin_funcs')
       let s:funcs_re .= '|ascii|exec|print'
   endif
 
-  execute 'syn match pythonBuiltinFunc ''\v\.@<!\zs<%('  . s:funcs_re .  ')>'''
+  let s:funcs_re = 'syn match pythonBuiltinFunc ''\v\.@<!\zs<%(' . s:funcs_re . ')>'
+
+  if !s:Enabled('g:python_highlight_builtin_funcs_kwarg')
+      let s:funcs_re .= '\=@!'
+  endif
+
+  execute s:funcs_re . ''''
   unlet s:funcs_re
 endif
 

@@ -65,6 +65,9 @@ following command to your `~/.config/nvim/init.vim` or `~/.vimrc`: >
 `g:python_highlight_builtin_funcs` (default `0`)
     Highlight builtin functions only
 
+`g:python_highlight_builtin_funcs_kwarg` (default `1`)
+    Highlight builtin functions when used as kwarg
+
 `g:python_highlight_exceptions` (default `0`)
     Highlight standard exceptions
 

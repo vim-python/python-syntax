@@ -62,6 +62,7 @@ let g:python_highlight_all = 1
 | `g:python_highlight_builtins`                 | Highlight builtin functions and objects                        | `0`     |
 | `g:python_highlight_builtin_objs`             | Highlight builtin objects only                                 | `0`     |
 | `g:python_highlight_builtin_funcs`            | Highlight builtin functions only                               | `0`     |
+| `g:python_highlight_builtin_funcs_kwarg`      | Highlight builtin functions when used as kwarg                 | `1`     |
 | `g:python_highlight_exceptions`               | Highlight standard exceptions                                  | `0`     |
 | `g:python_highlight_string_formatting`        | Highlight `%` string formatting                                | `0`     |
 | `g:python_highlight_string_format`            | Highlight syntax of `str.format` syntax                        | `0`     |
