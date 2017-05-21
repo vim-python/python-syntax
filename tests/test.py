@@ -162,7 +162,7 @@ RuntimeWarning FutureWarning ImportWarning UnicodeWarning
 
 and or in is not
 
-- + * ** @ / // %
+- + * ** **- **+ **~ @ / // %
 & | ^ ~ << >>
 < <= == != >= >
 
