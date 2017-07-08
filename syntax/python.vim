@@ -74,7 +74,8 @@ endif
 
 syn keyword pythonStatement     break continue del return pass yield global assert lambda with
 syn keyword pythonStatement     raise nextgroup=pythonExClass skipwhite
-syn keyword pythonStatement     def class nextgroup=pythonFunction skipwhite
+syn keyword pythonStatement     def nextgroup=pythonFunction skipwhite
+syn keyword pythonStatement     class nextgroup=pythonClass skipwhite
 if s:Enabled('g:python_highlight_class_vars')
     syn keyword pythonClassVar    self cls mcs
 endif
@@ -100,6 +101,7 @@ else
     syn keyword pythonStatement   as nonlocal
     syn match   pythonStatement   '\v\.@<!<await>'
     syn match   pythonFunction    '\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*' display contained
+    syn match   pythonClass       '\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*' display contained
     syn match   pythonStatement   '\<async\s\+def\>' nextgroup=pythonFunction skipwhite
     syn match   pythonStatement   '\<async\s\+with\>'
     syn match   pythonStatement   '\<async\s\+for\>'
@@ -499,6 +501,7 @@ if v:version >= 508 || !exists('did_python_syn_inits')
     HiLink pythonBuiltinType      Structure
 
     HiLink pythonExClass          Structure
+    HiLink pythonClass            Structure
     HiLink pythonClassVar         Identifier
 
     delcommand HiLink
