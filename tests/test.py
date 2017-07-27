@@ -238,6 +238,7 @@ b"${test} ${test ${test}aname $$$ $test+nope"
 f"{var}...{arr[123]} normal {var['{'] // 0xff} \"xzcb\" 'xzcb' {var['}'] + 1} text"
 f"{expr1 if True or False else expr2} wow {','.join(c.lower() for c in 'asdf')}"
 f"hello {expr:.2f} yes {(lambda: 0b1)():#03x} lol {var!r}"
+f'brackets: {{ 1 + 2 }} and {{{{ 3 + 4 }}}}'
 
 # Doctests.
 
