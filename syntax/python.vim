@@ -65,8 +65,8 @@ syn keyword pythonStatement     break continue del return pass yield global asse
 syn keyword pythonStatement     raise nextgroup=pythonExClass skipwhite
 syn keyword pythonStatement     def nextgroup=pythonFunction skipwhite
 syn keyword pythonStatement     class nextgroup=pythonClassName skipwhite
-" for all developers, commented out CamelCase regex for className
-"syn match   pythonClassName    '[A-Z][a-zA-Z0-9_]*' display contained
+syn match   pythonClassName    '[:upper:]*' display contained
+
 if s:Enabled('g:python_highlight_class_vars')
   syn keyword pythonClassVar    self cls
 endif
@@ -88,13 +88,12 @@ if s:Python2Syntax()
   syn keyword pythonStatement   exec
   syn keyword pythonImport      as
   syn match   pythonFunction    '[a-zA-Z_][a-zA-Z0-9_]*' display contained
-  syn match   pythonClassName    '[A-Z][a-zA-Z0-9_]*' display contained
 else
   syn keyword pythonStatement   as nonlocal
   syn match   pythonStatement   '\v\.@<!<await>'
   syn match   pythonFunction    '\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*' display contained
-  syn match   pythonClassName   '\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*' display contained
   syn match   pythonStatement   '\<async\s\+def\>' nextgroup=pythonFunction skipwhite
+  syn match   pythonStatement   '\<async\s\+class\>' nextgroup=pythonClassName skipwhite
   syn match   pythonStatement   '\<async\s\+with\>'
   syn match   pythonStatement   '\<async\s\+for\>'
   syn cluster pythonExpression contains=pythonStatement,pythonRepeat,pythonConditional,pythonOperator,pythonNumber,pythonHexNumber,pythonOctNumber,pythonBinNumber,pythonFloat,pythonString,pythonBytes,pythonBoolean,pythonBuiltinObj,pythonBuiltinFunc

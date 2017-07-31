@@ -22,7 +22,8 @@ class Classname
 class classname
 def функция
 class Класс
-class функция
+class класс
+
 
 # Keywords: Python 2
 
