@@ -19,8 +19,10 @@ yield from
 
 def functionname
 class Classname
+class classname
 def функция
 class Класс
+class функция
 
 # Keywords: Python 2
 

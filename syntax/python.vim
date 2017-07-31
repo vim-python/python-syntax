@@ -88,10 +88,12 @@ if s:Python2Syntax()
   syn keyword pythonStatement   exec
   syn keyword pythonImport      as
   syn match   pythonFunction    '[a-zA-Z_][a-zA-Z0-9_]*' display contained
+  syn match   pythonClassName    '[A-Z][a-zA-Z0-9_]*' display contained
 else
   syn keyword pythonStatement   as nonlocal
   syn match   pythonStatement   '\v\.@<!<await>'
   syn match   pythonFunction    '\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*' display contained
+  syn match   pythonClassName   '\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*' display contained
   syn match   pythonStatement   '\<async\s\+def\>' nextgroup=pythonFunction skipwhite
   syn match   pythonStatement   '\<async\s\+with\>'
   syn match   pythonStatement   '\<async\s\+for\>'
