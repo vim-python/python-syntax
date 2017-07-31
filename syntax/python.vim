@@ -67,7 +67,7 @@ syn keyword pythonStatement     raise nextgroup=pythonExClass skipwhite
 syn keyword pythonStatement     def nextgroup=pythonFunction skipwhite
 if s:Enabled('g:python_highlight_class_names')
     syn keyword pythonStatement     class nextgroup=pythonClassName skipwhite
-    syn match   pythonClassName    '^[:upper:]\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*' display contained
+    syn match   pythonClassName    '\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*' display contained
 endif
 if s:Enabled('g:python_highlight_class_vars')
   syn keyword pythonClassVar    self cls
