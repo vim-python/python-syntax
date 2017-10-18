@@ -55,6 +55,7 @@ if s:Enabled('g:python_highlight_all')
   call s:EnableByDefault('g:python_print_as_function')
   call s:EnableByDefault('g:python_highlight_class_vars')
   call s:EnableByDefault('g:python_highlight_operators')
+  call s:EnableByDefault('g:python_spellcheck_strings')
 endif
 
 "
