@@ -166,7 +166,7 @@ else
   syn match   pythonStatement   '\<async\s\+def\>' nextgroup=pythonFunction skipwhite
   syn match   pythonStatement   '\<async\s\+with\>'
   syn match   pythonStatement   '\<async\s\+for\>'
-  syn cluster pythonExpression contains=pythonStatement,pythonRepeat,pythonConditional,pythonOperator,pythonNumber,pythonHexNumber,pythonOctNumber,pythonBinNumber,pythonFloat,pythonString,pythonBytes,pythonBoolean,pythonBuiltinObj,pythonBuiltinFunc,pythonFuncCall,pythonBracket,pythonBrace
+  syn cluster pythonExpression contains=pythonStatement,pythonRepeat,pythonConditional,pythonOperator,pythonNumber,pythonHexNumber,pythonOctNumber,pythonBinNumber,pythonFloat,pythonString,pythonBytes,pythonBoolean,pythonBuiltinObj,pythonBuiltinFunc,pythonFuncCall,pythonBracket,pythonBrace,pythonParen
 endif
 
 "
@@ -175,6 +175,7 @@ endif
 
 syntax region  pythonBracket        matchgroup=pythonBrackets     start=/\[/ end=/\]/ contains=@pythonExpression extend
 syntax region  pythonBrace          matchgroup=pythonBraces       start=/{/  end=/}/  contains=@pythonExpression,pythonDictColon,pythonDictComma extend
+syntax region  pythonParen          matchgroup=pythonParens       start=/(/  end=/)/  contains=@pythonExpression,pythonDictComma extend
 syntax match   pythonDictColon      contained /:/
 syntax match   pythonDictComma      contained /,/
 
