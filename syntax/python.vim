@@ -166,7 +166,7 @@ else
   syn match   pythonStatement   '\<async\s\+def\>' nextgroup=pythonFunction skipwhite
   syn match   pythonStatement   '\<async\s\+with\>'
   syn match   pythonStatement   '\<async\s\+for\>'
-  syn cluster pythonExpression contains=pythonStatement,pythonRepeat,pythonConditional,pythonOperator,pythonNumber,pythonHexNumber,pythonOctNumber,pythonBinNumber,pythonFloat,pythonString,pythonBytes,pythonBoolean,pythonBuiltinObj,pythonBuiltinFunc,pythonFuncCall,pythonBracket
+  syn cluster pythonExpression contains=pythonStatement,pythonRepeat,pythonConditional,pythonOperator,pythonNumber,pythonHexNumber,pythonOctNumber,pythonBinNumber,pythonFloat,pythonString,pythonBytes,pythonBoolean,pythonBuiltinObj,pythonBuiltinFunc,pythonFuncCall,pythonBracket,pythonBrace
 endif
 
 "
@@ -174,6 +174,9 @@ endif
 "
 
 syntax region  pythonBracket        matchgroup=pythonBrackets     start=/\[/ end=/\]/ contains=@pythonExpression extend
+syntax region  pythonBrace          matchgroup=pythonBraces       start=/{/  end=/}/  contains=@pythonExpression,pythonDictColon,pythonDictComma extend
+syntax match   pythonDictColon      contained /:/
+syntax match   pythonDictComma      contained /,/
 
 "
 " Operators
@@ -443,10 +446,13 @@ if v:version >= 508 || !exists('did_python_syn_inits')
   HiLink pythonFuncArgCommas    pythonNoise
   HiLink pythonBrackets         Delimiter
   HiLink pythonParens           Delimiter
+  HiLink pythonBraces           Delimiter
+  HiLink pythonDictColon        pythonNoise
+  HiLink pythonDictComma        pythonNoise
 
   HiLink pythonDecorator        Define
   HiLink pythonDottedName       Function
-  HiLink pythonDot              Noise
+  HiLink pythonDot              pythonNoise
 
   HiLink pythonComment          Comment
   if !s:Enabled('g:python_highlight_file_headers_as_comments')
