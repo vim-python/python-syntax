@@ -58,6 +58,80 @@ if s:Enabled('g:python_highlight_all')
 endif
 
 "
+" Builtin objects and types
+"
+
+if s:Enabled('g:python_highlight_builtin_objs')
+  syn keyword pythonNone        None
+  syn keyword pythonBoolean     True False
+  syn keyword pythonBuiltinObj  Ellipsis NotImplemented
+  syntax match pythonBuiltinObj    '\v<%(object|bool|int|float|tuple|str|list|dict|set|frozenset|bytearray|bytes)>' containedin=pythonFuncCall
+  syn keyword pythonBuiltinObj  __debug__ __doc__ __file__ __name__ __package__
+  syn keyword pythonBuiltinObj  __loader__ __spec__ __path__ __cached__
+endif
+
+"
+" Builtin functions
+"
+
+if s:Enabled('g:python_highlight_builtin_funcs')
+  let s:funcs_re = '__import__|abs|all|any|bin|callable|chr|classmethod|compile|complex|delattr|dir|divmod|enumerate|eval|filter|format|getattr|globals|hasattr|hash|help|hex|id|input|isinstance|issubclass|iter|len|locals|map|max|memoryview|min|next|oct|open|ord|pow|property|range|repr|reversed|round|setattr|slice|sorted|staticmethod|sum|super|type|vars|zip'
+
+  if s:Python2Syntax()
+    let s:funcs_re .= '|apply|basestring|buffer|cmp|coerce|execfile|file|intern|long|raw_input|reduce|reload|unichr|unicode|xrange'
+    if s:Enabled('g:python_print_as_function')
+      let s:funcs_re .= '|print'
+    endif
+  else
+      let s:funcs_re .= '|ascii|exec|print'
+  endif
+
+  let s:funcs_re = 'syn match pythonBuiltinFunc ''\v\.@<!\zs<%(' . s:funcs_re . ')>'
+
+  if !s:Enabled('g:python_highlight_builtin_funcs_kwarg')
+      let s:funcs_re .= '\=@!'
+  endif
+
+  execute s:funcs_re . ''''
+  unlet s:funcs_re
+endif
+
+"
+" Builtin exceptions and warnings
+"
+
+if s:Enabled('g:python_highlight_exceptions')
+    let s:exs_re = 'BaseException|Exception|ArithmeticError|LookupError|EnvironmentError|AssertionError|AttributeError|BufferError|EOFError|FloatingPointError|GeneratorExit|IOError|ImportError|IndexError|KeyError|KeyboardInterrupt|MemoryError|NameError|NotImplementedError|OSError|OverflowError|ReferenceError|RuntimeError|StopIteration|SyntaxError|IndentationError|TabError|SystemError|SystemExit|TypeError|UnboundLocalError|UnicodeError|UnicodeEncodeError|UnicodeDecodeError|UnicodeTranslateError|ValueError|VMSError|WindowsError|ZeroDivisionError|Warning|UserWarning|BytesWarning|DeprecationWarning|PendingDepricationWarning|SyntaxWarning|RuntimeWarning|FutureWarning|ImportWarning|UnicodeWarning'
+
+  if s:Python2Syntax()
+      let s:exs_re .= '|StandardError'
+  else
+      let s:exs_re .= '|BlockingIOError|ChildProcessError|ConnectionError|BrokenPipeError|ConnectionAbortedError|ConnectionRefusedError|ConnectionResetError|FileExistsError|FileNotFoundError|InterruptedError|IsADirectoryError|NotADirectoryError|PermissionError|ProcessLookupError|TimeoutError|StopAsyncIteration|ResourceWarning'
+  endif
+
+  execute 'syn match pythonExClass ''\v\.@<!\zs<%(' . s:exs_re . ')>'''
+  unlet s:exs_re
+endif
+
+"
+" Noise
+"
+
+syntax match   pythonNoise              /:/
+syntax match   pythonNoise              /\./ skipwhite skipempty nextgroup=pythonObjectProp,pythonFuncCall
+
+"
+" Function calls
+"
+
+syntax match   pythonObjectProp         contained /\<\K\k*/
+syntax match   pythonFuncCall           /\<\K\k*\ze\s*(/ nextgroup=pythonFuncArgs contains=pythonBuiltinObj
+syntax region  pythonFuncArgs           contained matchgroup=pythonParens start=/(/ end=/)/       contains=pythonFuncArgCommas,pythonKeywordArgument,@pythonExpression,pythonComment skipwhite skipempty extend
+syntax match   pythonKeywordArgument    contained /\<\K\k*\ze\s*=/ nextgroup=pythonOperator skipwhite
+syntax match   pythonFuncArgCommas      contained ','
+
+
+"
 " Keywords
 "
 
@@ -92,9 +166,18 @@ else
   syn match   pythonStatement   '\<async\s\+def\>' nextgroup=pythonFunction skipwhite
   syn match   pythonStatement   '\<async\s\+with\>'
   syn match   pythonStatement   '\<async\s\+for\>'
-  syn cluster pythonExpression contains=pythonStatement,pythonRepeat,pythonConditional,pythonOperator,pythonNumber,pythonHexNumber,pythonOctNumber,pythonBinNumber,pythonFloat,pythonString,pythonBytes,pythonBoolean,pythonBuiltinObj,pythonBuiltinFunc
+  syn cluster pythonExpression contains=pythonStatement,pythonRepeat,pythonConditional,pythonOperator,pythonNumber,pythonHexNumber,pythonOctNumber,pythonBinNumber,pythonFloat,pythonString,pythonBytes,pythonBoolean,pythonBuiltinObj,pythonBuiltinFunc,pythonFuncCall,pythonBracket,pythonBrace,pythonParen
 endif
 
+"
+" Code blocks
+"
+
+syntax region  pythonBracket        matchgroup=pythonBrackets     start=/\[/ end=/\]/ contains=@pythonExpression extend
+syntax region  pythonBrace          matchgroup=pythonBraces       start=/{/  end=/}/  contains=@pythonExpression,pythonDictColon,pythonDictComma extend
+syntax region  pythonParen          matchgroup=pythonParens       start=/(/  end=/)/  contains=@pythonExpression,pythonDictComma extend
+syntax match   pythonDictColon      contained /:/
+syntax match   pythonDictComma      contained /,/
 
 "
 " Operators
@@ -104,6 +187,7 @@ if s:Enabled('g:python_highlight_operators')
     syn match pythonOperator        '\V=\|-\|+\|*\|@\|/\|%\|&\||\|^\|~\|<\|>\|!='
 endif
 syn match pythonError           '[$?]\|\([-+@%&|^~]\)\1\{1,}\|\([=*/<>]\)\2\{2,}\|\([+@/%&|^~<>]\)\3\@![-+*@/%&|^~<>]\|\*\*[*@/%&|^<>]\|=[*@/%&|^<>]\|-[+*@/%&|^~<]\|[<!>]\+=\{2,}\|!\{2,}=\+' display
+
 
 "
 " Decorators (new in Python 2.4)
@@ -329,61 +413,6 @@ else
   syn match   pythonFloat       '\<\d\%([_0-9]*\d\)\=\.\d\%([_0-9]*\d\)\=\%([eE][+-]\=\d\%([_0-9]*\d\)\=\)\=[jJ]\=' display
 endif
 
-"
-" Builtin objects and types
-"
-
-if s:Enabled('g:python_highlight_builtin_objs')
-  syn keyword pythonNone        None
-  syn keyword pythonBoolean     True False
-  syn keyword pythonBuiltinObj  Ellipsis NotImplemented
-  syn match pythonBuiltinObj    '\v\.@<!<%(object|bool|int|float|tuple|str|list|dict|set|frozenset|bytearray|bytes)>'
-  syn keyword pythonBuiltinObj  __debug__ __doc__ __file__ __name__ __package__
-  syn keyword pythonBuiltinObj  __loader__ __spec__ __path__ __cached__
-endif
-
-"
-" Builtin functions
-"
-
-if s:Enabled('g:python_highlight_builtin_funcs')
-  let s:funcs_re = '__import__|abs|all|any|bin|callable|chr|classmethod|compile|complex|delattr|dir|divmod|enumerate|eval|filter|format|getattr|globals|hasattr|hash|help|hex|id|input|isinstance|issubclass|iter|len|locals|map|max|memoryview|min|next|oct|open|ord|pow|property|range|repr|reversed|round|setattr|slice|sorted|staticmethod|sum|super|type|vars|zip'
-
-  if s:Python2Syntax()
-    let s:funcs_re .= '|apply|basestring|buffer|cmp|coerce|execfile|file|intern|long|raw_input|reduce|reload|unichr|unicode|xrange'
-    if s:Enabled('g:python_print_as_function')
-      let s:funcs_re .= '|print'
-    endif
-  else
-      let s:funcs_re .= '|ascii|exec|print'
-  endif
-
-  let s:funcs_re = 'syn match pythonBuiltinFunc ''\v\.@<!\zs<%(' . s:funcs_re . ')>'
-
-  if !s:Enabled('g:python_highlight_builtin_funcs_kwarg')
-      let s:funcs_re .= '\=@!'
-  endif
-
-  execute s:funcs_re . ''''
-  unlet s:funcs_re
-endif
-
-"
-" Builtin exceptions and warnings
-"
-
-if s:Enabled('g:python_highlight_exceptions')
-    let s:exs_re = 'BaseException|Exception|ArithmeticError|LookupError|EnvironmentError|AssertionError|AttributeError|BufferError|EOFError|FloatingPointError|GeneratorExit|IOError|ImportError|IndexError|KeyError|KeyboardInterrupt|MemoryError|NameError|NotImplementedError|OSError|OverflowError|ReferenceError|RuntimeError|StopIteration|SyntaxError|IndentationError|TabError|SystemError|SystemExit|TypeError|UnboundLocalError|UnicodeError|UnicodeEncodeError|UnicodeDecodeError|UnicodeTranslateError|ValueError|VMSError|WindowsError|ZeroDivisionError|Warning|UserWarning|BytesWarning|DeprecationWarning|PendingDepricationWarning|SyntaxWarning|RuntimeWarning|FutureWarning|ImportWarning|UnicodeWarning'
-
-  if s:Python2Syntax()
-      let s:exs_re .= '|StandardError'
-  else
-      let s:exs_re .= '|BlockingIOError|ChildProcessError|ConnectionError|BrokenPipeError|ConnectionAbortedError|ConnectionRefusedError|ConnectionResetError|FileExistsError|FileNotFoundError|InterruptedError|IsADirectoryError|NotADirectoryError|PermissionError|ProcessLookupError|TimeoutError|StopAsyncIteration|ResourceWarning'
-  endif
-
-  execute 'syn match pythonExClass ''\v\.@<!\zs<%(' . s:exs_re . ')>'''
-  unlet s:exs_re
-endif
 
 if s:Enabled('g:python_slow_sync')
   syn sync minlines=2000
@@ -403,18 +432,28 @@ if v:version >= 508 || !exists('did_python_syn_inits')
     command -nargs=+ HiLink hi def link <args>
   endif
 
+  HiLink pythonNoise            Comment
   HiLink pythonStatement        Statement
   HiLink pythonRaiseFromStatement   Statement
   HiLink pythonImport           Include
   HiLink pythonFunction         Function
+  HiLink pythonFuncCall         Function
+  HiLink pythonKeywordArgument  Argument
   HiLink pythonConditional      Conditional
   HiLink pythonRepeat           Repeat
   HiLink pythonException        Exception
   HiLink pythonOperator         Operator
 
+  HiLink pythonFuncArgCommas    pythonNoise
+  HiLink pythonBrackets         Delimiter
+  HiLink pythonParens           Delimiter
+  HiLink pythonBraces           Delimiter
+  HiLink pythonDictColon        pythonNoise
+  HiLink pythonDictComma        pythonNoise
+
   HiLink pythonDecorator        Define
   HiLink pythonDottedName       Function
-  HiLink pythonDot              Normal
+  HiLink pythonDot              pythonNoise
 
   HiLink pythonComment          Comment
   if !s:Enabled('g:python_highlight_file_headers_as_comments')
