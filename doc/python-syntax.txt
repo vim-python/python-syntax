@@ -62,6 +62,9 @@ following command to your `~/.config/nvim/init.vim` or `~/.vimrc`: >
 `g:python_highlight_builtin_objs` (default `0`)
     Highlight builtin objects only
 
+`g:python_highlight_builtin_types` (default `0`)
+    Highlight builtin types only
+
 `g:python_highlight_builtin_funcs` (default `0`)
     Highlight builtin functions only
 

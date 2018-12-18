@@ -44,6 +44,7 @@ if s:Enabled('g:python_highlight_all')
   if s:Enabled('g:python_highlight_builtins')
     call s:EnableByDefault('g:python_highlight_builtin_objs')
     call s:EnableByDefault('g:python_highlight_builtin_funcs')
+    call s:EnableByDefault('g:python_highlight_builtin_types')
   endif
   call s:EnableByDefault('g:python_highlight_exceptions')
   call s:EnableByDefault('g:python_highlight_string_formatting')
@@ -97,7 +98,7 @@ else
   syn match   pythonStatement   '\<async\s\+def\>' nextgroup=pythonFunction skipwhite
   syn match   pythonStatement   '\<async\s\+with\>'
   syn match   pythonStatement   '\<async\s\+for\>'
-  syn cluster pythonExpression contains=pythonStatement,pythonRepeat,pythonConditional,pythonOperator,pythonNumber,pythonHexNumber,pythonOctNumber,pythonBinNumber,pythonFloat,pythonString,pythonBytes,pythonBoolean,pythonNone,pythonBuiltinObj,pythonBuiltinFunc
+  syn cluster pythonExpression contains=pythonStatement,pythonRepeat,pythonConditional,pythonOperator,pythonNumber,pythonHexNumber,pythonOctNumber,pythonBinNumber,pythonFloat,pythonString,pythonBytes,pythonBoolean,pythonNone,pythonSingleton,pythonBuiltinObj,pythonBuiltinFunc,pythonBuiltinType
 endif
 
 
@@ -335,14 +336,13 @@ else
 endif
 
 "
-" Builtin objects and types
+" Builtin objects
 "
 
 if s:Enabled('g:python_highlight_builtin_objs')
   syn keyword pythonNone        None
   syn keyword pythonBoolean     True False
-  syn keyword pythonBuiltinObj  Ellipsis NotImplemented
-  syn match pythonBuiltinObj    '\v\.@<!<%(object|bool|int|float|tuple|str|list|dict|set|frozenset|bytearray|bytes)>'
+  syn keyword pythonSingleton   Ellipsis NotImplemented
   syn keyword pythonBuiltinObj  __debug__ __doc__ __file__ __name__ __package__
   syn keyword pythonBuiltinObj  __loader__ __spec__ __path__ __cached__
 endif
@@ -372,6 +372,15 @@ if s:Enabled('g:python_highlight_builtin_funcs')
   execute s:funcs_re . ''''
   unlet s:funcs_re
 endif
+
+"
+" Builtin types
+"
+
+if s:Enabled('g:python_highlight_builtin_types')
+  syn match pythonBuiltinType    '\v\.@<!<%(object|bool|int|float|tuple|str|list|dict|set|frozenset|bytearray|bytes)>'
+endif
+
 
 "
 " Builtin exceptions and warnings
@@ -475,9 +484,11 @@ if v:version >= 508 || !exists('did_python_syn_inits')
 
   HiLink pythonBoolean          Boolean
   HiLink pythonNone             Constant
+  HiLink pythonSingleton        Constant
 
-  HiLink pythonBuiltinObj       Structure
+  HiLink pythonBuiltinObj       Identifier
   HiLink pythonBuiltinFunc      Function
+  HiLink pythonBuiltinType      Structure
 
   HiLink pythonExClass          Structure
   HiLink pythonClassVar         Identifier

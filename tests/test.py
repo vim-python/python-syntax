@@ -41,6 +41,8 @@ async for
 
 True False Ellipsis None NotImplemented
 
+__debug__ __doc__ __file__ __name__ __package__ __loader__ __spec__ __path__ __cached__
+
 # Bultin types
 
 bool bytearray dict float frozenset int list object set str tuple
