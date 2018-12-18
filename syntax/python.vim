@@ -93,7 +93,7 @@ else
   syn match   pythonStatement   '\<async\s\+def\>' nextgroup=pythonFunction skipwhite
   syn match   pythonStatement   '\<async\s\+with\>'
   syn match   pythonStatement   '\<async\s\+for\>'
-  syn cluster pythonExpression contains=pythonStatement,pythonRepeat,pythonConditional,pythonOperator,pythonNumber,pythonHexNumber,pythonOctNumber,pythonBinNumber,pythonFloat,pythonString,pythonBytes,pythonBoolean,pythonNone,pythonBuiltinObj,pythonBuiltinFunc,pythonBuiltinType
+  syn cluster pythonExpression contains=pythonStatement,pythonRepeat,pythonConditional,pythonOperator,pythonNumber,pythonHexNumber,pythonOctNumber,pythonBinNumber,pythonFloat,pythonString,pythonBytes,pythonBoolean,pythonNone,pythonSingleton,pythonBuiltinObj,pythonBuiltinFunc,pythonBuiltinType
 endif
 
 
@@ -337,7 +337,7 @@ endif
 if s:Enabled('g:python_highlight_builtin_objs')
   syn keyword pythonNone        None
   syn keyword pythonBoolean     True False
-  syn keyword pythonBuiltinObj  Ellipsis NotImplemented
+  syn keyword pythonSingleton   Ellipsis NotImplemented
   syn keyword pythonBuiltinObj  __debug__ __doc__ __file__ __name__ __package__
   syn keyword pythonBuiltinObj  __loader__ __spec__ __path__ __cached__
 endif
@@ -479,6 +479,7 @@ if v:version >= 508 || !exists('did_python_syn_inits')
 
   HiLink pythonBoolean          Boolean
   HiLink pythonNone             Constant
+  HiLink pythonSingleton        Constant
 
   HiLink pythonBuiltinObj       Identifier
   HiLink pythonBuiltinFunc      Function
