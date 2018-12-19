@@ -61,6 +61,7 @@ let g:python_highlight_all = 1
 | `b:python_version_2`                          | Python 2 mode (buffer local)                                   | `0`     |
 | `g:python_highlight_builtins`                 | Highlight builtin functions and objects                        | `0`     |
 | `g:python_highlight_builtin_objs`             | Highlight builtin objects only                                 | `0`     |
+| `g:python_highlight_builtin_types`            | Highlight builtin types only                                   | `0`     |
 | `g:python_highlight_builtin_funcs`            | Highlight builtin functions only                               | `0`     |
 | `g:python_highlight_builtin_funcs_kwarg`      | Highlight builtin functions when used as kwarg                 | `1`     |
 | `g:python_highlight_exceptions`               | Highlight standard exceptions                                  | `0`     |
