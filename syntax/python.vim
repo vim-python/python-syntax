@@ -355,7 +355,7 @@ if s:Enabled('g:python_highlight_builtin_funcs')
       let s:funcs_re .= '|print'
     endif
   else
-      let s:funcs_re .= '|ascii|exec|print'
+      let s:funcs_re .= '|ascii|breakpoint|exec|print'
   endif
 
   let s:funcs_re = 'syn match pythonBuiltinFunc ''\v\.@<!\zs<%(' . s:funcs_re . ')>'
