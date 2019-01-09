@@ -420,7 +420,6 @@ if v:version >= 508 || !exists('did_python_syn_inits')
 
   HiLink pythonDecorator        Define
   HiLink pythonDottedName       Function
-  HiLink pythonDot              Normal
 
   HiLink pythonComment          Comment
   if !s:Enabled('g:python_highlight_file_headers_as_comments')
