@@ -241,6 +241,11 @@ f"hello {expr:.2f} yes {(lambda: 0b1)():#03x} lol {var!r}"
 f'brackets: {{ 1 + 2 }} and {{{{ 3 + 4 }}}}'
 fr'this {that}'
 
+
+class Atest:
+    def amethod(self):
+        print(f"{self.__name__}")
+
 # Doctests.
 
 """
