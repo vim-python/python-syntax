@@ -8,14 +8,31 @@
 
 # Keywords.
 
-with break continue del return pass raise global assert lambda yield
-for while if elif else import as try except finally
-
 from test import var as name
+
+import as
+with break continue del return pass raise global assert lambda yield
+async await
+for while if elif else try except finally
+while True:
+    continue; break; return; yield
+
+try:
+    v = int(0.1)
+    raise RuntimeError()
+except:
+    pass
+else:
+    pass
+finally:
+    pass
 
 raise Exception from ex
 
 yield from
+
+with open() as f_x:
+    pass
 
 def functionname
 class Classname
@@ -24,7 +41,20 @@ def функция
 class Класс
 class класс
 
+class A:
+    def __new__(cls):
+        super()
+        pass
 
+    def method(self):
+        print(f'{self.__class__.__name__}')
+        var = a_var(kw=True)
+        afloat = 0.1
+        print(f'The float is {afloat + 1}')
+
+
+if __name__ == '__main__':
+    main()
 # Keywords: Python 2
 
 exec
@@ -42,6 +72,10 @@ async for
 True False Ellipsis None NotImplemented
 
 __debug__ __doc__ __file__ __name__ __package__ __loader__ __spec__ __path__ __cached__
+
+# Dunders
+__slots__ __all__ __version__ __qualname__ __module__ __defaults__ __code__
+__globals__ __dict__ __closure__ __annotations__ __kwdefaults__
 
 # Bultin types
 
