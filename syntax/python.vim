@@ -460,7 +460,7 @@ if v:version >= 508 || !exists('did_python_syn_inits')
     HiLink pythonBytesEscapeError   Error
     HiLink pythonFString            String
     HiLink pythonRawFString         String
-    HiLink pythonStrInterpRegion    Special
+    HiLink pythonStrInterpRegion    Ignored
   endif
 
   HiLink pythonStrFormatting    Special
