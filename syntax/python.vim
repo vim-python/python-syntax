@@ -54,6 +54,7 @@ if s:Enabled('g:python_highlight_all')
   call s:EnableByDefault('g:python_highlight_space_errors')
   call s:EnableByDefault('g:python_highlight_doctests')
   call s:EnableByDefault('g:python_print_as_function')
+  call s:EnableByDefault('g:python_highlight_class_names')
   call s:EnableByDefault('g:python_highlight_class_vars')
   call s:EnableByDefault('g:python_highlight_operators')
 endif
@@ -64,7 +65,11 @@ endif
 
 syn keyword pythonStatement     break continue del return pass yield global assert lambda with
 syn keyword pythonStatement     raise nextgroup=pythonExClass skipwhite
-syn keyword pythonStatement     def class nextgroup=pythonFunction skipwhite
+syn keyword pythonStatement     def nextgroup=pythonFunction skipwhite
+if s:Enabled('g:python_highlight_class_names')
+    syn keyword pythonStatement     class nextgroup=pythonClassName skipwhite
+    syn match   pythonClassName    '\%([[:upper:]][^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*' display contained
+endif
 if s:Enabled('g:python_highlight_class_vars')
   syn keyword pythonClassVar    self cls
 endif
@@ -416,6 +421,7 @@ if v:version >= 508 || !exists('did_python_syn_inits')
   HiLink pythonRaiseFromStatement   Statement
   HiLink pythonImport           Include
   HiLink pythonFunction         Function
+  HiLink pythonClassName        Structure
   HiLink pythonConditional      Conditional
   HiLink pythonRepeat           Repeat
   HiLink pythonException        Exception
