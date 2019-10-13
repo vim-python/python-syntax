@@ -489,7 +489,7 @@ if v:version >= 508 || !exists('did_python_syn_inits')
   HiLink pythonBuiltinType      Structure
 
   HiLink pythonExClass          Structure
-  HiLink pythonClassVar         Identifier
+  HiLink pythonClassVar         Special
 
   delcommand HiLink
 endif
