@@ -54,6 +54,7 @@ if s:Enabled('g:python_highlight_all')
   call s:EnableByDefault('g:python_highlight_space_errors')
   call s:EnableByDefault('g:python_highlight_doctests')
   call s:EnableByDefault('g:python_print_as_function')
+  call s:EnableByDefault('g:python_highlight_func_calls')
   call s:EnableByDefault('g:python_highlight_class_vars')
   call s:EnableByDefault('g:python_highlight_operators')
 endif
@@ -64,7 +65,7 @@ endif
 
 syn keyword pythonStatement     break continue del return pass yield global assert lambda with
 syn keyword pythonStatement     raise nextgroup=pythonExClass skipwhite
-syn keyword pythonStatement     def class nextgroup=pythonFunction skipwhite
+syn keyword pythonStatement     def class nextgroup=pythonFunctionContained skipwhite
 if s:Enabled('g:python_highlight_class_vars')
   syn keyword pythonClassVar    self cls
 endif
@@ -85,12 +86,12 @@ if s:Python2Syntax()
   endif
   syn keyword pythonStatement   exec
   syn keyword pythonImport      as
-  syn match   pythonFunction    '[a-zA-Z_][a-zA-Z0-9_]*' display contained
+  syn match   pythonFunctionContained    '[a-zA-Z_][a-zA-Z0-9_]*' display contained
 else
   syn keyword pythonStatement   as nonlocal
   syn match   pythonStatement   '\v\.@<!<await>'
-  syn match   pythonFunction    '\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*' display contained
-  syn match   pythonStatement   '\<async\s\+def\>' nextgroup=pythonFunction skipwhite
+  syn match   pythonFunctionContained    '\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*' display contained
+  syn match   pythonStatement   '\<async\s\+def\>' nextgroup=pythonFunctionContained skipwhite
   syn match   pythonStatement   '\<async\s\+with\>'
   syn match   pythonStatement   '\<async\s\+for\>'
   syn cluster pythonExpression contains=pythonStatement,pythonRepeat,pythonConditional,pythonOperator,pythonNumber,pythonHexNumber,pythonOctNumber,pythonBinNumber,pythonFloat,pythonString,pythonBytes,pythonBoolean,pythonNone,pythonSingleton,pythonBuiltinObj,pythonBuiltinFunc,pythonBuiltinType
@@ -394,6 +395,18 @@ if s:Enabled('g:python_highlight_exceptions')
   unlet s:exs_re
 endif
 
+"
+" Function calls
+"
+
+if s:Enabled('g:python_highlight_func_calls')
+  syn match pythonFunctionCall '\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\ze\%(\s*(\)'
+endif
+
+"
+" Misc
+"
+
 if s:Enabled('g:python_slow_sync')
   syn sync minlines=2000
 else
@@ -415,7 +428,8 @@ if v:version >= 508 || !exists('did_python_syn_inits')
   HiLink pythonStatement        Statement
   HiLink pythonRaiseFromStatement   Statement
   HiLink pythonImport           Include
-  HiLink pythonFunction         Function
+  HiLink pythonFunctionContained         Function
+  HiLink pythonFunctionCall         Function
   HiLink pythonConditional      Conditional
   HiLink pythonRepeat           Repeat
   HiLink pythonException        Exception

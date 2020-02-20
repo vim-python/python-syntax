@@ -18,8 +18,14 @@ raise Exception from ex
 yield from
 
 def functionname
+functionname()
+functionname ()
+functionname    ()
+test.functionname()
+test.functionname ()
 class Classname
 def функция
+функция()
 class Класс
 
 # Keywords: Python 2
