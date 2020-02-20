@@ -59,6 +59,7 @@ let g:python_highlight_all = 1
 | --------------------------------------------- | -------------------------------------------------------------- | ------- |
 | `g:python_version_2`                          | Python 2 mode                                                  | `0`     |
 | `b:python_version_2`                          | Python 2 mode (buffer local)                                   | `0`     |
+| `g:python_highlight_func_calls`               | Highlight functions calls                                      | `0`     |
 | `g:python_highlight_builtins`                 | Highlight builtin functions and objects                        | `0`     |
 | `g:python_highlight_builtin_objs`             | Highlight builtin objects only                                 | `0`     |
 | `g:python_highlight_builtin_types`            | Highlight builtin types only                                   | `0`     |

@@ -40,6 +40,7 @@ call s:EnableByDefault('g:python_slow_sync')
 call s:EnableByDefault('g:python_highlight_builtin_funcs_kwarg')
 
 if s:Enabled('g:python_highlight_all')
+  call s:EnableByDefault('g:python_highlight_func_calls')
   call s:EnableByDefault('g:python_highlight_builtins')
   if s:Enabled('g:python_highlight_builtins')
     call s:EnableByDefault('g:python_highlight_builtin_objs')
@@ -56,6 +57,14 @@ if s:Enabled('g:python_highlight_all')
   call s:EnableByDefault('g:python_print_as_function')
   call s:EnableByDefault('g:python_highlight_class_vars')
   call s:EnableByDefault('g:python_highlight_operators')
+endif
+
+"
+" Function calls
+"
+
+if s:Enabled('g:python_highlight_func_calls')
+  syntax match pythonFunction /\v([^[:cntrl:][:space:][:punct:][:digit:]]|_)([^[:cntrl:][:punct:][:space:]]|_)*\ze(\s?\()/
 endif
 
 "
@@ -85,11 +94,15 @@ if s:Python2Syntax()
   endif
   syn keyword pythonStatement   exec
   syn keyword pythonImport      as
-  syn match   pythonFunction    '[a-zA-Z_][a-zA-Z0-9_]*' display contained
+  if !s:Enabled('g:python_highlight_func_calls')
+    syn match   pythonFunction    '[a-zA-Z_][a-zA-Z0-9_]*' display contained
+  endif
 else
   syn keyword pythonStatement   as nonlocal
   syn match   pythonStatement   '\v\.@<!<await>'
-  syn match   pythonFunction    '\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*' display contained
+  if !s:Enabled('g:python_highlight_func_calls')
+    syn match   pythonFunction    '\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*' display contained
+  endif
   syn match   pythonStatement   '\<async\s\+def\>' nextgroup=pythonFunction skipwhite
   syn match   pythonStatement   '\<async\s\+with\>'
   syn match   pythonStatement   '\<async\s\+for\>'

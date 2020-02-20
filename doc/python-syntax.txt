@@ -56,6 +56,9 @@ following command to your `~/.config/nvim/init.vim` or `~/.vimrc`: >
 `b:python_version_2` (default `0`)
     Python 2 mode (buffer local)
 
+`g:python_highlight_func_calls` (default `0`)
+    Highlight functions calls
+
 `g:python_highlight_builtins` (default `0`)
     Highlight builtin functions and objects
 
