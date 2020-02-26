@@ -60,6 +60,14 @@ if s:Enabled('g:python_highlight_all')
 endif
 
 "
+" Function calls
+"
+
+if s:Enabled('g:python_highlight_func_calls')
+    syn match pythonFunctionCall '\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\ze\%(\s*(\)'
+endif
+
+"
 " Keywords
 "
 
@@ -393,14 +401,6 @@ if s:Enabled('g:python_highlight_exceptions')
 
     execute 'syn match pythonExClass ''\v\.@<!\zs<%(' . s:exs_re . ')>'''
     unlet s:exs_re
-endif
-
-"
-" Function calls
-"
-
-if s:Enabled('g:python_highlight_func_calls')
-    syn match pythonFunctionCall '\%([^[:cntrl:][:space:][:punct:][:digit:]]\|_\)\%([^[:cntrl:][:punct:][:space:]]\|_\)*\ze\%(\s*(\)'
 endif
 
 "
