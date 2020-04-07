@@ -46,12 +46,9 @@ if s:Enabled('g:python_highlight_builtins')
 endif
 
 if s:Enabled('g:python_highlight_all')
-    call s:EnableByDefault('g:python_highlight_builtins')
-    if s:Enabled('g:python_highlight_builtins')
-        call s:EnableByDefault('g:python_highlight_builtin_objs')
-        call s:EnableByDefault('g:python_highlight_builtin_funcs')
-        call s:EnableByDefault('g:python_highlight_builtin_types')
-    endif
+    call s:EnableByDefault('g:python_highlight_builtin_objs')
+    call s:EnableByDefault('g:python_highlight_builtin_funcs')
+    call s:EnableByDefault('g:python_highlight_builtin_types')
     call s:EnableByDefault('g:python_highlight_exceptions')
     call s:EnableByDefault('g:python_highlight_string_formatting')
     call s:EnableByDefault('g:python_highlight_string_format')
