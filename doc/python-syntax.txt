@@ -57,7 +57,7 @@ following command to your `~/.config/nvim/init.vim` or `~/.vimrc`: >
     Python 2 mode (buffer local)
 
 `g:python_highlight_builtins` (default `0`)
-    Highlight builtin functions and objects
+    Highlight builtin functions, types and objects
 
 `g:python_highlight_builtin_objs` (default `0`)
     Highlight builtin objects only
