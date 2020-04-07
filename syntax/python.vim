@@ -46,6 +46,7 @@ if s:Enabled('g:python_highlight_builtins')
 endif
 
 if s:Enabled('g:python_highlight_all')
+    call s:EnableByDefault('g:python_highlight_builtins')
     if s:Enabled('g:python_highlight_builtins')
         call s:EnableByDefault('g:python_highlight_builtin_objs')
         call s:EnableByDefault('g:python_highlight_builtin_funcs')
