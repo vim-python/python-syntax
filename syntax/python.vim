@@ -39,8 +39,13 @@ endfunction
 call s:EnableByDefault('g:python_slow_sync')
 call s:EnableByDefault('g:python_highlight_builtin_funcs_kwarg')
 
+if s:Enabled('g:python_highlight_builtins')
+    call s:EnableByDefault('g:python_highlight_builtin_objs')
+    call s:EnableByDefault('g:python_highlight_builtin_funcs')
+    call s:EnableByDefault('g:python_highlight_builtin_types')
+endif
+
 if s:Enabled('g:python_highlight_all')
-    call s:EnableByDefault('g:python_highlight_builtins')
     if s:Enabled('g:python_highlight_builtins')
         call s:EnableByDefault('g:python_highlight_builtin_objs')
         call s:EnableByDefault('g:python_highlight_builtin_funcs')
