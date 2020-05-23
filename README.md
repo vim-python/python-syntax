@@ -38,6 +38,7 @@ How to install
 
 Use one of the following plugin managers:
 
+* [Native Vim 8+ packages](https://vimhelp.org/repeat.txt.html#packages)
 * [dein](https://github.com/Shougo/dein.vim)
 * [vim-plug](https://github.com/junegunn/vim-plug)
 * [vundle](https://github.com/VundleVim/Vundle.vim)
