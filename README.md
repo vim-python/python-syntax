@@ -59,7 +59,7 @@ let g:python_highlight_all = 1
 | --------------------------------------------- | -------------------------------------------------------------- | ------- |
 | `g:python_version_2`                          | Python 2 mode                                                  | `0`     |
 | `b:python_version_2`                          | Python 2 mode (buffer local)                                   | `0`     |
-| `g:python_highlight_builtins`                 | Highlight builtin functions and objects                        | `0`     |
+| `g:python_highlight_builtins`                 | Highlight builtin objects, types, and functions                | `0`     |
 | `g:python_highlight_builtin_objs`             | Highlight builtin objects only                                 | `0`     |
 | `g:python_highlight_builtin_types`            | Highlight builtin types only                                   | `0`     |
 | `g:python_highlight_builtin_funcs`            | Highlight builtin functions only                               | `0`     |
@@ -71,6 +71,7 @@ let g:python_highlight_all = 1
 | `g:python_highlight_indent_errors`            | Highlight indentation errors                                   | `0`     |
 | `g:python_highlight_space_errors`             | Highlight trailing spaces                                      | `0`     |
 | `g:python_highlight_doctests`                 | Highlight doc-tests                                            | `0`     |
+| `g:python_highlight_func_calls`               | Highlight functions calls                                      | `0`     |
 | `g:python_highlight_class_vars`               | Highlight class variables `self` and `cls`                     | `0`     |
 | `g:python_highlight_operators`                | Highlight all operators                                        | `0`     |
 | `g:python_highlight_all`                      | Enable all highlight options above, except for previously set. | `0`     |

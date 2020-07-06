@@ -18,8 +18,14 @@ raise Exception from ex
 yield from
 
 def functionname
+functionname()
+functionname ()
+functionname    ()
+test.functionname()
+test.functionname ()
 class Classname
 def функция
+функция()
 class Класс
 
 # Keywords: Python 2
@@ -151,7 +157,7 @@ StopIteration SyntaxError IndentationError TabError SystemError SystemExit
 TypeError UnboundLocalError UnicodeError UnicodeEncodeError UnicodeDecodeError
 UnicodeTranslateError ValueError WindowsError ZeroDivisionError
 
-Warning UserWarning DeprecationWarning PendingDepricationWarning SyntaxWarning
+Warning UserWarning DeprecationWarning PendingDeprecationWarning SyntaxWarning
 RuntimeWarning FutureWarning ImportWarning UnicodeWarning
 
 # Decorators.
