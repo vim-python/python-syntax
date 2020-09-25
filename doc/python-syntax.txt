@@ -21,7 +21,7 @@ Features
   * New exceptions and builtins
   * Doctests
   * `@decorator` syntax
-  * Class variables such as `self` and `cls`
+  * Class variables such as `self`, `cls`, and `mcs`
   * Operators
 * Highlighting of the following errors:
   * Invalid symbols in source file
@@ -96,7 +96,7 @@ following command to your `~/.config/nvim/init.vim` or `~/.vimrc`: >
     Highlight functions calls
 
 `g:python_highlight_class_vars` (default `0`)
-    Highlight class variables `self` and `cls`
+    Highlight class variables `self`, `cls`, and `mcs`
 
 `g:python_highlight_operators` (default `0`)
     Highlight all operators

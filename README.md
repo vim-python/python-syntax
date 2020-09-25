@@ -19,7 +19,7 @@ Features
   * New exceptions and builtins
   * Doctests
   * `@decorator` syntax
-  * Class variables such as `self` and `cls`
+  * Class variables such as `self`, `cls`, and `mcs`
   * Operators
 * Highlighting of the following errors:
   * Invalid symbols in source file
@@ -72,7 +72,7 @@ let g:python_highlight_all = 1
 | `g:python_highlight_space_errors`             | Highlight trailing spaces                                      | `0`     |
 | `g:python_highlight_doctests`                 | Highlight doc-tests                                            | `0`     |
 | `g:python_highlight_func_calls`               | Highlight functions calls                                      | `0`     |
-| `g:python_highlight_class_vars`               | Highlight class variables `self` and `cls`                     | `0`     |
+| `g:python_highlight_class_vars`               | Highlight class variables `self`, `cls`, and `mcs`             | `0`     |
 | `g:python_highlight_operators`                | Highlight all operators                                        | `0`     |
 | `g:python_highlight_all`                      | Enable all highlight options above, except for previously set. | `0`     |
 | `g:python_highlight_file_headers_as_comments` | Highlight shebang and coding headers as comments               | `0`     |

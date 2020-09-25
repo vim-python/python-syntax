@@ -11,6 +11,8 @@
 with break continue del return pass raise global assert lambda yield
 for while if elif else import as try except finally
 
+self cls mcs
+
 from test import var as name
 
 raise Exception from ex
