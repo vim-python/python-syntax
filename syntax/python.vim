@@ -76,7 +76,7 @@ syn keyword pythonStatement     break continue del return pass yield global asse
 syn keyword pythonStatement     raise nextgroup=pythonExClass skipwhite
 syn keyword pythonStatement     def class nextgroup=pythonFunction skipwhite
 if s:Enabled('g:python_highlight_class_vars')
-    syn keyword pythonClassVar    self cls
+    syn keyword pythonClassVar    self cls mcs
 endif
 syn keyword pythonRepeat        for while
 syn keyword pythonConditional   if elif else
