@@ -251,6 +251,7 @@ fr'this {that}'
 f"{f'{1+1}'}"
 '{{ }}'
 f"{"{test}"}"  # FIXME: syntax error that should not be highlighted
+f'{self.__name__}
 
 # Doctests.
 
