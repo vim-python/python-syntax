@@ -286,8 +286,8 @@ endif
 
 if s:Enabled('g:python_highlight_doctests')
     " DocTests
-    syn region pythonDocTest   start='^\s*>>>' skip=+\\'+ end=+'''+he=s-1 end='^\s*$' contained
-    syn region pythonDocTest2  start='^\s*>>>' skip=+\\"+ end=+"""+he=s-1 end='^\s*$' contained
+    syn region pythonDocTest   start='^\s*>>>' skip=+\\'+ end='^\s*$' contained
+    syn region pythonDocTest2  start='^\s*>>>' skip=+\\"+ end='^\s*$' contained
 endif
 
 "
