@@ -255,7 +255,16 @@ fr'this {that}'
 f"{f'{1+1}'}"
 '{{ }}'
 f"{"{test}"}"  # FIXME: syntax error that should not be highlighted
-f'{self.__name__}
+f'{self.__name__}'
+
+# F-String Spelling Issue #43
+f'this is a test' f"this is a test" f"""this is a test""" f'''this is a test'''
+f'this' f"this" f"""this"""
+r'this' r"this" r"""this"""
+rf'this [^fe] is a raw f string'
+fr'this is a raw f string'
+fr"this is a raw f string"
+bf'this is' fs'this is' # Invalid, Invalid
 
 # Doctests.
 
