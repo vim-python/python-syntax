@@ -133,6 +133,7 @@ syn match   pythonDot        '\.' display containedin=pythonDottedName
 "
 " Comments
 "
+
 syn match   pythonComment       '#.*$' display contains=pythonTodo,@Spell
 if !s:Enabled('g:python_highlight_file_headers_as_comments')
     syn match   pythonRun         '\%^#!.*$'
