@@ -11,6 +11,8 @@
 with break continue del return pass raise global assert lambda yield
 for while if elif else import as try except finally
 
+self cls mcs
+
 from test import var as name
 
 raise Exception from ex
@@ -24,9 +26,13 @@ functionname    ()
 test.functionname()
 test.functionname ()
 class Classname
+class classname
+class classname_cls
 def функция
 функция()
 class Класс
+class класс
+
 
 # Keywords: Python 2
 
@@ -176,7 +182,7 @@ and or in is not
 < <= == != >= >
 
 = =- =+ =~
--= += *= **= @= /= //= %=
+-= += *= **= @= /= //= %= :=
 &= |= ^= ~= <<= >>=
 
 ->
@@ -244,8 +250,12 @@ b"${test} ${test ${test}aname $$$ $test+nope"
 f"{var}...{arr[123]} normal {var['{'] // 0xff} \"xzcb\" 'xzcb' {var['}'] + 1} text"
 f"{expr1 if True or False else expr2} {None} wow {','.join(c.lower() for c in 'asdf')}"
 f"hello {expr:.2f} yes {(lambda: 0b1)():#03x} lol {var!r}"
-f'brackets: {{ 1 + 2 }} and {{{{ 3 + 4 }}}}'
+f'brackets: {{{ 1 + 2 }}} and {{{{ 3 + 4 }}}}'
 fr'this {that}'
+f"{f'{1+1}'}"
+'{{ }}'
+f"{"{test}"}"  # FIXME: syntax error that should not be highlighted
+f'{self.__name__}
 
 # Doctests.
 
