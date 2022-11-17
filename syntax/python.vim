@@ -400,7 +400,7 @@ if s:Enabled('g:python_highlight_exceptions')
     if s:Python2Syntax()
         let s:exs_re .= '|StandardError'
     else
-        let s:exs_re .= '|BlockingIOError|ChildProcessError|ConnectionError|BrokenPipeError|ConnectionAbortedError|ConnectionRefusedError|ConnectionResetError|FileExistsError|FileNotFoundError|InterruptedError|IsADirectoryError|NotADirectoryError|PermissionError|ProcessLookupError|TimeoutError|StopAsyncIteration|ResourceWarning'
+        let s:exs_re .= '|BlockingIOError|ChildProcessError|ConnectionError|BrokenPipeError|ConnectionAbortedError|ConnectionRefusedError|ConnectionResetError|FileExistsError|FileNotFoundError|InterruptedError|IsADirectoryError|NotADirectoryError|PermissionError|ProcessLookupError|TimeoutError|StopAsyncIteration|ResourceWarning|ModuleNotFoundError|BaseExceptionGroup|ExceptionGroup|RecursionError|EncodingWarning'
     endif
 
     execute 'syn match pythonExClass ''\v\.@<!\zs<%(' . s:exs_re . ')>'''
