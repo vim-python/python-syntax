@@ -52,6 +52,7 @@ if s:Enabled('g:python_highlight_all')
     call s:EnableByDefault('g:python_highlight_func_calls')
     call s:EnableByDefault('g:python_highlight_class_vars')
     call s:EnableByDefault('g:python_highlight_operators')
+    call s:EnableByDefault('g:python_highlight_brackets')
 endif
 
 if s:Enabled('g:python_highlight_builtins')
@@ -89,6 +90,9 @@ syn keyword pythonInclude       import
 syn keyword pythonImport        import
 syn match pythonRaiseFromStatement      '\<from\>'
 syn match pythonImport          '^\s*\zsfrom\>'
+if s:Enabled('g:python_highlight_brackets')
+    syn match   pythonBrackets     '[()\[\]{},:]\|->'
+endif
 
 
 if s:Python2Syntax()
