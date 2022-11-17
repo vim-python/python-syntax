@@ -45,6 +45,7 @@ if s:Enabled('g:python_highlight_all')
     call s:EnableByDefault('g:python_highlight_string_formatting')
     call s:EnableByDefault('g:python_highlight_string_format')
     call s:EnableByDefault('g:python_highlight_string_templates')
+    call s:EnableByDefault('g:python_highlight_string_doc')
     call s:EnableByDefault('g:python_highlight_indent_errors')
     call s:EnableByDefault('g:python_highlight_space_errors')
     call s:EnableByDefault('g:python_highlight_doctests')
@@ -301,6 +302,17 @@ if s:Enabled('g:python_highlight_doctests')
     syn region pythonDocTest2  start='^\s*>>>' skip=+\\"+ end=+"""+he=s-1 end='^\s*$' contained
 endif
 
+if s:Enabled('g:python_highlight_string_doc')
+    syn match pythonColon ':' nextgroup=pythonDocString skipempty
+    syn match pythonStartFile +\%^+ nextgroup=pythonDocString skipempty
+    syn region pythonDocString start=+^\s*[rRfFbB]\='''+ skip=+\\'+ end=+'''+ keepend contains=pythonBytesEscape,pythonBytesEscapeError,pythonUniEscape,pythonUniEscapeError,pythonDocTest,pythonSpaceError,@Spell
+    syn region pythonDocString start=+^\s*[rRfFbB]\="""+ skip=+\\"+ end=+"""+ keepend contains=pythonBytesEscape,pythonBytesEscapeError,pythonUniEscape,pythonUniEscapeError,pythonDocTest2,pythonSpaceError,@Spell
+    syn region pythonString    start=+^\s*[rRfFbB]\='''+ skip=+\\'+ end=+'''+ keepend contains=pythonBytesEscape,pythonBytesEscapeError,pythonUniEscape,pythonUniEscapeError,pythonDocTest,pythonSpaceError,@Spell
+    syn region pythonString    start=+^\s*[rRfFbB]\="""+ skip=+\\"+ end=+"""+ keepend contains=pythonBytesEscape,pythonBytesEscapeError,pythonUniEscape,pythonUniEscapeError,pythonDocTest2,pythonSpaceError,@Spell
+    syn region pythonDocString start=+\%^\s*[rRfFbB]\='''+ skip=+\\'+ end=+'''+ keepend contains=pythonBytesEscape,pythonBytesEscapeError,pythonUniEscape,pythonUniEscapeError,pythonDocTest,pythonSpaceError,@Spell
+    syn region pythonDocString start=+\%^\s*[rRfFbB]\="""+ skip=+\\"+ end=+"""+ keepend contains=pythonBytesEscape,pythonBytesEscapeError,pythonUniEscape,pythonUniEscapeError,pythonDocTest2,pythonSpaceError,@Spell
+endif
+
 "
 " Numbers (ints, longs, floats, complex)
 "
@@ -492,6 +504,7 @@ if v:version >= 508 || !exists('did_python_syn_inits')
     HiLink pythonStrFormatting    Special
     HiLink pythonStrFormat        Special
     HiLink pythonStrTemplate      Special
+    HiLink pythonDocString        Comment
 
     HiLink pythonDocTest          Special
     HiLink pythonDocTest2         Special
