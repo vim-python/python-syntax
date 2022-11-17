@@ -52,6 +52,7 @@ if s:Enabled('g:python_highlight_all')
     call s:EnableByDefault('g:python_highlight_func_calls')
     call s:EnableByDefault('g:python_highlight_class_vars')
     call s:EnableByDefault('g:python_highlight_operators')
+    call s:EnableByDefault('g:python_highlight_logger')
     call s:EnableByDefault('g:python_highlight_brackets')
 endif
 
@@ -90,6 +91,9 @@ syn keyword pythonInclude       import
 syn keyword pythonImport        import
 syn match pythonRaiseFromStatement      '\<from\>'
 syn match pythonImport          '^\s*\zsfrom\>'
+if s:Enabled('g:python_highlight_logger')
+    syn keyword pythonLog           log _log __log LOG _LOG __LOG logger
+endif
 if s:Enabled('g:python_highlight_brackets')
     syn match   pythonBrackets     '[()\[\]{},:]\|->'
 endif
@@ -513,6 +517,10 @@ if v:version >= 508 || !exists('did_python_syn_inits')
     HiLink pythonExClass          Structure
     HiLink pythonClass            Structure
     HiLink pythonClassVar         Identifier
+
+    if s:Enabled('g:python_highlight_logger')
+        HiLink pythonLog          Identifier
+    endif
 
     delcommand HiLink
 endif
