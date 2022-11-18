@@ -45,6 +45,7 @@ if s:Enabled('g:python_highlight_all')
     call s:EnableByDefault('g:python_highlight_string_formatting')
     call s:EnableByDefault('g:python_highlight_string_format')
     call s:EnableByDefault('g:python_highlight_string_templates')
+    call s:EnableByDefault('g:python_highlight_string_doc')
     call s:EnableByDefault('g:python_highlight_indent_errors')
     call s:EnableByDefault('g:python_highlight_space_errors')
     call s:EnableByDefault('g:python_highlight_doctests')
@@ -52,6 +53,8 @@ if s:Enabled('g:python_highlight_all')
     call s:EnableByDefault('g:python_highlight_func_calls')
     call s:EnableByDefault('g:python_highlight_class_vars')
     call s:EnableByDefault('g:python_highlight_operators')
+    call s:EnableByDefault('g:python_highlight_logger')
+    call s:EnableByDefault('g:python_highlight_brackets')
 endif
 
 if s:Enabled('g:python_highlight_builtins')
@@ -73,7 +76,6 @@ endif
 "
 
 syn keyword pythonStatement     break continue del return pass yield global assert lambda with
-syn keyword pythonStatement     raise nextgroup=pythonExClass skipwhite
 syn keyword pythonStatement     def nextgroup=pythonFunction skipwhite
 syn keyword pythonStatement     class nextgroup=pythonClass skipwhite
 if s:Enabled('g:python_highlight_class_vars')
@@ -81,13 +83,21 @@ if s:Enabled('g:python_highlight_class_vars')
 endif
 syn keyword pythonRepeat        for while
 syn keyword pythonConditional   if elif else
-syn keyword pythonException     try except finally
+syn keyword pythonMatch         match case
+syn keyword pythonException     try except finally raise
+syn keyword pythonException     raise nextgroup=pythonExClass skipwhite
 " The standard pyrex.vim unconditionally removes the pythonInclude group, so
 " we provide a dummy group here to avoid crashing pyrex.vim.
 syn keyword pythonInclude       import
 syn keyword pythonImport        import
 syn match pythonRaiseFromStatement      '\<from\>'
 syn match pythonImport          '^\s*\zsfrom\>'
+if s:Enabled('g:python_highlight_logger')
+    syn keyword pythonLog           log _log __log LOG _LOG __LOG logger
+endif
+if s:Enabled('g:python_highlight_brackets')
+    syn match   pythonBrackets     '[()\[\]{},:]\|->'
+endif
 
 
 if s:Python2Syntax()
@@ -105,7 +115,7 @@ else
     syn match   pythonStatement   '\<async\s\+def\>' nextgroup=pythonFunction skipwhite
     syn match   pythonStatement   '\<async\s\+with\>'
     syn match   pythonStatement   '\<async\s\+for\>'
-    syn cluster pythonExpression contains=pythonStatement,pythonRepeat,pythonConditional,pythonOperator,pythonNumber,pythonHexNumber,pythonOctNumber,pythonBinNumber,pythonFloat,pythonString,pythonFString,pythonRawString,pythonRawFString,pythonBytes,pythonBoolean,pythonNone,pythonSingleton,pythonBuiltinObj,pythonBuiltinFunc,pythonBuiltinType,pythonClassVar
+    syn cluster pythonExpression contains=pythonStatement,pythonRepeat,pythonConditional,pythonMatch,pythonOperator,pythonNumber,pythonHexNumber,pythonOctNumber,pythonBinNumber,pythonFloat,pythonString,pythonFString,pythonRawString,pythonRawFString,pythonBytes,pythonBoolean,pythonNone,pythonSingleton,pythonBuiltinObj,pythonBuiltinFunc,pythonBuiltinType,pythonClassVar
 endif
 
 
@@ -134,12 +144,14 @@ syn match   pythonDot        '\.' display containedin=pythonDottedName
 " Comments
 "
 
-syn match   pythonComment       '#.*$' display contains=pythonTodo,@Spell
+syn match   pythonComment       '#.*$' display contains=pythonTodo,pythonFixme,pythonXXX,@Spell
 if !s:Enabled('g:python_highlight_file_headers_as_comments')
     syn match   pythonRun         '\%^#!.*$'
     syn match   pythonCoding      '\%^.*\%(\n.*\)\?#.*coding[:=]\s*[0-9A-Za-z-_.]\+.*$'
 endif
-syn keyword pythonTodo          TODO FIXME XXX contained
+syn keyword pythonTodo          TODO contained
+syn keyword pythonFixme         FIXME contained
+syn keyword pythonXXX           XXX contained
 
 "
 " Errors
@@ -290,6 +302,17 @@ if s:Enabled('g:python_highlight_doctests')
     syn region pythonDocTest2  start='^\s*>>>' skip=+\\"+ end=+"""+he=s-1 end='^\s*$' contained
 endif
 
+if s:Enabled('g:python_highlight_string_doc')
+    syn match pythonColon ':' nextgroup=pythonDocString skipempty
+    syn match pythonStartFile +\%^+ nextgroup=pythonDocString skipempty
+    syn region pythonDocString start=+^\s*[rRfFbB]\='''+ skip=+\\'+ end=+'''+ keepend contains=pythonBytesEscape,pythonBytesEscapeError,pythonUniEscape,pythonUniEscapeError,pythonDocTest,pythonSpaceError,@Spell
+    syn region pythonDocString start=+^\s*[rRfFbB]\="""+ skip=+\\"+ end=+"""+ keepend contains=pythonBytesEscape,pythonBytesEscapeError,pythonUniEscape,pythonUniEscapeError,pythonDocTest2,pythonSpaceError,@Spell
+    syn region pythonString    start=+^\s*[rRfFbB]\='''+ skip=+\\'+ end=+'''+ keepend contains=pythonBytesEscape,pythonBytesEscapeError,pythonUniEscape,pythonUniEscapeError,pythonDocTest,pythonSpaceError,@Spell
+    syn region pythonString    start=+^\s*[rRfFbB]\="""+ skip=+\\"+ end=+"""+ keepend contains=pythonBytesEscape,pythonBytesEscapeError,pythonUniEscape,pythonUniEscapeError,pythonDocTest2,pythonSpaceError,@Spell
+    syn region pythonDocString start=+\%^\s*[rRfFbB]\='''+ skip=+\\'+ end=+'''+ keepend contains=pythonBytesEscape,pythonBytesEscapeError,pythonUniEscape,pythonUniEscapeError,pythonDocTest,pythonSpaceError,@Spell
+    syn region pythonDocString start=+\%^\s*[rRfFbB]\="""+ skip=+\\"+ end=+"""+ keepend contains=pythonBytesEscape,pythonBytesEscapeError,pythonUniEscape,pythonUniEscapeError,pythonDocTest2,pythonSpaceError,@Spell
+endif
+
 "
 " Numbers (ints, longs, floats, complex)
 "
@@ -399,7 +422,7 @@ if s:Enabled('g:python_highlight_exceptions')
     if s:Python2Syntax()
         let s:exs_re .= '|StandardError'
     else
-        let s:exs_re .= '|BlockingIOError|ChildProcessError|ConnectionError|BrokenPipeError|ConnectionAbortedError|ConnectionRefusedError|ConnectionResetError|FileExistsError|FileNotFoundError|InterruptedError|IsADirectoryError|NotADirectoryError|PermissionError|ProcessLookupError|TimeoutError|StopAsyncIteration|ResourceWarning'
+        let s:exs_re .= '|BlockingIOError|ChildProcessError|ConnectionError|BrokenPipeError|ConnectionAbortedError|ConnectionRefusedError|ConnectionResetError|FileExistsError|FileNotFoundError|InterruptedError|IsADirectoryError|NotADirectoryError|PermissionError|ProcessLookupError|TimeoutError|StopAsyncIteration|ResourceWarning|ModuleNotFoundError|BaseExceptionGroup|ExceptionGroup|RecursionError|EncodingWarning'
     endif
 
     execute 'syn match pythonExClass ''\v\.@<!\zs<%(' . s:exs_re . ')>'''
@@ -434,6 +457,7 @@ if v:version >= 508 || !exists('did_python_syn_inits')
     HiLink pythonFunction         Function
     HiLink pythonFunctionCall     Function
     HiLink pythonConditional      Conditional
+    HiLink pythonMatch            Conditional
     HiLink pythonRepeat           Repeat
     HiLink pythonException        Exception
     HiLink pythonOperator         Operator
@@ -447,6 +471,8 @@ if v:version >= 508 || !exists('did_python_syn_inits')
         HiLink pythonRun              Special
     endif
     HiLink pythonTodo             Todo
+    HiLink pythonFixme            Todo
+    HiLink pythonXXX              Todo
 
     HiLink pythonError            Error
     HiLink pythonIndentError      Error
@@ -478,6 +504,7 @@ if v:version >= 508 || !exists('did_python_syn_inits')
     HiLink pythonStrFormatting    Special
     HiLink pythonStrFormat        Special
     HiLink pythonStrTemplate      Special
+    HiLink pythonDocString        Comment
 
     HiLink pythonDocTest          Special
     HiLink pythonDocTest2         Special
@@ -503,6 +530,10 @@ if v:version >= 508 || !exists('did_python_syn_inits')
     HiLink pythonExClass          Structure
     HiLink pythonClass            Structure
     HiLink pythonClassVar         Identifier
+
+    if s:Enabled('g:python_highlight_logger')
+        HiLink pythonLog          Identifier
+    endif
 
     delcommand HiLink
 endif
