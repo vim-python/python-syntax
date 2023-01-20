@@ -136,8 +136,8 @@ syn match   pythonDot        '\.' display containedin=pythonDottedName
 
 syn match   pythonComment       '#.*$' display contains=pythonTodo,@Spell
 if !s:Enabled('g:python_highlight_file_headers_as_comments')
-    syn match   pythonRun         '\%^#!.*$'
-    syn match   pythonCoding      '\%^.*\%(\n.*\)\?#.*coding[:=]\s*[0-9A-Za-z-_.]\+.*$'
+    syn match   pythonRun         '\%^#!.*$' nextgroup=pythonDocString skipempty
+    syn match   pythonCoding      '\%^.*\%(\n.*\)\?#.*coding[:=]\s*[0-9A-Za-z-_.]\+.*$' nextgroup=pythonDocString skipempty
 endif
 syn keyword pythonTodo          TODO FIXME XXX contained
 
@@ -289,6 +289,16 @@ if s:Enabled('g:python_highlight_doctests')
     syn region pythonDocTest   start='^\s*>>>' skip=+\\'+ end=+'''+he=s-1 end='^\s*$' contained
     syn region pythonDocTest2  start='^\s*>>>' skip=+\\"+ end=+"""+he=s-1 end='^\s*$' contained
 endif
+
+" Docstrings
+syn match pythonColon ':' nextgroup=pythonDocString skipempty
+syn region pythonDocString start=+^\s*'''+ skip=+\\'+ end=+'''+ keepend contains=pythonBytesEscape,pythonBytesEscapeError,pythonUniEscape,pythonUniEscapeError,pythonDocTest,pythonSpaceError,@Spell
+syn region pythonDocString start=+^\s*"""+ skip=+\\"+ end=+"""+ keepend contains=pythonBytesEscape,pythonBytesEscapeError,pythonUniEscape,pythonUniEscapeError,pythonDocTest2,pythonSpaceError,@Spell
+syn region pythonString start=+^\s*'''+ skip=+\\'+ end=+'''+ keepend contains=pythonBytesEscape,pythonBytesEscapeError,pythonUniEscape,pythonUniEscapeError,pythonDocTest,pythonSpaceError,@Spell
+syn region pythonString start=+^\s*"""+ skip=+\\"+ end=+"""+ keepend contains=pythonBytesEscape,pythonBytesEscapeError,pythonUniEscape,pythonUniEscapeError,pythonDocTest2,pythonSpaceError,@Spell
+syn region pythonDocString start=+\%^\s*'''+ skip=+\\'+ end=+'''+ keepend contains=pythonBytesEscape,pythonBytesEscapeError,pythonUniEscape,pythonUniEscapeError,pythonDocTest,pythonSpaceError,@Spell
+syn region pythonDocString start=+\%^\s*"""+ skip=+\\"+ end=+"""+ keepend contains=pythonBytesEscape,pythonBytesEscapeError,pythonUniEscape,pythonUniEscapeError,pythonDocTest2,pythonSpaceError,@Spell
+
 
 "
 " Numbers (ints, longs, floats, complex)
@@ -478,6 +488,8 @@ if v:version >= 508 || !exists('did_python_syn_inits')
     HiLink pythonStrFormatting    Special
     HiLink pythonStrFormat        Special
     HiLink pythonStrTemplate      Special
+
+    HiLink pythonDocString        Comment
 
     HiLink pythonDocTest          Special
     HiLink pythonDocTest2         Special
